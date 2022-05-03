@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8FA"
+    tools:context=".BaoCaoActivity">
+
+
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/main_background">
+
+        <TextView
+            android:id="@+id/bt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_backto"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="BÁO CÁO"
+            android:textColor="@color/white"
+            android:textSize="28dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="VAN DUC"
+            android:textColor="@color/white"
+            android:textSize="18dp"></TextView>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Xem báo cáo chi tiết"
+        android:textSize="20dp"></TextView>
+    <RelativeLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt2"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/login_background">
+
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê mượn sách"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt3"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê tình hình mượn sách theo thể loại"></TextView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/l2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l1"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/login_background">
+
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê mượn sách"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt4"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê tình hình mượn sách theo thể loại"></TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l2"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/login_background">
+
+        <TextView
+            android:id="@+id/txt5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê mượn sách"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt5"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê tình hình mượn sách theo thể loại"></TextView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/l4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l3"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/login_background">
+
+        <TextView
+            android:id="@+id/txt6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê mượn sách"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt6"
+            android:layout_marginLeft="20dp"
+            android:text="Thống kê tình hình mượn sách theo thể loại"></TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#4696EB"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_home"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+
+            ></TextView>
+
+        <TextView
+            android:id="@+id/txt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/txt4"
+            android:background="@drawable/ic_book"></TextView>
+
+        <TextView
+            android:id="@+id/txt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_sw"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@id/txt5"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/txt7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_account"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@id/txt6"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/txt8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_setting"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@id/txt7"
+            ></TextView>
+    </RelativeLayout>
+
+</RelativeLayout>
