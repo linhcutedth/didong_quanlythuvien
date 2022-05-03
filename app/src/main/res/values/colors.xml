@@ -10,5 +10,6 @@
     <color name="blue">#4F91D7</color>
     <color name="grey">#ccc</color>
     <color name="main_cl">#4696EB</color>
+    <color name="login_cl">#F8F8FA</color>
 
 </resources>
