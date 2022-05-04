@@ -6,4 +6,7 @@
     <string name="nav_my_profile">Thông tin cá nhân</string>
     <string name="nav_drawer_open">Open navigation</string>
     <string name="nav_drawer_close">Close navigation</string>
+    <string name="nav_coupon">Nghiệp vụ</string>
+    <string name="nav_reader">Độc giả</string>
+    <string name="nav_setting">Cài đặt</string>
 </resources>

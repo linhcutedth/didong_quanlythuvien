@@ -11,5 +11,5 @@
     <color name="grey">#ccc</color>
     <color name="main_cl">#4696EB</color>
     <color name="login_cl">#F8F8FA</color>
-
+    <color name="grayhome">#4B4B4B</color>
 </resources>
