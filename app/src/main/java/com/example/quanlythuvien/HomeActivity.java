@@ -62,15 +62,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }else if(id == R.id.bottom_book){
                     openBookFragment();
                 }
+                setTitleToolBar();
                 return true;
             }
         });
+        setTitleToolBar();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.nav_home){
+
             openHomeFragment();
             mBottomNavigationView.getMenu().findItem(R.id.bottom_home).setChecked(true);
         }else if (id == R.id.nav_book){
@@ -83,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
+        setTitleToolBar();
         return true;
     }
     private void openHomeFragment(){
@@ -132,5 +136,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         SearchView searchView = (SearchView) menu.findItem(R.id.toolbar_search).getActionView();
         searchView.setQueryHint("Tìm kiếm.....");
         return true;
+    }
+
+    private void setTitleToolBar(){
+        String title ="";
+        switch (mCurrentFragment){
+            case FRAGMENT_HOME:
+                title = getString(R.string.nav_home);
+                break;
+            case FRAGMENT_BOOK:
+                title = getString(R.string.nav_book);
+                break;
+            case FRAGMENT_ACCOUNT:
+                title = getString(R.string.nav_account);
+                break;
+        }
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setTitle(title);
+        }
     }
 }
