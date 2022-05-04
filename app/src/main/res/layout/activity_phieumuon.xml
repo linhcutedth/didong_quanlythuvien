@@ -33,6 +33,7 @@
             android:text="PHIẾU MƯỢN"
             android:textColor="@color/white"
             android:textSize="28dp"></TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
