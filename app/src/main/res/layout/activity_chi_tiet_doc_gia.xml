@@ -27,6 +27,7 @@
             android:textColor="@color/white"
             ></TextView>
 
+
         <TextView
             android:id="@+id/txt1"
             android:layout_width="wrap_content"
@@ -39,41 +40,103 @@
             android:layout_marginLeft="20dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"></TextView>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_edit"
+            android:gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="30dp"
+            ></TextView>
+
     </LinearLayout>
-    
+
     <RelativeLayout
+        android:id="@+id/l6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/l5"
-        android:layout_below="@+id/l1"
-        >
-        
+        android:layout_below="@+id/l1">
+
         <TextView
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="Họ tên: Nguyễn Thị Ái Linh"
             android:textSize="24dp"
-            android:layout_margin="10dp"
-            android:textStyle="normal"
-            ></TextView>
-        
+            android:textStyle="normal"></TextView>
+
+
         <TextView
-            android:id="@+id/txt_Tuoi"
+            android:id="@+id/txt_ngsinh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_name"
-            android:text="Tuổi: 21"
-            android:textSize="24dp"
             android:layout_margin="10dp"
+            android:text="Ngày sinh: 31/05/2001"
+            android:textSize="24dp"
             android:textStyle="normal"></TextView>
-        
+
         <TextView
+            android:id="@+id/txt_diachi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ></TextView>
+            android:layout_below="@+id/txt_ngsinh"
+            android:layout_margin="10dp"
+            android:text="Địa chỉ"
+            android:textSize="24dp"
+            android:textStyle="normal"></TextView>
+
+        <TextView
+            android:id="@+id/txt_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_diachi"
+            android:layout_margin="10dp"
+            android:text="Email"
+            android:textSize="24dp"
+            android:textStyle="normal"></TextView>
+
+        <TextView
+            android:id="@+id/txt_nglt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_email"
+            android:layout_margin="10dp"
+            android:text="Ngày lập thẻ"
+            android:textSize="24dp"
+            android:textStyle="normal"></TextView>
+
+        <TextView
+            android:id="@+id/txt_tinhtrang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_nglt"
+            android:layout_margin="10dp"
+            android:text="Tình trạng thẻ: Còn hạn"
+            android:textSize="24dp"
+            android:textStyle="normal"></TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bt_login"
+            android:text="Danh sách sách mượn"
+            android:textSize="20dp"
+            android:layout_below="@+id/txt_tinhtrang"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="220dp"
+            android:layout_marginBottom="20dp"
+            >
+
+        </Button>
     </RelativeLayout>
-    
+
 
     <RelativeLayout
         android:id="@+id/l5"
@@ -137,5 +200,7 @@
             android:layout_toRightOf="@id/txt7"
             ></TextView>
     </RelativeLayout>
+
+
 
 </RelativeLayout>
