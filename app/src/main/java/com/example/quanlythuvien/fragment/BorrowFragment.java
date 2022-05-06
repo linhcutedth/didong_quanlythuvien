@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.quanlythuvien.R;
 
-public class DocGiaFragment extends Fragment {
+public class BorrowFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_doc_gia,container,false);
+        return inflater.inflate(R.layout.activity_phieumuon,container,false);
     }
 }

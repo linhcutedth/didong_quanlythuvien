@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.edit_password);
         db = new DBHelper(this);
 
-        //db.QueryData("INSERT INTO Nguoidung VALUES (null, 'linh', 'linh', 'linh')");
+        db.QueryData("INSERT INTO Nguoidung VALUES (null, 'admin', 'admin', 'admin')");
         //db.QueryData("INSERT INTO Nguoidung VALUES (null, 'hai', 'hai', 'hai')");
 
         bt_login.setOnClickListener(new View.OnClickListener() {
