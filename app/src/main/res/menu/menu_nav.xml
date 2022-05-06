@@ -14,6 +14,23 @@
                 android:icon="@drawable/ic_baseline_menu_book_24"/>
         </menu>
     </item>
+    <item android:title="Độc giả">
+        <menu>
+            <item android:id="@+id/nav_reader"
+                android:title="Độc giả"
+                android:icon="@drawable/ic_baseline_people_24"/>
+        </menu>
+    </item>
+    <item android:title="Nghiệp vụ">
+        <menu>
+            <item android:id="@+id/nav_muon"
+                android:title="Phiếu mượn sách"
+                android:icon="@drawable/ic_baseline_people_24"/>
+            <item android:id="@+id/nav_tra"
+                android:title="Phiếu trả sách"
+                android:icon="@drawable/ic_baseline_people_24"/>
+        </menu>
+    </item>
 
     <item android:title="@string/nav_account">
         <menu>
