@@ -10,17 +10,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
-import com.example.quanlythuvien.fragment.DocGiaFragment;
+import com.example.quanlythuvien.fragment.BorrowFragment;
+import com.example.quanlythuvien.fragment.ReaderFragment;
 import com.example.quanlythuvien.fragment.HomeFragment;
+import com.example.quanlythuvien.fragment.ReturnBookFragment;
+import com.example.quanlythuvien.fragment.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -29,7 +30,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_BOOK = 1;
     private static final int FRAGMENT_ACCOUNT = 2;
-    private static final int FRAGMENT_DOCGIA = 3;
+    private static final int FRAGMENT_READER = 3;
+    private static final int FRAGMENT_SETTING = 4;
+    private static final int FRAGMENT_BORROW_BOOK = 5;
+    private static final int FRAGMENT_RETURN_BOOK = 6;
+
 
 
     private  int mCurrentFragment = FRAGMENT_HOME;
@@ -58,6 +63,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         replaceFragment(new HomeFragment());
 
         mBottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            //bottom_nav
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -66,10 +72,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }else if(id == R.id.bottom_book){
                     openBookFragment();
                 }else if (id == R.id.bottom_reader){
-                    if(mCurrentFragment != FRAGMENT_DOCGIA){
-                        replaceFragment(new DocGiaFragment());
-                        mCurrentFragment = FRAGMENT_DOCGIA;
-                    }
+                    openReaderFragment();
+                }else if (id == R.id.bottom_setting){
+                    openSettingFragment();
                 }
                 setTitleToolBar();
                 return true;
@@ -78,11 +83,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setTitleToolBar();
     }
 
+    //menu_bottom
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.nav_home){
-
             openHomeFragment();
             mBottomNavigationView.getMenu().findItem(R.id.bottom_home).setChecked(true);
         }else if (id == R.id.nav_book){
@@ -92,6 +97,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             if(mCurrentFragment != FRAGMENT_ACCOUNT){
                 replaceFragment(new AccountFragment());
                 mCurrentFragment = FRAGMENT_ACCOUNT;
+            }
+        }else if (id == R.id.nav_reader){
+            openReaderFragment();
+            mBottomNavigationView.getMenu().findItem(R.id.bottom_reader).setChecked(true);
+        }else if(id == R.id.nav_borrow_book){
+            if(mCurrentFragment != FRAGMENT_BORROW_BOOK){
+                replaceFragment(new BorrowFragment());
+                mCurrentFragment = FRAGMENT_BORROW_BOOK;
+            }
+        }else if(id == R.id.nav_return_book){
+            if(mCurrentFragment != FRAGMENT_RETURN_BOOK){
+                replaceFragment(new ReturnBookFragment());
+                mCurrentFragment = FRAGMENT_RETURN_BOOK;
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -110,6 +128,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             mCurrentFragment = FRAGMENT_BOOK;
         }
     }
+    private void openReaderFragment(){
+        if(mCurrentFragment != FRAGMENT_READER){
+            replaceFragment(new ReaderFragment());
+            mCurrentFragment = FRAGMENT_READER;
+        }
+    }
+
+    private void openSettingFragment(){
+        if(mCurrentFragment != FRAGMENT_SETTING){
+            replaceFragment(new SettingFragment());
+            mCurrentFragment = FRAGMENT_SETTING;
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -159,8 +191,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case FRAGMENT_ACCOUNT:
                 title = getString(R.string.nav_account);
                 break;
-            case FRAGMENT_DOCGIA:
-                title = "doc gia";
+            case FRAGMENT_READER:
+                title = getString(R.string.nav_reader);
+                break;
+            case FRAGMENT_SETTING:
+                title = getString(R.string.nav_setting);
                 break;
         }
         if(getSupportActionBar() != null){

@@ -23,10 +23,10 @@
     </item>
     <item android:title="Nghiệp vụ">
         <menu>
-            <item android:id="@+id/nav_muon"
+            <item android:id="@+id/nav_borrow_book"
                 android:title="Phiếu mượn sách"
                 android:icon="@drawable/ic_baseline_people_24"/>
-            <item android:id="@+id/nav_tra"
+            <item android:id="@+id/nav_return_book"
                 android:title="Phiếu trả sách"
                 android:icon="@drawable/ic_baseline_people_24"/>
         </menu>
