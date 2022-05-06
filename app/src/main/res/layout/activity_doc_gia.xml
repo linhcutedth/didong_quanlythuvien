@@ -7,44 +7,16 @@
     tools:context=".DocGiaActivity"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#4696EB"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/l1"
-        >
-
-        <TextView
-            android:id="@+id/bt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_backto"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/white"
-            ></TextView>
-
-        <TextView
-            android:id="@+id/txt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Danh sách độc giả"
-            android:textSize="32dp"
-            android:textFontWeight="@integer/material_motion_duration_long_1"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"></TextView>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/l1"
+        android:orientation="vertical"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="hhhhhhhh"/>
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -52,66 +24,6 @@
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#4696EB"
-        android:gravity="center">
 
-        <TextView
-            android:id="@+id/txt4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_home"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-
-            ></TextView>
-
-        <TextView
-            android:id="@+id/txt5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_book"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@id/txt4"
-            ></TextView>
-
-        <TextView
-            android:id="@+id/txt6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_sw"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@id/txt5"
-            ></TextView>
-
-        <TextView
-            android:id="@+id/txt7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_account"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@id/txt6"
-            ></TextView>
-
-        <TextView
-            android:id="@+id/txt8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_setting"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@id/txt7"
-            ></TextView>
-    </RelativeLayout>
 
 </RelativeLayout>

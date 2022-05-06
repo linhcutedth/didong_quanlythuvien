@@ -41,15 +41,16 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"></TextView>
 
-        <TextView
-
+        <Button
+            android:id="@+id/edit_dg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_edit"
             android:gravity="right"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="30dp"
-            ></TextView>
+            android:layout_marginLeft="30dp">
+
+        </Button>
 
     </LinearLayout>
 
@@ -123,16 +124,17 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_tinhtrang"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="231dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="19dp"
             android:background="@drawable/bt_login"
             android:text="Danh sách sách mượn"
             android:textSize="20dp"
-            android:layout_below="@+id/txt_tinhtrang"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="220dp"
-            android:layout_marginBottom="20dp"
-            >
+            android:layout_above="@+id/l5"
+            tools:ignore="NotSibling,UnknownId">
 
         </Button>
     </RelativeLayout>

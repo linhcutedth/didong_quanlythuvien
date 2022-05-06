@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
+import com.example.quanlythuvien.fragment.DocGiaFragment;
 import com.example.quanlythuvien.fragment.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -27,6 +29,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_BOOK = 1;
     private static final int FRAGMENT_ACCOUNT = 2;
+    private static final int FRAGMENT_DOCGIA = 3;
+
 
     private  int mCurrentFragment = FRAGMENT_HOME;
     private DrawerLayout mDrawerLayout;
@@ -61,6 +65,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     openHomeFragment();
                 }else if(id == R.id.bottom_book){
                     openBookFragment();
+                }else if (id == R.id.bottom_reader){
+                    if(mCurrentFragment != FRAGMENT_DOCGIA){
+                        replaceFragment(new DocGiaFragment());
+                        mCurrentFragment = FRAGMENT_DOCGIA;
+                    }
                 }
                 setTitleToolBar();
                 return true;
@@ -149,6 +158,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case FRAGMENT_ACCOUNT:
                 title = getString(R.string.nav_account);
+                break;
+            case FRAGMENT_DOCGIA:
+                title = "doc gia";
                 break;
         }
         if(getSupportActionBar() != null){
