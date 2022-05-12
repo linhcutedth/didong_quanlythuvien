@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SigninActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
     EditText username, password, passwordConfirm;
     Button bt_signup;
@@ -34,25 +34,25 @@ public class SigninActivity extends AppCompatActivity {
                 String passconfirm = passwordConfirm.getText().toString();
 
                 if (user.equals("") || password.equals("") || passconfirm.equals("")) {
-                    Toast.makeText(SigninActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else {
                     if (db.check_username(user)){
-                        Toast.makeText(SigninActivity.this, "Username is exist", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this, "Username is exist", Toast.LENGTH_SHORT).show();
                     }else{
                         if (pass.equals(passconfirm)) {
 
                             Boolean rs = db.insert_NguoiDung(user,pass);
                             if (rs== true){
-                                Toast.makeText(SigninActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(SigninActivity.this, LoginActivity.class);
+                                Toast.makeText(SignupActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             } else{
-                                Toast.makeText(SigninActivity.this, "Not successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, "Not successfully", Toast.LENGTH_SHORT).show();
                             }
 
 
                         }else{
-                            Toast.makeText(SigninActivity.this, "Password confirm incorrect", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this, "Password confirm incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
 

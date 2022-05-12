@@ -36,12 +36,13 @@ public class DocGiaAdapter extends RecyclerView.Adapter<DocGiaAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull DocGiaAdapter.ViewHolder holder, int position) {
         DocGiaModels modal = docgiaModalArrayList.get(position);
+        //holder.Ma.setText(modal.getMaDG());
         holder.HoTen.setText("Họ tên: " + modal.getHoTen());
-       // holder.NgSinh.setText(modal.getNgSinh());
+        holder.NgSinh.setText(modal.getNgSinh());
         holder.LoaiDG.setText("Loại độc giả: " + modal.getLoaiDG());
-       // holder.DiaChi.setText(modal.getDiaChi());
-        //holder.Email.setText(modal.getEmail());
-        //holder.NgLapthe.setText(modal.getNgLapThe());
+        holder.DiaChi.setText(modal.getDiaChi());
+        holder.Email.setText(modal.getEmail());
+        holder.NgLapthe.setText(modal.getNgLapThe());
         holder.TinhTrang.setText("Tình trạng thẻ: " + modal.getTinhTrangThe());
     }
 
@@ -51,16 +52,17 @@ public class DocGiaAdapter extends RecyclerView.Adapter<DocGiaAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView HoTen, NgSinh, LoaiDG, DiaChi, Email, NgLapthe, TinhTrang;
+        private TextView Ma, HoTen, NgSinh, LoaiDG, DiaChi, Email, NgLapthe, TinhTrang;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+           // Ma = itemView.findViewById(R.id.txt_id);
             HoTen = itemView.findViewById(R.id.txt_fname);
-          //  NgSinh = itemView.findViewById(R.id.txt_birthdate);
+            NgSinh = itemView.findViewById(R.id.txt_birthdate);
             LoaiDG = itemView.findViewById(R.id.txt_typeReader);
-            //DiaChi = itemView.findViewById(R.id.txt_address);
-           // Email = itemView.findViewById(R.id.txt_email);
-           // NgLapthe = itemView.findViewById(R.id.txt_nglt);
+            DiaChi = itemView.findViewById(R.id.txt_address);
+            Email = itemView.findViewById(R.id.txt_email);
+            NgLapthe = itemView.findViewById(R.id.txt_nglt);
             TinhTrang = itemView.findViewById(R.id.txt_tinhtrang);
         }
     }

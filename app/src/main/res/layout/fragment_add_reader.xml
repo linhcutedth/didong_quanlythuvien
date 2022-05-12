@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:gravity="center"
+    android:layout_margin="10dp"
+    android:id="@+id/fragment_add">
+
+    <EditText
+        android:id="@+id/txt_hoten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Họ tên"
+        android:inputType="textPersonName"
+        />
+
+    <EditText
+        android:id="@+id/txt_ngsinh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Ngày sinh"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/txt_hoten" />
+
+    <EditText
+        android:id="@+id/txt_loaidg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Loại độc giả"
+
+        android:layout_below="@+id/txt_ngsinh"
+         />
+
+    <EditText
+        android:id="@+id/txt_diachi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Địa chỉ"
+
+        android:layout_below="@+id/txt_loaidg"
+        />
+
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Email"
+
+        android:layout_below="@+id/txt_diachi"
+        />
+    <EditText
+        android:id="@+id/txt_nglt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Ngày lập thẻ"
+
+        android:layout_below="@+id/txt_email"
+        />
+    <EditText
+        android:id="@+id/txt_tinhtrangthe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Tình trạng thẻ"
+
+        android:layout_below="@+id/txt_nglt"
+        />
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/txt_tinhtrangthe"
+        android:layout_marginTop="40dp"
+        android:text="Thêm mới"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:backgroundTint="@color/main_cl"/>
+
+</RelativeLayout>

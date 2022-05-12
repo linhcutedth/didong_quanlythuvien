@@ -152,6 +152,8 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         }
     }
 
+
+
     //Kiểm tra tên đăng nhập đã tồn tại hay chưa
 
     public Boolean check_username (String username){
@@ -181,11 +183,35 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+
+    //insert độc giả
+    public Boolean insert_docgia(DocGiaModels docgia){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("hoten", docgia.getHoTen());
+        contentValues.put("ngaysinh", docgia.getNgSinh());
+        contentValues.put("loaidg", docgia.getLoaiDG());
+        contentValues.put("diachi", docgia.getDiaChi());
+        contentValues.put("email", docgia.getEmail());
+        contentValues.put("nglapthe", docgia.getNgLapThe());
+        contentValues.put("tinhtrangthe", docgia.getTinhTrangThe());
+
+        long result = myDB.insert("DOCGIA", null, contentValues);
+      
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
     public Cursor getAllPms(){
         SQLiteDatabase database = getReadableDatabase();
         Cursor resultSet = database.rawQuery("Select * from PHIEUMUONSACH", null);
         return resultSet;
     }
+  
     public Boolean insert_phieumuonsach(PhieuMuonModels pms){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -228,7 +254,6 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         contentValues.put("hinhanh", dausach.getHINHANH());
 
         long result = myDB.insert("DAUSACH", null, contentValues);
-
 
         if(result==-1){
             return false;
