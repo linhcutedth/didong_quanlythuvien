@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/background_member">
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/txt_tendausach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên sách"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/txt_tacgia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_tendausach"
+            android:layout_marginTop="15dp"
+            android:text="Tên tác giả"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/txt_sanco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_tacgia"
+            android:layout_marginTop="15dp"
+            android:text="Sẵn có"
+            android:textSize="20dp"
+            />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/txt_sanco"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

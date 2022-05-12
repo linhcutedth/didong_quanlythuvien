@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -230,6 +229,47 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             DocGiaModels docgia;
             docgia = new DocGiaModels(id,hoTen,ngSinh,loaiDG,diaChi,email,ngLapThe,tinhTrang);
             list.add(docgia);
+        }
+        return list;
+    }
+
+    public ArrayList<PhieuMuonModels> getAllPms(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllPms();
+        ArrayList<PhieuMuonModels> list = new ArrayList<PhieuMuonModels>();
+        while(data.moveToNext()){
+            int ma_pms = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String tinhTrang  = data.getString(2);
+            PhieuMuonModels pms;
+            pms = new PhieuMuonModels(ma_pms, ma_dg,tinhTrang);
+            list.add(pms);
+        }
+    }
+
+    public ArrayList<DauSachModels> getAllBook(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllBook();
+        ArrayList<DauSachModels> list = new ArrayList<DauSachModels>();
+        while(data.moveToNext()){
+            int MA_DAUSACH = data.getInt(0);
+            String TENDAUSACH = data.getString(1);
+            String TACGIA = data.getString(2);
+            String NXB = data.getString(3);
+            int NAMXB = data.getInt(4);
+            int TONGSO = data.getInt(5);
+            String VITRI = data.getString(6);
+            int SANCO = data.getInt(7);
+            int DANGCHOMUON = data.getInt(8);
+            String THELOAI = data.getString(9);
+            String HINHANH = data.getString(10);
+            System.out.print(TENDAUSACH);
+            DauSachModels cuonsach;
+            cuonsach = new DauSachModels(MA_DAUSACH,TENDAUSACH,TACGIA,NXB,NAMXB,TONGSO,VITRI,SANCO,DANGCHOMUON,THELOAI,HINHANH);
+            list.add(cuonsach);
+
         }
         return list;
     }
