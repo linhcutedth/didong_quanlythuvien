@@ -1,5 +1,6 @@
 package com.example.quanlythuvien;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -132,7 +133,39 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
     }
 
+    // insert NGUOIDUNG
+    public Boolean insert_NguoiDung(String username, String pass, String pass_conf){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("username", username);
+        contentValues.put("password", pass);
+        contentValues.put("PASSWORD_CONFIRM", pass_conf);
+        contentValues.put("email", "null");
+        contentValues.put("phone", "null");
+        contentValues.put("address", "null");
+        contentValues.put("sex", "null");
+
+        long result = myDB.insert("NGUOIDUNG", null, contentValues);
+
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
     //Kiểm tra tên đăng nhập đã tồn tại hay chưa
+
+    public Boolean check_username (String username){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("select * from Nguoidung where username =?", new String[]{username});
+        if (cursor.getCount()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     //Kiểm tra tên đăng nhập và mật khẩu có khớp nhau không
     public Boolean check_Username_password(String username, String password){
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -143,6 +176,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
 
     public Cursor getAllReader(){
         SQLiteDatabase database = getReadableDatabase();

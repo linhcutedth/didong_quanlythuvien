@@ -36,15 +36,26 @@ public class SigninActivity extends AppCompatActivity {
                 if (user.equals("") || password.equals("") || passconfirm.equals("")) {
                     Toast.makeText(SigninActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (pass.equals(passconfirm)) {
-                        int id = Integer.parseInt(null);
-                        db.QueryData("insert into NGUOIDUNG values (" + "user" + "," + pass +"," + passconfirm + ")");
+                    if (db.check_username(user)){
+                        Toast.makeText(SigninActivity.this, "Username is exist", Toast.LENGTH_SHORT).show();
+                    }else{
+                        if (pass.equals(passconfirm)) {
 
-                        Toast.makeText(SigninActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SigninActivity.this, LoginActivity.class);
-                        startActivity(intent);
+                            Boolean rs = db.insert_NguoiDung(user,pass, passconfirm);
+                            if (rs== true){
+                                Toast.makeText(SigninActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SigninActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            } else{
+                                Toast.makeText(SigninActivity.this, "Not successfully", Toast.LENGTH_SHORT).show();
+                            }
 
+
+                        }else{
+                            Toast.makeText(SigninActivity.this, "Password confirm incorrect", Toast.LENGTH_SHORT).show();
+                        }
                     }
+
                 }
             }
         });
