@@ -10,45 +10,20 @@
     <TextView
         android:id="@+id/corner"
         android:layout_width="match_parent"
-        android:layout_height="254dp"
-        android:background="@drawable/corner"
+        android:layout_height="200dp"
+        android:background="@drawable/main_background"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="16dp">
-        <ImageView
-            android:id="@+id/icon_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_settings_24"
-            app:tint="@android:color/white"/>
-        <TextView
-            android:id="@+id/tx_manv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cài đặt:"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="28dp"
-            />
-    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/corner"
+        android:id="@+id/corner_1"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
+        android:layout_height="650dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="50px"
-        android:layout_marginRight="50px"
-        android:background="@drawable/cornertop_2"
+        android:layout_margin="20dp"
+        android:background="@drawable/login_background"
         android:textSize="20dp">
 
         <RelativeLayout
@@ -122,71 +97,74 @@
                 android:text="Chỉnh sửa thông tin"
                 android:textColor="#000000"
                 android:textSize="18dp" />
+
             <ImageView
                 android:id="@+id/more_chinhsuathongtin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/icon_back"
+                android:layout_alignBottom="@+id/tx_chinhsuathongtin"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:tint="@android:color/darker_gray"
-                android:layout_alignBottom = "@+id/tx_chinhsuathongtin"
-                android:layout_alignEnd = "@+id/icon_back"
-                />
+                app:tint="@android:color/darker_gray" />
+
             <TextView
                 android:id="@+id/tx_thaydoimatkhau"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tx_chinhsuathongtin"
+                android:layout_alignStart="@+id/tx_thietlaptaikhoan"
+                android:layout_marginTop="20dp"
                 android:text="Thay đổi mật khẩu"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                android:layout_marginTop="20dp"
-                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
-                android:layout_below="@+id/tx_chinhsuathongtin" />
+                android:textSize="18dp" />
 
             <ImageView
                 android:id="@+id/more_thaydoimatkhau"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/icon_back"
+                android:layout_alignBottom="@+id/tx_thaydoimatkhau"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:tint="@android:color/darker_gray"
-                android:layout_alignBottom = "@+id/tx_thaydoimatkhau"
-                android:layout_alignEnd = "@+id/icon_back" />
+                app:tint="@android:color/darker_gray" />
+
             <TextView
                 android:id="@+id/tx_batthongbao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tx_thaydoimatkhau"
+                android:layout_alignStart="@+id/tx_thietlaptaikhoan"
+                android:layout_marginTop="20dp"
                 android:text="Bật thông báo"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                android:layout_marginTop="20dp"
-                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
-                android:layout_below="@+id/tx_thaydoimatkhau"
-                />
+                android:textSize="18dp" />
+
             <Switch
                 android:id="@+id/more_batthongbao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/icon_back"
+                android:layout_alignBottom="@+id/tx_batthongbao"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                android:layout_alignBottom = "@+id/tx_batthongbao"
-                android:layout_alignEnd = "@+id/icon_back"
                 app:tint="@android:color/darker_gray" />
+
             <TextView
                 android:id="@+id/tx_tudongcapnhat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tx_batthongbao"
+                android:layout_alignStart="@+id/tx_thietlaptaikhoan"
+                android:layout_marginTop="20dp"
                 android:text="Tự động cập nhật"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                android:layout_marginTop="20dp"
-                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
-                android:layout_below="@+id/tx_batthongbao"
-                />
+                android:textSize="18dp" />
+
             <Switch
                 android:id="@+id/more_tudongcapnhat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/icon_back"
+                android:layout_alignBottom="@+id/tx_tudongcapnhat"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                android:layout_alignBottom = "@+id/tx_tudongcapnhat"
-                android:layout_alignEnd = "@+id/icon_back"
                 app:tint="@android:color/darker_gray" />
 
             <View
@@ -196,6 +174,7 @@
                 android:layout_below="@+id/tx_tudongcapnhat"
                 android:layout_marginTop="30dp"
                 android:background="@android:color/darker_gray" />
+
             <TextView
                 android:id="@+id/tx_thongtinthem"
                 android:layout_width="wrap_content"
@@ -207,103 +186,49 @@
                 android:textColor="#50000000"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tx_vechungtoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Về chung tôi"
-                android:textColor="#000000"
-                android:textSize="18dp"
+                android:layout_below="@+id/tx_thongtinthem"
+                android:layout_alignStart="@+id/tx_thietlaptaikhoan"
                 android:layout_marginTop="20dp"
-                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
-                android:layout_below="@+id/tx_thongtinthem" />
+                android:text="Về chúng tôi"
+                android:textColor="#000000"
+                android:textSize="18dp" />
 
             <ImageView
                 android:id="@+id/more_vechungtoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/icon_back"
+                android:layout_alignBottom="@+id/tx_vechungtoi"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:tint="@android:color/darker_gray"
-                android:layout_alignBottom = "@+id/tx_vechungtoi"
-                android:layout_alignEnd = "@+id/icon_back" />
+                app:tint="@android:color/darker_gray" />
+
             <TextView
                 android:id="@+id/tx_chinhsachbaomat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tx_vechungtoi"
+                android:layout_alignStart="@+id/tx_thietlaptaikhoan"
+                android:layout_marginTop="20dp"
                 android:text="Chính sách bảo mật"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                android:layout_marginTop="20dp"
-                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
-                android:layout_below="@+id/tx_vechungtoi" />
+                android:textSize="18dp" />
 
             <ImageView
                 android:id="@+id/more_chinhsachbaomat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/icon_back"
+                android:layout_alignBottom="@+id/tx_chinhsachbaomat"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:tint="@android:color/darker_gray"
-                android:layout_alignBottom = "@+id/tx_chinhsachbaomat"
-                android:layout_alignEnd = "@+id/icon_back" />
+                app:tint="@android:color/darker_gray" />
         </RelativeLayout>
     </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#4696EB"
-        android:gravity="center">
 
-        <TextView
-            android:id="@+id/txt4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/ic_home"
-
-            ></TextView>
-
-        <TextView
-            android:id="@+id/txt5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/txt4"
-            android:background="@drawable/ic_book"></TextView>
-
-        <TextView
-            android:id="@+id/txt6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/txt5"
-            android:background="@drawable/ic_sw"></TextView>
-
-        <TextView
-            android:id="@+id/txt7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/txt6"
-            android:background="@drawable/ic_account"></TextView>
-
-        <TextView
-            android:id="@+id/txt8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/txt7"
-            android:background="@drawable/ic_setting"></TextView>
-    </RelativeLayout>
 </RelativeLayout>
 
 
