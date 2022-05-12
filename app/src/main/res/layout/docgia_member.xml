@@ -43,6 +43,64 @@
             android:textSize="20dp"
             />
 
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_birthdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_typeReader"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Ngày sinh"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_typeReader"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Ngày sinh"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_typeReader"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Ngày sinh"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_nglt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_typeReader"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Ngày sinh"
+            android:textSize="20dp"
+            />
+        <TextView
+        android:visibility="invisible"
+        android:id="@+id/txt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_typeReader"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Ma doc gia"
+        android:textSize="20dp"
+        />
 
         <View
             android:layout_width="fill_parent"

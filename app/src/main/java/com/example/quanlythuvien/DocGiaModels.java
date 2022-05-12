@@ -10,6 +10,9 @@ public class DocGiaModels {
     private String NgLapThe;
     private String TinhTrangThe;
 
+    public DocGiaModels() {
+    }
+
     public DocGiaModels(int maDG, String hoTen, String ngSinh, String loaiDG, String diaChi, String email, String ngLapThe, String tinhTrangThe) {
         MaDG = maDG;
         HoTen = hoTen;
