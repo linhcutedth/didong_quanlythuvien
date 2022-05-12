@@ -181,9 +181,9 @@
             android:id="@+id/txt4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_home"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_home"
 
             ></TextView>
 
@@ -201,34 +201,31 @@
             android:id="@+id/txt6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_sw"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/txt5"
-            ></TextView>
+            android:background="@drawable/ic_sw"></TextView>
 
         <TextView
             android:id="@+id/txt7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_account"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/txt6"
-            ></TextView>
+            android:background="@drawable/ic_account"></TextView>
 
         <TextView
             android:id="@+id/txt8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_setting"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/txt7"
-            ></TextView>
+            android:background="@drawable/ic_setting"></TextView>
     </RelativeLayout>
 
 

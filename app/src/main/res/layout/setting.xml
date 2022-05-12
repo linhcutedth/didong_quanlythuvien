@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
@@ -15,294 +15,409 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
-
-    <ImageView
-        android:id="@+id/icon_setting"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_baseline_settings_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/white" />
+        android:layout_marginTop="16dp">
+        <ImageView
+            android:id="@+id/icon_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:tint="@android:color/white"/>
+        <TextView
+            android:id="@+id/tx_manv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cài đặt:"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="28dp"
+            />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tx_manv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:layout_marginBottom="74dp"
-        android:layout_marginTop="33px"
-        android:text="Cài đặt:"
-        android:textColor="#fff"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/icon_setting"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108" />
-
-    <TextView
+    <LinearLayout
         android:id="@+id/corner"
-        android:layout_width="350dp"
-        android:layout_height="660dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
         android:background="@drawable/cornertop_2"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"></TextView>
+        android:textSize="20dp">
 
-    <ImageView
-        android:id="@+id/ava"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:padding="1dp"
-        android:cropToPadding="true"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@drawable/circle"
-        android:src="@drawable/ava"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21"
-        tools:srcCompat="@tools:sample/avatars"></ImageView>
+        <RelativeLayout
+            android:id="@+id/header_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tx_name"
-        android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/ava"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle"
+                android:cropToPadding="true"
+                android:src="@drawable/ava"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:srcCompat="@tools:sample/avatars"></ImageView>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ava"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/ava"
+                android:text="Văn Đức"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/icon_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/ava"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tint="@android:color/black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/ava"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tx_thietlaptaikhoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ava"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="42dp"
+                android:text="Thiết lập tài khoản"
+                android:textColor="#50000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tx_chinhsuathongtin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tx_thietlaptaikhoan"
+                android:layout_alignStart="@+id/tx_thietlaptaikhoan"
+                android:layout_marginTop="20dp"
+                android:text="Chỉnh sửa thông tin"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+            <ImageView
+                android:id="@+id/more_chinhsuathongtin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:tint="@android:color/darker_gray"
+                android:layout_alignBottom = "@+id/tx_chinhsuathongtin"
+                android:layout_alignEnd = "@+id/icon_back"
+                />
+            <TextView
+                android:id="@+id/tx_thaydoimatkhau"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thay đổi mật khẩu"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
+                android:layout_below="@+id/tx_chinhsuathongtin" />
+
+            <ImageView
+                android:id="@+id/more_thaydoimatkhau"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:tint="@android:color/darker_gray"
+                android:layout_alignBottom = "@+id/tx_thaydoimatkhau"
+                android:layout_alignEnd = "@+id/icon_back" />
+            <TextView
+                android:id="@+id/tx_batthongbao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bật thông báo"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
+                android:layout_below="@+id/tx_thaydoimatkhau"
+                />
+            <Switch
+                android:id="@+id/more_batthongbao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_alignBottom = "@+id/tx_batthongbao"
+                android:layout_alignEnd = "@+id/icon_back"
+                app:tint="@android:color/darker_gray" />
+            <TextView
+                android:id="@+id/tx_tudongcapnhat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tự động cập nhật"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
+                android:layout_below="@+id/tx_batthongbao"
+                />
+            <Switch
+                android:id="@+id/more_tudongcapnhat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_alignBottom = "@+id/tx_tudongcapnhat"
+                android:layout_alignEnd = "@+id/icon_back"
+                app:tint="@android:color/darker_gray" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tx_tudongcapnhat"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/darker_gray" />
+            <TextView
+                android:id="@+id/tx_thongtinthem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Thông tin thêm"
+                android:textColor="#50000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tx_vechungtoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Về chung tôi"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
+                android:layout_below="@+id/tx_thongtinthem" />
+
+            <ImageView
+                android:id="@+id/more_vechungtoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:tint="@android:color/darker_gray"
+                android:layout_alignBottom = "@+id/tx_vechungtoi"
+                android:layout_alignEnd = "@+id/icon_back" />
+            <TextView
+                android:id="@+id/tx_chinhsachbaomat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chính sách bảo mật"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_alignStart ="@+id/tx_thietlaptaikhoan"
+                android:layout_below="@+id/tx_vechungtoi" />
+
+            <ImageView
+                android:id="@+id/more_chinhsachbaomat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:tint="@android:color/darker_gray"
+                android:layout_alignBottom = "@+id/tx_chinhsachbaomat"
+                android:layout_alignEnd = "@+id/icon_back" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="160dp"
-        android:text="Văn Đức"
-        android:textColor="#000"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/ava"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:background="#4696EB"
+        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/icon_back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="160dp"
-        android:src="@drawable/ic_baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@android:color/black" />
+        <TextView
+            android:id="@+id/txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_home"
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="345dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="420dp"
-        android:background="#ccc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/corner" />
+            ></TextView>
 
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="345dp"
-        android:layout_height="1dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="145dp"
-        android:background="#ccc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/corner" />
+        <TextView
+            android:id="@+id/txt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/txt4"
+            android:background="@drawable/ic_book"></TextView>
 
-    <TextView
-        android:id="@+id/tx_thietlaptaikhoan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="60dp"
-        android:text="Thiết lập tài khoản"
-        android:textColor="#50000000"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/ava" />
+        <TextView
+            android:id="@+id/txt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/txt5"
+            android:background="@drawable/ic_sw"></TextView>
 
-    <TextView
-        android:id="@+id/tx_chinhsuathongtin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="24dp"
-        android:text="Chỉnh sửa thông tin"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/tx_thietlaptaikhoan" />
+        <TextView
+            android:id="@+id/txt7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/txt6"
+            android:background="@drawable/ic_account"></TextView>
 
-    <ImageView
-        android:id="@+id/more_chinhsuathongtin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="12dp"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:layout_constraintEnd_toEndOf="@+id/corner"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toEndOf="@+id/tx_chinhsuathongtin"
-        app:layout_constraintTop_toBottomOf="@+id/tx_thietlaptaikhoan"
-        app:tint="@android:color/darker_gray" />
+        <TextView
+            android:id="@+id/txt8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/txt7"
+            android:background="@drawable/ic_setting"></TextView>
+    </RelativeLayout>
+</RelativeLayout>
 
-    <TextView
-        android:id="@+id/tx_thaydoimatkhau"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="Thay đổi mật khẩu"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/tx_chinhsuathongtin" />
 
-    <ImageView
-        android:id="@+id/more_thaydoimatkhau"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginRight="12px"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:layout_constraintEnd_toEndOf="@+id/corner"
-        app:layout_constraintHorizontal_bias="0.825"
-        app:layout_constraintStart_toEndOf="@+id/tx_thaydoimatkhau"
-        app:layout_constraintTop_toBottomOf="@+id/more_chinhsuathongtin"
-        app:tint="@android:color/darker_gray" />
-    <TextView
-        android:id="@+id/tx_batthongbao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="Bật thông báo"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/tx_thaydoimatkhau" />
 
-    <Switch
-        android:id="@+id/more_batthongbao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginRight="-4dp"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:layout_constraintEnd_toEndOf="@+id/corner"
-        app:layout_constraintHorizontal_bias="0.825"
-        app:layout_constraintStart_toEndOf="@+id/tx_batthongbao"
-        app:layout_constraintTop_toBottomOf="@+id/more_thaydoimatkhau"
-        app:tint="@android:color/darker_gray" />
 
-    <TextView
-        android:id="@+id/tx_tudongcapnhat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="Tự động cập nhật"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/tx_batthongbao" />
 
-    <Switch
-        android:id="@+id/more_tudongcapnhat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="0dp"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:layout_constraintEnd_toEndOf="@+id/corner"
-        app:layout_constraintHorizontal_bias="0.828"
-        app:layout_constraintStart_toEndOf="@+id/tx_tudongcapnhat"
-        app:layout_constraintTop_toBottomOf="@+id/more_batthongbao"
-        app:tint="@android:color/darker_gray" />
 
-    <TextView
-        android:id="@+id/tx_thongtinthem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="Thông tin thêm"
-        android:textColor="#50000000"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
-    <TextView
-        android:id="@+id/tx_vechungtoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="Về chung tôi"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/tx_thongtinthem" />
 
-    <ImageView
-        android:id="@+id/more_vechungtoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="12px"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:layout_constraintEnd_toEndOf="@+id/corner"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toEndOf="@+id/tx_vechungtoi"
-        app:layout_constraintTop_toBottomOf="@+id/tx_thongtinthem"
-        app:tint="@android:color/darker_gray" />
-    <TextView
-        android:id="@+id/tx_chinhsachbaomat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:text="Chính sách bảo mật"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="@+id/corner"
-        app:layout_constraintTop_toBottomOf="@+id/tx_vechungtoi" />
 
-    <ImageView
-        android:id="@+id/more_tudongcapnhat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginRight="12px"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        app:layout_constraintEnd_toEndOf="@+id/corner"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toEndOf="@+id/tx_vechungtoi"
-        app:layout_constraintTop_toBottomOf="@+id/more_vechungtoi"
-        app:tint="@android:color/darker_gray" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tx_tudongcapnhat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="28dp"-->
+<!--        android:layout_marginLeft="28dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Tự động cập nhật"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/corner"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tx_batthongbao" />-->
+
+<!--    <Switch-->
+<!--        android:id="@+id/more_tudongcapnhat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:layout_marginRight="0dp"-->
+<!--        android:src="@drawable/ic_baseline_arrow_forward_ios_24"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/corner"-->
+<!--        app:layout_constraintHorizontal_bias="0.828"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tx_tudongcapnhat"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/more_batthongbao"-->
+<!--        app:tint="@android:color/darker_gray" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tx_thongtinthem"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Thông tin thêm"-->
+<!--        android:textColor="#50000000"-->
+<!--        android:textSize="16dp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/corner"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/divider" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/tx_vechungtoi"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="28dp"-->
+<!--        android:layout_marginLeft="28dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Về chung tôi"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/corner"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tx_thongtinthem" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/more_vechungtoi"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginRight="12px"-->
+<!--        android:src="@drawable/ic_baseline_arrow_forward_ios_24"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/corner"-->
+<!--        app:layout_constraintHorizontal_bias="0.83"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tx_vechungtoi"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tx_thongtinthem"-->
+<!--        app:tint="@android:color/darker_gray" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/tx_chinhsachbaomat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="28dp"-->
+<!--        android:layout_marginLeft="28dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Chính sách bảo mật"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/corner"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tx_vechungtoi" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/more_tudongcapnhat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        android:layout_marginRight="12px"-->
+<!--        android:src="@drawable/ic_baseline_arrow_forward_ios_24"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/corner"-->
+<!--        app:layout_constraintHorizontal_bias="0.83"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tx_vechungtoi"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/more_vechungtoi"-->
+<!--        app:tint="@android:color/darker_gray" />-->
