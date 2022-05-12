@@ -14,6 +14,16 @@ public class ChiTietDocGiaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_doc_gia);
 
+    }
+
+    public static class SettingActivity extends AppCompatActivity {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.setting);
+        }
+    }
+
         Button button = findViewById(R.id.edit_dg);
 
         button.setOnClickListener(new View.OnClickListener() {
