@@ -233,6 +233,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
+    public ArrayList<PhieuMuonModels> getAllPms(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllPms();
+        ArrayList<PhieuMuonModels> list = new ArrayList<PhieuMuonModels>();
+        while(data.moveToNext()){
+            int ma_pms = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String tinhTrang  = data.getString(2);
+            PhieuMuonModels pms;
+            pms = new PhieuMuonModels(ma_pms, ma_dg,tinhTrang);
+            list.add(pms);
+        }
+    }
+
     public ArrayList<DauSachModels> getAllBook(){
         db = new SqliteDBHelper(this, null, 1);
         db.initialise();
@@ -254,6 +269,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             DauSachModels cuonsach;
             cuonsach = new DauSachModels(MA_DAUSACH,TENDAUSACH,TACGIA,NXB,NAMXB,TONGSO,VITRI,SANCO,DANGCHOMUON,THELOAI,HINHANH);
             list.add(cuonsach);
+
         }
         return list;
     }

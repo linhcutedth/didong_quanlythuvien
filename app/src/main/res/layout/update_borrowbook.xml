@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin="10dp">
+
+    <EditText
+        android:id="@+id/txt_mapms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mã phiếu mượn sách"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txt_madg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Mã phiếu độc giả"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/txt_mapms" />
+
+    <EditText
+        android:id="@+id/txt_ngaymuon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_madg"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Ngày mượn"
+        android:inputType="number" />
+
+
+
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/txt_ngaymuon"
+        android:layout_marginTop="40dp"
+        android:text="Cập nhật"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:backgroundTint="@color/main_cl"
+        />
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_below="@+id/update_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:text="Xóa"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:backgroundTint="@color/main_cl"
+        />
+</RelativeLayout>
