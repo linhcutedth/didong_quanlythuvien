@@ -246,6 +246,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             pms = new PhieuMuonModels(ma_pms, ma_dg,tinhTrang);
             list.add(pms);
         }
+        return list;
     }
 
     public ArrayList<DauSachModels> getAllBook(){
