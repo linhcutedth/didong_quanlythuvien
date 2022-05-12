@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,13 +14,16 @@ import java.util.ArrayList;
 
 public class DocGiaAdapter extends RecyclerView.Adapter<DocGiaAdapter.ViewHolder> {
 
-    private ArrayList<DocGiaModels> courseModalArrayList;
+    private ArrayList<DocGiaModels> docgiaModalArrayList;
     private Context context;
 
     //Constructor
-    public DocGiaAdapter(ArrayList<DocGiaModels> courseModalArrayList, Context context) {
-        this.courseModalArrayList = courseModalArrayList;
+    public DocGiaAdapter(ArrayList<DocGiaModels> docgiaModalArrayList, Context context) {
+        this.docgiaModalArrayList = docgiaModalArrayList;
         this.context = context;
+    }
+    public DocGiaAdapter(ArrayList<DocGiaModels> list){
+        this.docgiaModalArrayList = list;
     }
 
     @NonNull
@@ -31,7 +35,7 @@ public class DocGiaAdapter extends RecyclerView.Adapter<DocGiaAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DocGiaAdapter.ViewHolder holder, int position) {
-        DocGiaModels modal = courseModalArrayList.get(position);
+        DocGiaModels modal = docgiaModalArrayList.get(position);
         holder.HoTen.setText(modal.getHoTen());
         holder.NgSinh.setText(modal.getNgSinh());
         holder.LoaiDG.setText(modal.getLoaiDG());
@@ -43,7 +47,7 @@ public class DocGiaAdapter extends RecyclerView.Adapter<DocGiaAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return courseModalArrayList.size();
+        return docgiaModalArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

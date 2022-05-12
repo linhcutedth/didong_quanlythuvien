@@ -10,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,6 +28,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_BOOK = 1;
@@ -40,6 +44,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private  int mCurrentFragment = FRAGMENT_HOME;
     private DrawerLayout mDrawerLayout;
     private BottomNavigationView mBottomNavigationView;
+    SqliteDBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+       /* db = new SqliteDBHelper(this, null, 1);
+        db.initialise();*/
 
         mBottomNavigationView = findViewById(R.id.nav_bottom);
 
@@ -201,5 +209,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if(getSupportActionBar() != null){
             getSupportActionBar().setTitle(title);
         }
+
+    }
+    public ArrayList<DocGiaModels> getAllReader(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllReader();
+        ArrayList<DocGiaModels> list = new ArrayList<DocGiaModels>();
+        while(data.moveToNext()){
+            int id = data.getInt(0);
+            String hoTen = data.getString(1);
+            String ngSinh = data.getString(2);
+            String loaiDG = data.getString(3);
+            String diaChi = data.getString(4);
+            String email = data.getString(5);
+            String ngLapThe = data.getString(6);
+            String tinhTrang = data.getString(7);
+            // Toast.makeText(this, hoTen, Toast.LENGTH_SHORT).show();
+            System.out.print(hoTen);
+            DocGiaModels docgia;
+            docgia = new DocGiaModels(id,hoTen,ngSinh,loaiDG,diaChi,email,ngLapThe,tinhTrang);
+            list.add(docgia);
+        }
+        return list;
     }
 }

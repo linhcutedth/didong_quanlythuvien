@@ -2,6 +2,7 @@ package com.example.quanlythuvien;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 public class SqliteDBHelper extends SQLiteOpenHelper {
 
@@ -26,6 +28,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, factory, version);
         mContext = context;
     }
+
 
 
 
@@ -54,6 +57,12 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
     public SqliteDBHelper getInstance(){
         return mInstance;
+    }
+
+    public void openDataBase() throws SQLException {
+        String myPath = DB_PATH_SUFFIX + DATABASE_NAME;
+        mSqliteDb = SQLiteDatabase.openDatabase(myPath, null,
+                SQLiteDatabase.OPEN_READWRITE);
     }
 
     public SQLiteDatabase getDatabase() {
@@ -133,5 +142,11 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+
+    public Cursor getAllReader(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from DOCGIA",null);
+        return resultSet;
     }
 }

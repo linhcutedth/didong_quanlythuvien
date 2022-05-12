@@ -12,10 +12,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quanlythuvien.fragment.BookFragment;
 import com.example.quanlythuvien.fragment.ReaderFragment;
+import com.google.android.filament.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -25,11 +27,11 @@ public class DocGiaActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private BottomNavigationView mBottomNavigationView;
-    private ArrayList<DocGiaModels> listDG;
-    private SqliteDBHelper db;
-    private DocGiaAdapter docGiaAdapter;
-    private RecyclerView docgiaRV;
+    private ArrayList<DocGiaModels> contList;
+    private SqliteDBHelper dbHelper;
+    private TextView readTV;
 
+    private ArrayList<NguoiDungModel> dungModelArrayList;
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_BOOK = 1;
     private static final int FRAGMENT_ACCOUNT = 2;

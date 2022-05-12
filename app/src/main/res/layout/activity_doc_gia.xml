@@ -13,13 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="DANH SÁCH ĐỘC GIẢ"
-            android:textSize="28dp"
-            android:layout_margin="15dp"
-            android:gravity="center"/>
+
         <!--recycler view for displaying our courses-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRV_DocGia"
