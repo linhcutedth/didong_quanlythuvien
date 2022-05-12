@@ -233,4 +233,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         return list;
     }
+    public ArrayList<PhieuMuonModels> getAllPms(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllPms();
+        ArrayList<PhieuMuonModels> list = new ArrayList<PhieuMuonModels>();
+        while(data.moveToNext()){
+            int ma_pms = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String tinhTrang  = data.getString(2);
+            PhieuMuonModels pms;
+            pms = new PhieuMuonModels(ma_pms, ma_dg,tinhTrang);
+            list.add(pms);
+        }
+        return list;
+    }
 }

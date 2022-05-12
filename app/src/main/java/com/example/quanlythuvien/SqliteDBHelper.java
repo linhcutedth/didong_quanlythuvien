@@ -183,4 +183,27 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         Cursor resultSet = database.rawQuery("Select * from DOCGIA",null);
         return resultSet;
     }
+    public Cursor getAllPms(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUMUONSACH", null);
+        return resultSet;
+    }
+    public Boolean insert_phieumuonsach(PhieuMuonModels pms){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("ma_pms", pms.getMa_PMS());
+        contentValues.put("ma_dg", pms.getMa_DG());
+        contentValues.put("ngaymuon", pms.getNgayMuon());
+
+
+        long result = myDB.insert("PHIEUMUONSACH", null, contentValues);
+
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
 }
