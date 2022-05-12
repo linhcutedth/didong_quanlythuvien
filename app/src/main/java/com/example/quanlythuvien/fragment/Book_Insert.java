@@ -17,7 +17,7 @@ import com.example.quanlythuvien.DauSachModels;
 import com.example.quanlythuvien.HomeActivity;
 import com.example.quanlythuvien.LoginActivity;
 import com.example.quanlythuvien.R;
-import com.example.quanlythuvien.SigninActivity;
+import com.example.quanlythuvien.SignupActivity;
 import com.example.quanlythuvien.SqliteDBHelper;
 
 public class Book_Insert extends Fragment {
