@@ -13,7 +13,7 @@ public class SigninActivity extends AppCompatActivity {
 
     EditText username, password, passwordConfirm;
     Button bt_signup;
-    DBHelper db;
+    SqliteDBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class SigninActivity extends AppCompatActivity {
         username = findViewById(R.id.edit_username);
         password = findViewById(R.id.edit_password);
         passwordConfirm = findViewById(R.id.edit_password_confirm);
-        db = new DBHelper(this);
+        db = new SqliteDBHelper(this, null, 1);
 
         bt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,15 +36,26 @@ public class SigninActivity extends AppCompatActivity {
                 if (user.equals("") || password.equals("") || passconfirm.equals("")) {
                     Toast.makeText(SigninActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (pass.equals(passconfirm)) {
-                        int id = Integer.parseInt(null);
-                        Boolean insert = db.insertData(id,user, pass, passconfirm);
-                        if (insert == true) {
-                            Toast.makeText(SigninActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SigninActivity.this, LoginActivity.class);
-                            startActivity(intent);
+                    if (db.check_username(user)){
+                        Toast.makeText(SigninActivity.this, "Username is exist", Toast.LENGTH_SHORT).show();
+                    }else{
+                        if (pass.equals(passconfirm)) {
+
+                            Boolean rs = db.insert_NguoiDung(user,pass, passconfirm);
+                            if (rs== true){
+                                Toast.makeText(SigninActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SigninActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                            } else{
+                                Toast.makeText(SigninActivity.this, "Not successfully", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }else{
+                            Toast.makeText(SigninActivity.this, "Password confirm incorrect", Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 }
             }
         });
