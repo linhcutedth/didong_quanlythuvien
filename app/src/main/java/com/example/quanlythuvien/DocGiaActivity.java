@@ -5,19 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.quanlythuvien.fragment.BookFragment;
+import com.example.quanlythuvien.fragment.ReaderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 public class DocGiaActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private BottomNavigationView mBottomNavigationView;
+    private ArrayList<DocGiaModels> listDG;
+    private SqliteDBHelper db;
+    private DocGiaAdapter docGiaAdapter;
+    private RecyclerView docgiaRV;
 
     private static final int FRAGMENT_HOME = 0;
     private static final int FRAGMENT_BOOK = 1;

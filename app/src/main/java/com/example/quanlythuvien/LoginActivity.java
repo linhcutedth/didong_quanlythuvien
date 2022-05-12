@@ -13,7 +13,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
     Button bt_login, bt_signin;
-    DBHelper db;
+    SqliteDBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         bt_signin =findViewById(R.id.bt_signin);
         username = findViewById(R.id.edit_username);
         password = findViewById(R.id.edit_password);
-        db = new DBHelper(this);
-
-        db.QueryData("INSERT INTO Nguoidung VALUES (null, 'admin', 'admin', 'admin')");
-        //db.QueryData("INSERT INTO Nguoidung VALUES (null, 'hai', 'hai', 'hai')");
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
 
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
