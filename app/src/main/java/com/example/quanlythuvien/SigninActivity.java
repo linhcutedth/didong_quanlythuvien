@@ -41,7 +41,7 @@ public class SigninActivity extends AppCompatActivity {
                     }else{
                         if (pass.equals(passconfirm)) {
 
-                            Boolean rs = db.insert_NguoiDung(user,pass, passconfirm);
+                            Boolean rs = db.insert_NguoiDung(user,pass);
                             if (rs== true){
                                 Toast.makeText(SigninActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SigninActivity.this, LoginActivity.class);
