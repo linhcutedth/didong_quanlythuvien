@@ -7,50 +7,12 @@
     android:background="#F8F8FA"
     tools:context=".PhieuMuonActivity">
 
-    <RelativeLayout
-        android:id="@+id/txt1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#4696EB">
 
-        <TextView
-            android:id="@+id/bt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_backto"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/white"
-            ></TextView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="PHIẾU TRẢ"
-            android:textColor="@color/white"
-            android:textSize="28dp"></TextView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_search"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="28dp"
-            android:layout_alignParentRight="true"></TextView>
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt1"
         android:layout_centerHorizontal="true"
         android:background="@drawable/login_background">
 
@@ -170,6 +132,7 @@
         android:text="Thêm phiếu trả sách "
         android:textSize="18dp"></Button>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -227,6 +190,7 @@
             android:layout_toRightOf="@id/txt7"
             android:background="@drawable/ic_setting"></TextView>
     </RelativeLayout>
+
 
 
 </RelativeLayout>

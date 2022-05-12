@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/background_member">
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/txt_fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Họ tên"
+            android:textSize="20dp"
+            />
+
+            <TextView
+            android:visibility="visible"
+            android:id="@+id/txt_typeReader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_fname"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Loại độc giả"
+                android:textSize="20dp"
+            />
+
+        <TextView
+            android:visibility="visible"
+            android:id="@+id/txt_tinhtrang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_typeReader"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Tình trạng "
+            android:textSize="20dp"
+            />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/txt_tinhtrang"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
