@@ -7,13 +7,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.quanlythuvien.fragment.ReaderFragment;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 public class SqliteDBHelper extends SQLiteOpenHelper {
 
@@ -183,4 +180,36 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         Cursor resultSet = database.rawQuery("Select * from DOCGIA",null);
         return resultSet;
     }
+    public Cursor getAllBook(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from DAUSACH",null);
+        return resultSet;
+    }
+
+    //insert độc giả
+    public Boolean insert_dausach(DauSachModels dausach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ma_dausach",dausach.getMA_DAUSACH());
+        contentValues.put("tendausach", dausach.getTENDAUSACH());
+        contentValues.put("tacgia", dausach.getTACGIA());
+        contentValues.put("nxb", dausach.getNXB());
+        contentValues.put("namxb", dausach.getNAMXB());
+        contentValues.put("tongso", dausach.getTONGSO());
+        contentValues.put("vitri", dausach.getVITRI());
+        contentValues.put("theloai", dausach.getTHELOAI());
+        contentValues.put("sanco", dausach.getSANCO());
+        contentValues.put("dangchomuon",dausach.getDANGCHOMUON());
+        contentValues.put("hinhanh", dausach.getHINHANH());
+
+        long result = myDB.insert("DAUSACH", null, contentValues);
+
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
 }
