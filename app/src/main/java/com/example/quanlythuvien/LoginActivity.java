@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         bt_signin =findViewById(R.id.bt_signin);
         username = findViewById(R.id.edit_username);
         password = findViewById(R.id.edit_password);
+        password.setInputType(InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_VARIATION_PASSWORD);
         db = new SqliteDBHelper(this, null, 1);
         db.initialise();
 

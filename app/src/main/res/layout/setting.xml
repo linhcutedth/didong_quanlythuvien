@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
     <TextView
         android:id="@+id/corner"
@@ -58,6 +65,7 @@
                 android:textStyle="bold" />
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/icon_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -226,10 +234,21 @@
                 android:layout_alignBottom="@+id/tx_chinhsachbaomat"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
                 app:tint="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/bt_dangxuat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng xuất"
+                android:layout_margin="15dp"
+                android:layout_below="@id/tx_chinhsachbaomat"
+                ></Button>
         </RelativeLayout>
     </LinearLayout>
 
 </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
 
 
 

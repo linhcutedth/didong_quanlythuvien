@@ -204,6 +204,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case FRAGMENT_SETTING:
                 title = getString(R.string.nav_setting);
                 break;
+            case FRAGMENT_BORROW_BOOK:
+                title = "Phiếu mượn sách";
+                break;
+            case FRAGMENT_RETURN_BOOK:
+                title = "Phiếu trả sách";
+                break;
         }
         if(getSupportActionBar() != null){
             getSupportActionBar().setTitle(title);

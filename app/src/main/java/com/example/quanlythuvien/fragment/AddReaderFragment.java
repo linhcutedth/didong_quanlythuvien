@@ -2,6 +2,7 @@ package com.example.quanlythuvien.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,10 @@ public class AddReaderFragment extends Fragment {
         nglt = view.findViewById(R.id.txt_nglt);
         tinhtrang = view.findViewById(R.id.txt_tinhtrangthe);
         them = view.findViewById(R.id.add_button);
+        ngsinh.setInputType(InputType.TYPE_CLASS_DATETIME
+                | InputType.TYPE_DATETIME_VARIATION_DATE);
+        nglt.setInputType(InputType.TYPE_CLASS_DATETIME
+                | InputType.TYPE_DATETIME_VARIATION_DATE);
         homeActivity = (HomeActivity) getActivity();
         dbHelper = new SqliteDBHelper(AddReaderFragment.this.getActivity(), null, 1);
 
