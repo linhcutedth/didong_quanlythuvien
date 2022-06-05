@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="#F8F8FA">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +17,8 @@
     <LinearLayout
         android:layout_width="383dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@color/white"
+        android:layout_margin="15dp"
+        android:background="@drawable/main_item"
         android:id="@+id/a1"
         >
 
@@ -27,7 +29,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -63,9 +66,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -97,13 +98,8 @@
                 android:layout_width="383dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/a1"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="19dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/white"
+                android:layout_margin="15dp"
+                android:background="@drawable/main_item"
                 android:padding="10dp">
 
                 <TextView
@@ -114,28 +110,33 @@
                     android:paddingLeft="5dp"
                     android:text="Danh mục yêu thích"
                     android:textColor="@color/grayhome"
-                    android:textSize="20dp"
-                    android:textStyle="normal" />
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    />
 
                 <LinearLayout
                     android:id="@+id/group1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/yeuthich"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="50dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_margin="20dp"
+                        >
 
                         <ImageView
                             android:id="@+id/imgdocgia"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="6dp"
-                            android:src="@drawable/ic_baseline_perm_contact_calendar_24" />
+                            android:src="@drawable/ic_baseline_perm_contact_calendar_24"
+                            app:tint="#F4BFBF" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -150,14 +151,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="50dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_margin="20dp"
+                        >
 
                         <ImageView
                             android:id="@+id/imgsach"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="6dp"
-                            android:src="@drawable/ic_baseline_menu_book_24" />
+                            android:src="@drawable/ic_baseline_menu_book_24"
+                            android:tint="#FFD9C0"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -171,14 +175,16 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_margin="20dp">
 
                         <ImageView
                             android:id="@+id/imgbaocao"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="6dp"
-                            android:src="@drawable/ic_baseline_report" />
+                            android:src="@drawable/ic_baseline_report"
+                            android:tint="#FAF0D7"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -195,14 +201,17 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/group1"
                     android:layout_marginRight="75dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_margin="20dp">
 
                     <ImageView
                         android:id="@+id/imgchinhsua"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="6dp"
-                        android:src="@drawable/ic_baseline_add_24" />
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:tint="#8CC0DE"
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -218,13 +227,8 @@
         android:layout_width="383dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/a2"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/white"
+        android:layout_margin="15dp"
+        android:background="@drawable/main_item"
         android:padding="10dp">
 
         <TextView
@@ -235,27 +239,31 @@
             android:paddingLeft="5dp"
             android:text="Gần đây"
             android:textColor="@color/grayhome"
-            android:textSize="20dp"
-            android:textStyle="normal" />
+            android:textSize="24dp"
+            android:textStyle="bold"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ganday"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="50dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="20dp">
 
                 <ImageView
                     android:id="@+id/gdimgdocgia"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="6dp"
-                    android:src="@drawable/ic_baseline_perm_contact_calendar_24" />
+                    android:src="@drawable/ic_baseline_perm_contact_calendar_24"
+                    app:tint="#F4BFBF"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -270,14 +278,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="50dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="20dp">
 
                 <ImageView
                     android:id="@+id/gdimgsach"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="6dp"
-                    android:src="@drawable/ic_baseline_menu_book_24" />
+                    android:src="@drawable/ic_baseline_menu_book_24"
+                    android:tint="#FFD9C0"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -291,14 +301,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="20dp">
 
                 <ImageView
                     android:id="@+id/gdimgbaocao"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="6dp"
-                    android:src="@drawable/ic_baseline_report" />
+                    android:src="@drawable/ic_baseline_report"
+                    android:tint="#FAF0D7"/>
 
                 <TextView
                     android:layout_width="wrap_content"

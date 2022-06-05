@@ -33,9 +33,9 @@ public class PhieuMuonAdapter extends RecyclerView.Adapter<PhieuMuonAdapter.View
     @Override
     public void onBindViewHolder(@NonNull PhieuMuonAdapter.ViewHolder holder, int position) {
         PhieuMuonModels modal = phieumuonModelArrayList.get(position);
-        holder.ma_pms.setText("maPMS: " + modal.getMa_PMS());
-        holder.ma_dg.setText("maDG: " + modal.getMa_DG());
-        holder.ngaymuon.setText("ngay muon: " + modal.getNgayMuon());
+        holder.ma_pms.setText("Mã phiếu mượn sách: " + modal.getMa_PMS());
+        holder.ma_dg.setText("Mã độc giả: " + modal.getMa_DG());
+        holder.ngaymuon.setText("Ngày mượn: " + modal.getNgayMuon());
     }
 
     @Override

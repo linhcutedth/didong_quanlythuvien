@@ -5,53 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F8FA"
-    tools:context=".PhieuMuonActivity">
+    tools:context=".PhieuMuonActivity"
+    android:backgroundTint="@color/m2">
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/txt1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="#4696EB">-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/bt1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/ic_backto"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:textColor="@color/white"-->
-<!--            ></TextView>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="10dp"-->
-<!--            android:text="PHIẾU MƯỢN"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="28dp"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/ic_search"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="15dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:textSize="28dp"-->
-<!--            android:layout_alignParentRight="true"></TextView>-->
-<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/login_background">
+        android:background="@color/white"
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/txt2"
@@ -79,85 +44,6 @@
             android:textSize="20dp"></TextView>
     </RelativeLayout>
 
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/layout2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/layout1"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:background="@drawable/login_background">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt_p1"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:text="Phiếu số 1"-->
-<!--            android:textSize="20dp"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/txt_p1"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:text="Số quyển sách : 3 quyển"-->
-<!--            android:textSize="20dp"></TextView>-->
-
-<!--    </RelativeLayout>-->
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/layout3"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/layout2"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:background="@drawable/login_background">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt_p2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:text="Phiếu số 2"-->
-<!--            android:textSize="20dp"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/txt_p2"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:text="Số quyển sách : 3 quyển"-->
-<!--            android:textSize="20dp"></TextView>-->
-
-<!--    </RelativeLayout>-->
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/layout4"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/layout3"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:background="@drawable/login_background">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt_p3"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:text="Phiếu số 3"-->
-<!--            android:textSize="20dp"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/txt_p3"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:text="Số quyển sách : 3 quyển"-->
-<!--            android:textSize="20dp"></TextView>-->
-
-<!--    </RelativeLayout>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -181,69 +67,12 @@
         android:layout_marginBottom="28dp"
         android:clickable="true"
         android:focusable="true"
-        android:backgroundTint="@color/main_cl"
+        android:backgroundTint="@color/m3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         app:srcCompat="@drawable/ic_baseline_add_24"
         app:tint="@color/white"/>
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:background="#4696EB"-->
-<!--        android:gravity="center">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt4"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:background="@drawable/ic_home"-->
-
-<!--            ></TextView>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt5"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="40dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_toRightOf="@id/txt4"-->
-<!--            android:background="@drawable/ic_book"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt6"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="40dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_toRightOf="@id/txt5"-->
-<!--            android:background="@drawable/ic_sw"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt7"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="40dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_toRightOf="@id/txt6"-->
-<!--            android:background="@drawable/ic_account"></TextView>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txt8"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="40dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_toRightOf="@id/txt7"-->
-<!--            android:background="@drawable/ic_setting"></TextView>-->
-<!--    </RelativeLayout>-->
 
 
 </RelativeLayout>
