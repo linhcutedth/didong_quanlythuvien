@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/m2">
 
 
     <LinearLayout
@@ -30,7 +31,7 @@
         android:layout_marginBottom="28dp"
         android:clickable="true"
         android:focusable="true"
-        android:backgroundTint="@color/main_cl"
+        android:backgroundTint="@color/m3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         app:srcCompat="@drawable/ic_baseline_add_24"

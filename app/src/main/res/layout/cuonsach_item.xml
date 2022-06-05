@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -7,15 +8,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:background="@drawable/background_member">
+        android:background="@drawable/dg_item"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/ic_baseline_delete_24"
+            app:tint="#FD5D5D"
+            android:id="@+id/i1">
+
+        </ImageView>
 
         <TextView
             android:visibility="visible"
             android:id="@+id/txt_tendausach"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tên sách"
             android:textSize="20dp"
+            android:textColor="@color/m4"
+            android:layout_marginRight="40dp"
+            android:textStyle="bold"
             />
 
         <TextView
@@ -26,7 +42,10 @@
             android:layout_below="@+id/txt_tendausach"
             android:layout_marginTop="15dp"
             android:text="Tên tác giả"
-            android:textSize="20dp"
+            android:textSize="17dp"
+            android:textColor="@color/m4"
+            android:textStyle="italic"
+
             />
 
         <TextView
@@ -37,16 +56,10 @@
             android:layout_below="@+id/txt_tacgia"
             android:layout_marginTop="15dp"
             android:text="Sẵn có"
-            android:textSize="20dp"
+            android:textSize="17dp"
+            android:textColor="@color/m4"
+            android:textStyle="italic"
             />
-
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/txt_sanco"/>
 
 
     </RelativeLayout>

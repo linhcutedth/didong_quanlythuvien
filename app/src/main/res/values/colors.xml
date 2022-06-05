@@ -12,4 +12,8 @@
     <color name="main_cl">#4696EB</color>
     <color name="login_cl">#F8F8FA</color>
     <color name="grayhome">#4B4B4B</color>
+    <color name="m1">#F6F6F6</color>
+    <color name="m2">#D6E4F0</color>
+    <color name="m3">#1E56A0</color>
+    <color name="m4">#163172</color>
 </resources>

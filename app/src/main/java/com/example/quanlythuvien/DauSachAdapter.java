@@ -35,7 +35,7 @@ public class DauSachAdapter extends RecyclerView.Adapter<DauSachAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull DauSachAdapter.ViewHolder holder, int position) {
         DauSachModels modal = cuonsachModalArrayList.get(position);
-        holder.TENDAUSACH.setText("Tên đầu sách: " + modal.getTENDAUSACH());
+        holder.TENDAUSACH.setText(modal.getTENDAUSACH());
         holder.TACGIA.setText("Tác giả: " + modal.getTACGIA());
         holder.SANCO.setText("Sẵn có: " + modal.getSANCO());
     }

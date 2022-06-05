@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/bottom_home"
         android:title="@string/nav_home"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_home_24"
+        android:iconTint="#98D6EA"/>
     <item android:id="@+id/bottom_book"
         android:title="@string/nav_book"
-        android:icon="@drawable/ic_baseline_menu_book_24"/>
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:iconTint="#98D6EA"/>
     <item android:id="@+id/bottom_reader"
         android:title="@string/nav_reader"
-        android:icon="@drawable/ic_baseline_people_24"/>
+        android:icon="@drawable/ic_baseline_people_24"
+        android:iconTint="#98D6EA"/>
     <item android:id="@+id/bottom_setting"
         android:title="@string/nav_setting"
-        android:icon="@drawable/ic_baseline_settings_24"/>
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:iconTint="#98D6EA"/>
 </menu>

@@ -4,92 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8FA"
+    android:background="@color/m2"
     tools:context=".LoginActivity">
-
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#4696EB"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="QUẢN LÝ THƯ VIỆN"
-        android:textColor="@color/white"
-        android:textSize="28dp"></TextView>
-
-    <TextView
-        android:id="@+id/txt2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/txt1"
-        android:background="@drawable/main_background"></TextView>
-
-    <TextView
-        android:id="@+id/txt3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/txt2"
-        android:background="#F8F8FA"></TextView>
 
 
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="600dp"
-        android:layout_below="@+id/txt1"
+        android:id="@+id/l2"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/login_background"
-        android:gravity="center">
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        tools:ignore="NotSibling">
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
-            android:layout_marginBottom="20sp"
-            android:src="@drawable/avata"
+            android:layout_margin="15dp"
+            android:background="@drawable/image"></ImageView>
 
-            ></ImageView>
 
-        <TextView
-            android:id="@+id/txt_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/image"
-            android:layout_marginStart="30dp"
-            android:text="Tên đăng nhập"
-            android:textSize="20dp"></TextView>
 
         <EditText
             android:id="@+id/edit_username"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_username"
-            android:layout_marginStart="30dp"
-            android:text=""
+            android:layout_below="@+id/image"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:padding="15dp"
+            android:hint="Tên đăng nhập"
+            android:textColor="@color/m4"
+            android:textColorHint="@color/m2"
+            android:background="@drawable/vien"
             android:textSize="20dp"></EditText>
 
 
-        <TextView
-            android:id="@+id/txt_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edit_username"
-            android:layout_marginStart="30dp"
-            android:text="Mật khẩu"
-            android:textSize="20dp"></TextView>
+
 
         <EditText
             android:id="@+id/edit_password"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_password"
-            android:layout_marginStart="30dp"
-
-            android:text=""
+            android:layout_below="@+id/edit_username"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:padding="15dp"
+            android:layout_marginTop="15dp"
+            android:hint="Mật khẩu"
+            android:textColor="@color/m4"
+            android:background="@drawable/vien"
+            android:textColorHint="@color/m2"
             android:textSize="20dp"></EditText>
-
-
 
 
         <TextView
@@ -97,43 +66,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_password"
+            android:layout_alignParentRight="true"
             android:layout_margin="10dp"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@id/txt_password"
             android:text="Quên mật khẩu?"
-            android:textSize="20dp"></TextView>
+            android:textColor="@color/m4"
+            android:textSize="16dp"
+            android:textStyle="italic"></TextView>
 
         <Button
             android:id="@+id/bt_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt_forgot_password"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="80sp"
-            android:layout_marginEnd="7sp"
-            android:layout_marginRight="7sp"
-            android:layout_marginBottom="7sp"
-            android:background="@drawable/bt_login"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/m4"
+            android:padding="12dp"
             android:text="Đăng nhập"
             android:textSize="18dp"></Button>
 
         <Button
             android:id="@+id/bt_signin"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_forgot_password"
-            android:layout_marginStart="7sp"
-            android:layout_marginLeft="7sp"
-            android:layout_marginTop="80sp"
-            android:layout_marginEnd="7sp"
-            android:layout_marginRight="7sp"
-            android:layout_marginBottom="7sp"
-            android:layout_toRightOf="@+id/bt_login"
-            android:background="@drawable/bt_login"
-            android:text="  Đăng kí  "
+            android:layout_below="@+id/bt_login"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+
+            android:backgroundTint="@color/m4"
+            android:padding="12dp"
+            android:text="Đăng kí"
             android:textSize="18dp"></Button>
-
-
 
 
     </RelativeLayout>

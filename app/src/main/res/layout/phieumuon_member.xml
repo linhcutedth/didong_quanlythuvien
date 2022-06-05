@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_member"
-        android:padding="15dp">
+        android:background="@drawable/dg_item"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_baseline_delete_24"
+            app:tint="#FD5D5D">
+
+        </ImageView>
 
         <TextView
             android:id="@+id/txt_fname"
@@ -17,7 +30,10 @@
             android:gravity="center"
             android:text="Mã phiếu mượn sách"
             android:textSize="20dp"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:textColor="@color/m4"
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/txt_typeReader"
@@ -27,8 +43,10 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Mã độc giả"
-            android:textSize="20dp"
-            android:visibility="visible" />
+            android:textSize="17dp"
+            android:visibility="visible"
+            android:textStyle="italic"
+            android:textColor="@color/m4"/>
 
         <TextView
             android:id="@+id/txt_tinhtrang"
@@ -38,16 +56,11 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Ngày mượn "
-            android:textSize="20dp"
-            android:visibility="visible" />
+            android:textSize="17dp"
+            android:visibility="visible"
+            android:textColor="@color/m4"
+            android:textStyle="italic"/>
 
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:layout_below="@+id/txt_tinhtrang"
-            android:layout_marginTop="15dp"
-            android:background="#c0c0c0" />
 
 
     </RelativeLayout>
