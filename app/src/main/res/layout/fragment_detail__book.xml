@@ -254,18 +254,8 @@
             android:textAllCaps="false"
             android:textSize="20sp"
             android:backgroundTint="@color/m4"/>
-        <Button
-            android:id="@+id/back_book_btn"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@+id/update_book_btn"
-            android:layout_marginTop="10dp"
-            android:text="Trở lại"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            android:backgroundTint="@color/m4"/>
         <LinearLayout
-            android:layout_below="@+id/back_book_btn"
+            android:layout_below="@+id/update_book_btn"
             android:id="@+id/detail_masach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

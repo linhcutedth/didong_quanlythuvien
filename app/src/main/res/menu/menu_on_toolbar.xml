@@ -14,5 +14,9 @@
         android:title="Cá nhân"
         android:icon="@drawable/ic_baseline_person_24"
         app:showAsAction="ifRoom"/>
-
+    <item android:id="@+id/toolbar_back"
+        android:title="Trở lại"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
 </menu>
