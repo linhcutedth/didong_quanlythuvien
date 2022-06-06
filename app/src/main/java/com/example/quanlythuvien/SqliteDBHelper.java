@@ -137,7 +137,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
         contentValues.put("username", username);
         contentValues.put("password", pass);
-       // contentValues.put("PASSWORD_CONFIRM", pass_conf);
+        // contentValues.put("PASSWORD_CONFIRM", pass_conf);
         contentValues.put("email", "");
         contentValues.put("phone", "");
         contentValues.put("address", "");
@@ -198,7 +198,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         contentValues.put("tinhtrangthe", docgia.getTinhTrangThe());
 
         long result = myDB.insert("DOCGIA", null, contentValues);
-      
+
         if(result==-1){
             return false;
         } else {
@@ -211,7 +211,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         Cursor resultSet = database.rawQuery("Select * from PHIEUMUONSACH", null);
         return resultSet;
     }
-  
+
     public Boolean insert_phieumuonsach(PhieuMuonModels pms){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -222,7 +222,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
 
         long result = myDB.insert("PHIEUMUONSACH", null, contentValues);
-      
+
         if(result==-1){
             return false;
         } else {
@@ -236,7 +236,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    //insert độc giả
+    //insert đầu sách
     public Boolean insert_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
 
@@ -254,6 +254,45 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         contentValues.put("hinhanh", dausach.getHINHANH());
 
         long result = myDB.insert("DAUSACH", null, contentValues);
+
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
+    //search Book
+    public Cursor searchBook(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from DAUSACH where tendausach LIKE ?",new String[] {"%"+ name+ "%" });
+        return resultSet;
+    }
+    //search Reader
+    public Cursor searchReader(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from DOCGIA where hoten LIKE ?",new String[] {"%"+ name+ "%" });
+        return resultSet;
+    }
+
+    //Cập nhật đầu sách
+    public Boolean update_dausach(DauSachModels dausach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ma_dausach",dausach.getMA_DAUSACH());
+        contentValues.put("tendausach", dausach.getTENDAUSACH());
+        contentValues.put("tacgia", dausach.getTACGIA());
+        contentValues.put("nxb", dausach.getNXB());
+        contentValues.put("namxb", dausach.getNAMXB());
+        contentValues.put("tongso", dausach.getTONGSO());
+        contentValues.put("vitri", dausach.getVITRI());
+        contentValues.put("theloai", dausach.getTHELOAI());
+        contentValues.put("sanco", dausach.getSANCO());
+        contentValues.put("dangchomuon",dausach.getDANGCHOMUON());
+        contentValues.put("hinhanh", dausach.getHINHANH());
+
+        long result = myDB.update("DAUSACH", contentValues, "ma_dausach=?", new String[]{String.valueOf(dausach.getMA_DAUSACH())});
 
         if(result==-1){
             return false;

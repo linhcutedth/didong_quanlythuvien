@@ -1,6 +1,8 @@
 package com.example.quanlythuvien;
 
-public class DauSachModels {
+import java.io.Serializable;
+
+public class DauSachModels implements Serializable {
     private int MA_DAUSACH;
     private String TENDAUSACH;
     private String TACGIA;
