@@ -216,6 +216,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
     }
+
+    //lấy tất cả độc giả
     public ArrayList<DocGiaModels> getAllReader(){
         db = new SqliteDBHelper(this, null, 1);
         db.initialise();
@@ -239,6 +241,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
+    //lấy tất cả phiếu mượn sách
     public ArrayList<PhieuMuonModels> getAllPms(){
         db = new SqliteDBHelper(this, null, 1);
         db.initialise();
@@ -255,6 +258,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
+    //lấy tất cả sách
     public ArrayList<DauSachModels> getAllBook(){
         db = new SqliteDBHelper(this, null, 1);
         db.initialise();
@@ -277,6 +281,56 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             cuonsach = new DauSachModels(MA_DAUSACH,TENDAUSACH,TACGIA,NXB,NAMXB,TONGSO,VITRI,SANCO,DANGCHOMUON,THELOAI,HINHANH);
             list.add(cuonsach);
 
+        }
+        return list;
+    }
+
+    //TÌM KIẾM SÁCH
+    public ArrayList<DauSachModels> searchBook(String query){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.searchBook(query);
+        ArrayList<DauSachModels> list = new ArrayList<DauSachModels>();
+        while(data.moveToNext()){
+            int MA_DAUSACH = data.getInt(0);
+            String TENDAUSACH = data.getString(1);
+            String TACGIA = data.getString(2);
+            String NXB = data.getString(3);
+            int NAMXB = data.getInt(4);
+            int TONGSO = data.getInt(5);
+            String VITRI = data.getString(6);
+            int SANCO = data.getInt(7);
+            int DANGCHOMUON = data.getInt(8);
+            String THELOAI = data.getString(9);
+            String HINHANH = data.getString(10);
+            System.out.print(TENDAUSACH);
+            DauSachModels cuonsach;
+            cuonsach = new DauSachModels(MA_DAUSACH,TENDAUSACH,TACGIA,NXB,NAMXB,TONGSO,VITRI,SANCO,DANGCHOMUON,THELOAI,HINHANH);
+            list.add(cuonsach);
+        }
+        return list;
+    }
+
+    //TÌM KIẾM ĐỘC GIẢ
+    public ArrayList<DocGiaModels> searchReader(String query){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.searchReader(query);
+        ArrayList<DocGiaModels> list = new ArrayList<DocGiaModels>();
+        while(data.moveToNext()){
+            int id = data.getInt(0);
+            String hoTen = data.getString(1);
+            String ngSinh = data.getString(2);
+            String loaiDG = data.getString(3);
+            String diaChi = data.getString(4);
+            String email = data.getString(5);
+            String ngLapThe = data.getString(6);
+            String tinhTrang = data.getString(7);
+            // Toast.makeText(this, hoTen, Toast.LENGTH_SHORT).show();
+            System.out.print(hoTen);
+            DocGiaModels docgia;
+            docgia = new DocGiaModels(id,hoTen,ngSinh,loaiDG,diaChi,email,ngLapThe,tinhTrang);
+            list.add(docgia);
         }
         return list;
     }
