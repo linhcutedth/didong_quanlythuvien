@@ -236,7 +236,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    //insert độc giả
+    //insert đầu sách
     public Boolean insert_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
 
@@ -273,6 +273,32 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         Cursor resultSet = database.rawQuery("Select * from DOCGIA where hoten LIKE ?",new String[] {"%"+ name+ "%" });
         return resultSet;
+    }
+
+    //Cập nhật đầu sách
+    public Boolean update_dausach(DauSachModels dausach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ma_dausach",dausach.getMA_DAUSACH());
+        contentValues.put("tendausach", dausach.getTENDAUSACH());
+        contentValues.put("tacgia", dausach.getTACGIA());
+        contentValues.put("nxb", dausach.getNXB());
+        contentValues.put("namxb", dausach.getNAMXB());
+        contentValues.put("tongso", dausach.getTONGSO());
+        contentValues.put("vitri", dausach.getVITRI());
+        contentValues.put("theloai", dausach.getTHELOAI());
+        contentValues.put("sanco", dausach.getSANCO());
+        contentValues.put("dangchomuon",dausach.getDANGCHOMUON());
+        contentValues.put("hinhanh", dausach.getHINHANH());
+
+        long result = myDB.update("DAUSACH", contentValues, "ma_dausach=?", new String[]{String.valueOf(dausach.getMA_DAUSACH())});
+
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
     }
 
 }

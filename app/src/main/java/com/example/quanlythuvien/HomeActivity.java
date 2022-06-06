@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
 import com.example.quanlythuvien.fragment.BorrowFragment;
+import com.example.quanlythuvien.fragment.Detail_Book;
 import com.example.quanlythuvien.fragment.ReaderFragment;
 import com.example.quanlythuvien.fragment.HomeFragment;
 import com.example.quanlythuvien.fragment.ReturnBookFragment;
@@ -276,7 +277,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             int DANGCHOMUON = data.getInt(8);
             String THELOAI = data.getString(9);
             String HINHANH = data.getString(10);
-            System.out.print(TENDAUSACH);
             DauSachModels cuonsach;
             cuonsach = new DauSachModels(MA_DAUSACH,TENDAUSACH,TACGIA,NXB,NAMXB,TONGSO,VITRI,SANCO,DANGCHOMUON,THELOAI,HINHANH);
             list.add(cuonsach);
@@ -333,5 +333,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             list.add(docgia);
         }
         return list;
+    }
+    //Xem chi tiết đầu sách
+    public void DetailBook(DauSachModels dauSachModels){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        Detail_Book detail_book = new Detail_Book();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_dausach", dauSachModels);
+
+        detail_book.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.content_frame,detail_book);
+        fragmentTransaction.addToBackStack(Detail_Book.TAG);
+        fragmentTransaction.commit();
     }
 }

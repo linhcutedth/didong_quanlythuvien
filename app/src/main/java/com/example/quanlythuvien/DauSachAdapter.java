@@ -15,14 +15,19 @@ public class DauSachAdapter extends RecyclerView.Adapter<DauSachAdapter.ViewHold
 
     private ArrayList<DauSachModels> cuonsachModalArrayList;
     private Context context;
+    private IClickItemlistener iClickItemlistener;
+
+    public interface IClickItemlistener{
+        void onClickItemBook(DauSachModels dauSachModels);
+    }
 
     public DauSachAdapter(ArrayList<DauSachModels> cuonsachModalArrayList, Context context) {
         this.cuonsachModalArrayList = cuonsachModalArrayList;
         this.context = context;
     }
-
-    public DauSachAdapter(ArrayList<DauSachModels> cuonsachModalArrayList) {
+    public DauSachAdapter(ArrayList<DauSachModels> cuonsachModalArrayList, IClickItemlistener listener) {
         this.cuonsachModalArrayList = cuonsachModalArrayList;
+        this.iClickItemlistener = listener;
     }
 
     @NonNull
@@ -34,10 +39,16 @@ public class DauSachAdapter extends RecyclerView.Adapter<DauSachAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull DauSachAdapter.ViewHolder holder, int position) {
-        DauSachModels modal = cuonsachModalArrayList.get(position);
+        final DauSachModels modal = cuonsachModalArrayList.get(position);
         holder.TENDAUSACH.setText(modal.getTENDAUSACH());
         holder.TACGIA.setText("Tác giả: " + modal.getTACGIA());
         holder.SANCO.setText("Sẵn có: " + modal.getSANCO());
+        holder.TENDAUSACH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iClickItemlistener.onClickItemBook(modal);
+            }
+        });
     }
 
     @Override
@@ -50,11 +61,7 @@ public class DauSachAdapter extends RecyclerView.Adapter<DauSachAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             TENDAUSACH = itemView.findViewById(R.id.txt_tendausach);
-            //  NgSinh = itemView.findViewById(R.id.txt_birthdate);
             TACGIA = itemView.findViewById(R.id.txt_tacgia);
-            //DiaChi = itemView.findViewById(R.id.txt_address);
-            // Email = itemView.findViewById(R.id.txt_email);
-            // NgLapthe = itemView.findViewById(R.id.txt_nglt);
             SANCO = itemView.findViewById(R.id.txt_sanco);
         }
     }

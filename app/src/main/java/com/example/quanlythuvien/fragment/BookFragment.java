@@ -3,6 +3,7 @@ package com.example.quanlythuvien.fragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,7 +48,7 @@ public class BookFragment extends Fragment implements OnClickListener, SearchVie
     private MenuItem menuItem;
     private SearchView searchView;
     private Menu menu;
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -61,7 +62,12 @@ public class BookFragment extends Fragment implements OnClickListener, SearchVie
 
         recyclerView = view.findViewById(R.id.idRV_CuonSach);
         recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
-        recyclerView.setAdapter(new DauSachAdapter(list));
+        recyclerView.setAdapter(new DauSachAdapter(list, new DauSachAdapter.IClickItemlistener() {
+            @Override
+            public void onClickItemBook(DauSachModels dauSachModels) {
+                homeActivity.DetailBook(dauSachModels);
+            }
+        }));
 
         button =  view.findViewById(R.id.add_button);
         button.setOnClickListener(this);
@@ -108,11 +114,21 @@ public class BookFragment extends Fragment implements OnClickListener, SearchVie
         list = homeActivity.searchBook(query);
         if(list.size() !=0){
             recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
-            recyclerView.setAdapter(new DauSachAdapter(list));
+            recyclerView.setAdapter(new DauSachAdapter(list, new DauSachAdapter.IClickItemlistener() {
+                @Override
+                public void onClickItemBook(DauSachModels dauSachModels) {
+                    homeActivity.DetailBook(dauSachModels);
+                }
+            }));
         }
         else {
             recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
-            recyclerView.setAdapter(new DauSachAdapter(list));
+            recyclerView.setAdapter(new DauSachAdapter(list, new DauSachAdapter.IClickItemlistener() {
+                @Override
+                public void onClickItemBook(DauSachModels dauSachModels) {
+
+                }
+            }));
             Toast.makeText(BookFragment.this.getActivity(),"Không tìm thấy sách",Toast.LENGTH_SHORT).show();
         }
 
