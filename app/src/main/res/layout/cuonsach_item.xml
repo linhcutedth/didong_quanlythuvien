@@ -15,11 +15,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-
+            android:clickable="true"
+            android:focusable="true"
             android:background="@drawable/ic_baseline_delete_24"
             app:tint="#FD5D5D"
-            android:id="@+id/i1">
-
+            android:id="@+id/trash_cuonsach">
         </ImageView>
 
         <TextView
@@ -60,7 +60,13 @@
             android:textColor="@color/m4"
             android:textStyle="italic"
             />
-
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_masach"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_below="@+id/txt_sanco"
+            />
 
     </RelativeLayout>
 

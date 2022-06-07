@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -297,7 +299,34 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         if(result==-1){
             return false;
         } else {
+
             return  true;
+        }
+    }
+    //xóa đầu sách
+    public Boolean delete_dausach(String maDauSach){
+        SQLiteDatabase database = getReadableDatabase();
+
+
+        Cursor result = database.rawQuery("select * from DAUSACH where ma_dausach = ?", new String[]{maDauSach});
+
+        if(result.getCount() > 0){
+            result.moveToFirst();
+            SQLiteDatabase myDB = this.getWritableDatabase();
+            int tongso = result.getInt(5);
+            int sanco = result.getInt(7);
+            if(tongso == sanco){
+                long row = myDB.delete("DAUSACH", "ma_dausach" + "=?", new String[]{maDauSach});
+                if(row == -1){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+            return false;
+        }else {
+            return false;
         }
     }
 
