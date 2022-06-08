@@ -1,6 +1,6 @@
 package com.example.quanlythuvien;
-
-public class PhieuMuonModels {
+import java.io.Serializable;
+public class PhieuMuonModels  implements  Serializable{
     private int Ma_PMS;
     private int Ma_DG;
     private String NgayMuon;
