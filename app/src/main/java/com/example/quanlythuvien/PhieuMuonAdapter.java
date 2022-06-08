@@ -15,13 +15,19 @@ public class PhieuMuonAdapter extends RecyclerView.Adapter<PhieuMuonAdapter.View
 
     private ArrayList<PhieuMuonModels> phieumuonModelArrayList;
     private Context context;
+    private IClickItemlistener iClickItemlistener;
+
+    public interface IClickItemlistener{
+        void onClickItemBook(PhieuMuonModels phieuMuonModels);
+    }
 
     public PhieuMuonAdapter(ArrayList<PhieuMuonModels> phieumuonModelArrayList, Context context) {
         this.phieumuonModelArrayList = phieumuonModelArrayList;
         this.context = context;
     }
-    public PhieuMuonAdapter(ArrayList<PhieuMuonModels> list){
+    public PhieuMuonAdapter(ArrayList<PhieuMuonModels> list, IClickItemlistener listener ){
         this.phieumuonModelArrayList = list;
+        this.iClickItemlistener = listener;
     }
     @NonNull
     @Override
@@ -32,10 +38,16 @@ public class PhieuMuonAdapter extends RecyclerView.Adapter<PhieuMuonAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull PhieuMuonAdapter.ViewHolder holder, int position) {
-        PhieuMuonModels modal = phieumuonModelArrayList.get(position);
+        final PhieuMuonModels modal = phieumuonModelArrayList.get(position);
         holder.ma_pms.setText("Mã phiếu mượn sách: " + modal.getMa_PMS());
         holder.ma_dg.setText("Mã độc giả: " + modal.getMa_DG());
         holder.ngaymuon.setText("Ngày mượn: " + modal.getNgayMuon());
+        holder.ma_pms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iClickItemlistener.onClickItemBook(modal);
+            }
+        });
     }
 
     @Override

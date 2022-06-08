@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
 import com.example.quanlythuvien.fragment.BorrowFragment;
+import com.example.quanlythuvien.fragment.Detail_Pms;
 import com.example.quanlythuvien.fragment.Detail_Book;
 import com.example.quanlythuvien.fragment.ReaderFragment;
 import com.example.quanlythuvien.fragment.HomeFragment;
@@ -312,6 +313,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
+    //TÌM KIẾM PHIEU MUON
+    public ArrayList<PhieuMuonModels> searchpms(String query){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.searchPms(query);
+        ArrayList<PhieuMuonModels> list = new ArrayList<PhieuMuonModels>();
+        while(data.moveToNext()){
+            int ma_pms = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String tinhTrang  = data.getString(2);
+            PhieuMuonModels pms;
+            pms = new PhieuMuonModels(ma_pms, ma_dg,tinhTrang);
+            list.add(pms);
+        }
+        return list;
+    }
     //TÌM KIẾM ĐỘC GIẢ
     public ArrayList<DocGiaModels> searchReader(String query){
         db = new SqliteDBHelper(this, null, 1);
@@ -348,6 +365,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         fragmentTransaction.replace(R.id.content_frame,detail_book);
         fragmentTransaction.addToBackStack(Detail_Book.TAG);
+        fragmentTransaction.commit();
+    }
+
+    //Xem chi tiết phieu muon sach
+    public void DetailPms(PhieuMuonModels phieuMuonModels){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        Detail_Pms detailpms = new Detail_Pms();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_pms", phieuMuonModels);
+
+        detailpms.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.content_frame,detailpms);
+        fragmentTransaction.addToBackStack(Detail_Pms.TAG);
         fragmentTransaction.commit();
     }
 }

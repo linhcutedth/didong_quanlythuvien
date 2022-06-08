@@ -277,6 +277,12 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+    //search PhieuMuonSach
+    public Cursor searchPms(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUMUONSACH where MA_PMS LIKE ?",new String[] {"%"+ name+ "%" });
+        return resultSet;
+    }
     //Cập nhật đầu sách
     public Boolean update_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -329,5 +335,22 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+    public Boolean update_pms(PhieuMuonModels pms){
+        SQLiteDatabase myDB = this.getWritableDatabase();
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ma_pms",pms.getMa_PMS());
+        contentValues.put("ma_dg", pms.getMa_DG());
+        contentValues.put("ngaymuon", pms.getNgayMuon());
+
+
+        long result = myDB.update("PHIEUMUONSACH", contentValues, "ma_pms=?", new String[]{String.valueOf(pms.getMa_PMS())});
+
+        if(result==-1){
+            return false;
+        } else {
+
+            return  true;
+        }
+    }
 }

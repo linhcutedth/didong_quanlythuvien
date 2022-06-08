@@ -10,39 +10,7 @@
 
 
 
-    <RelativeLayout
-        android:id="@+id/layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@color/white"
-        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/txt2"
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Ngày"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@+id/txt2"
-            android:gravity="center"
-            android:text="12/03/2022"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:id="@+id/txt3"
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/txt2"
-            android:gravity="center"
-            android:text="10 phiếu"
-            android:textSize="20dp"></TextView>
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
