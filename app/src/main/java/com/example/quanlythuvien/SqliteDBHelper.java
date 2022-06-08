@@ -13,7 +13,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SqliteDBHelper extends SQLiteOpenHelper {
@@ -244,7 +247,6 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase myDB = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ma_dausach",dausach.getMA_DAUSACH());
         contentValues.put("tendausach", dausach.getTENDAUSACH());
         contentValues.put("tacgia", dausach.getTACGIA());
         contentValues.put("nxb", dausach.getNXB());
@@ -264,9 +266,8 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             long count = 0;
             for (int i = 0; i < tongso; i++){
                 ContentValues contentValuesCS = new ContentValues();
-                contentValues.put("ma_sach","");
-                contentValues.put("ma_dausach", result);
-                contentValues.put("tinhtrang", "sẵn có");
+                contentValuesCS.put("ma_dausach", result);
+                contentValuesCS.put("tinhtrang", "sẵn có");
                long row = myDB.insert("CUONSACH", null, contentValuesCS);
                if(row != -1){
                    count = count + 1;
@@ -357,25 +358,6 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         Cursor resultSet = database.rawQuery("Select * from PHIEUTRASACH", null);
         return resultSet;
     }
-    //Thêm phiếu trả sách
-    public Boolean insert_phieutrasach(PhieuTraModels pts){
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put("ma_pts", pts.getMa_PTS());
-        contentValues.put("ma_dg", pts.getMa_DG());
-        contentValues.put("ngaytra", pts.getNgayTra());
-        contentValues.put("tienphatkynay", pts.getTienPhatKyNay());
-
-
-        long result = myDB.insert("PHIEUTRASACH", null, contentValues);
-
-        if(result==-1){
-            return false;
-        } else {
-            return  true;
-        }
-    }
 
     public List<String> getDocGia_NV(){
         List<String> list = new ArrayList<String>();
@@ -405,7 +387,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                list.add(cursor.getString(0)+"-"+cursor.getString(1));//adding 2nd column data
+                list.add(cursor.getString(0)+":"+cursor.getString(1));//adding 2nd column data
             } while (cursor.moveToNext());
         }
         // closing connection
@@ -432,5 +414,151 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return cuonsachArray;
     }
 
+    //Thêm phiếu trả sách
+    public Boolean insert_phieutrasach(PhieuTraModels pts, String macuonsach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        String[] word = macuonsach.split(",");
+        List<Integer> masach = new ArrayList<Integer>();
+        for(int i = 0; i < word.length; i++){
+            String[] word1 = word[i].split(":");
+            masach.add(Integer.valueOf(word1[0].trim()));
+        }
+        contentValues.put("ma_dg", pts.getMa_DG());
+        contentValues.put("ngaytra", pts.getNgayTra());
+        contentValues.put("tienphatkynay", pts.getTienPhatKyNay());
 
+        long result = myDB.insert("PHIEUTRASACH", null, contentValues);
+
+        if(result==-1){
+            return false;
+        } else {
+            int count = 0;
+            for(int i = 0; i < masach.size();i++){
+                Log.v("macuonsach",String.valueOf(masach.get(i)));
+                ContentValues contentValuesCTPT = new ContentValues();
+                contentValuesCTPT.put("ma_pts", result);
+                contentValuesCTPT.put("ma_sach",masach.get(i));
+                contentValuesCTPT.put("songaytratre", 0);
+                contentValuesCTPT.put("tienphat", 0);
+                long row = myDB.insert("CTPTS", null, contentValuesCTPT);
+                if(row != -1){
+                    count = count + 1;
+                    xuly((int)result, pts.getMa_DG(), masach.get(i),pts.getNgayTra());
+                update_phieumuonsach(masach.get(i));
+                capnhatcuonsach(masach.get(i));
+                capnhatdausach(masach.get(i));
+                }
+
+            }
+            if(count != masach.size()){
+                return true;
+            }
+            return false;
+        }
+    }
+    // xử lý tiền phạt
+    public void xuly(int mapts, int madg, int masach, String ngaytrastr){
+        String ngaymuonstr = layngaymuon(masach,madg);
+        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+        long getDaysDiff;
+        try {
+            Date ngaymuon = formatter1.parse(ngaymuonstr);
+            Date ngaytra = formatter1.parse(ngaytrastr);
+            long getDiff = ngaytra.getTime() - ngaymuon.getTime();
+            getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
+            update_chitiet_pts(masach,mapts,getDaysDiff);
+            update_phieutrasach(mapts,getDaysDiff);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public String layngaymuon(int masach, int madg){
+        String ngaymuon ="";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor result = database.rawQuery("select NGAYMUON from PHIEUMUONSACH, CTMS where PHIEUMUONSACH.MA_PMS = CTMS.MA_PMS and MA_DG = ? and MA_SACH = ? and TINHTRANG = ?", new String[]{String.valueOf(madg),String.valueOf(masach),"chưa trả"});
+        if(result.getCount() > 0) {
+            result.moveToFirst();
+            ngaymuon = result.getString(0);
+        }
+        Log.v("ngaymuon", ngaymuon);
+        return ngaymuon;
+    }
+    public void update_chitiet_pts(int masach, int mapts,long songay){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        int songaytratre = (int)songay;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("songaytratre",songaytratre);
+        contentValues.put("tienphat", (songaytratre-4)*1000);
+
+        myDB.update("CTPTS", contentValues, "ma_sach=? and ma_pts=?", new String[]{String.valueOf(masach),String.valueOf(mapts)});
+
+    }
+    public void update_phieutrasach(int mapts,long songay){
+        Cursor cursor = searchPts(String.valueOf(mapts));
+        int tienphatkynay = 0;
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            tienphatkynay = cursor.getInt(3);
+        }
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        int songaytratre = (int)songay;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tienphatkynay", tienphatkynay + (songaytratre-4)*1000);
+
+        myDB.update("PHIEUTRASACH", contentValues, "MA_PTS=?", new String[]{String.valueOf(mapts)});
+
+    }
+
+    public void update_phieumuonsach(int masach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tinhtrang", "đã trả");
+
+        myDB.update("CTMS", contentValues, "ma_sach=?", new String[]{String.valueOf(masach)});
+    }
+    public void capnhatcuonsach(int masach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tinhtrang", "sẵn có");
+
+        myDB.update("CUONSACH", contentValues, "ma_sach=?", new String[]{String.valueOf(masach)});
+    }
+    public void capnhatdausach(int masach){
+        int madausach = laymadausach(masach);
+        Cursor cursor = laydausachtuma(madausach);
+        int tongso = 0;
+        int sanco = 0;
+        int dangchomuon = 0;
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            tongso = cursor.getInt(5);
+            sanco = cursor.getInt(7);
+            dangchomuon = cursor.getInt(8);
+        }
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tongso", tongso + 1);
+        contentValues.put("sanco", sanco + 1);
+        contentValues.put("dangchomuon", dangchomuon - 1);
+
+        myDB.update("DAUSACH", contentValues, "ma_dausach=?", new String[]{String.valueOf(madausach)});
+    }
+    public int laymadausach(int masach){
+        SQLiteDatabase database = getReadableDatabase();
+        int madausach = 0;
+        Cursor resultSet = database.rawQuery("Select * from CUONSACH where ma_sach = ?",new String[] {"%"+ String.valueOf(masach)+ "%" });
+        if(resultSet.getCount() > 0) {
+            resultSet.moveToFirst();
+            madausach = resultSet.getInt(1);
+        }
+        return madausach;
+    }
+    public Cursor laydausachtuma(int madausach){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from DAUSACH where ma_dausach = ?",new String[] {"%"+ String.valueOf(madausach)+ "%" });
+
+        return resultSet;
+    }
 }

@@ -48,13 +48,13 @@ public class ReturnBook_Insert extends Fragment {
     TextView tv_sachtra;
     boolean[] selectedLanguage;
     ArrayList<Integer> langList = new ArrayList<>();
+    String ma_cuonsach = "";
 
-
-    EditText MADOCGIA, NGAYTRA;
+    EditText NGAYTRA;
     Button button_add;
     HomeActivity homeActivity;
     SqliteDBHelper db;
-    String label;
+    String ma_dg;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,21 +83,19 @@ public class ReturnBook_Insert extends Fragment {
             public void onClick(View view) {
                 String NgayTra = NGAYTRA.getText().toString();
 
-                int Ma_dg = Integer.valueOf(label.split("-")[0]);
-
+                int Ma_dg = Integer.valueOf(ma_dg.split("-")[0]);
                 PhieuTraModels phieuTraModels = new PhieuTraModels(1, Ma_dg, NgayTra,0);
 
-                Boolean rs = db.insert_phieutrasach(phieuTraModels);
+                Boolean rs = db.insert_phieutrasach(phieuTraModels,ma_cuonsach);
                 if (rs == true) {
-
-                    Fragment newFragment = new BorrowFragment();
-                    Toast.makeText(ReturnBook_Insert.this.getActivity(), "oke do", Toast.LENGTH_SHORT).show();
+                    Fragment newFragment = new ReturnBookFragment();
+                    Toast.makeText(ReturnBook_Insert.this.getActivity(), "Thêm phiếu trả thành công", Toast.LENGTH_SHORT).show();
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame, newFragment).commit();
 
                 } else {
-                    Toast.makeText(ReturnBook_Insert.this.getActivity(), "sai roi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReturnBook_Insert.this.getActivity(), "Thêm phiếu trả thất bại", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -107,11 +105,11 @@ public class ReturnBook_Insert extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // On selecting a spinner item
-                label = parent.getItemAtPosition(position).toString();
+                ma_dg = parent.getItemAtPosition(position).toString();
 
                 // Showing selected spinner item
-                Toast.makeText(parent.getContext(), "You selected: " + label,
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(parent.getContext(), "Bạn chọn: " + label,
+//                        Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -128,7 +126,7 @@ public class ReturnBook_Insert extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReturnBook_Insert.this.getActivity());
 
                 // set title
-                builder.setTitle("Select Language");
+                builder.setTitle("Chọn cuốn sách");
 
                 // set dialog non cancelable
                 builder.setCancelable(false);
@@ -170,6 +168,7 @@ public class ReturnBook_Insert extends Fragment {
                         }
                         // set text on textView
                         tv_sachtra.setText(stringBuilder.toString());
+                        ma_cuonsach = stringBuilder.toString();
                     }
                 });
 
