@@ -2,12 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:gravity="center"
+
     android:layout_margin="10dp"
     android:id="@+id/fragment_add">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image1"
+        android:src="@drawable/reading"
+        android:padding="10dp"
+        android:layout_margin="12dp"
+        android:layout_centerHorizontal="true">
+
+    </ImageView>
     <EditText
         android:id="@+id/txt_hoten"
+        android:layout_below="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -83,8 +94,9 @@
     <Button
         android:id="@+id/add_button"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_below="@+id/txt_tinhtrangthe"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="40dp"
         android:text="Thêm mới"
         android:textAllCaps="false"

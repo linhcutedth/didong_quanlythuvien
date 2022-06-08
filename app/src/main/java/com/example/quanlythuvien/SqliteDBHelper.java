@@ -133,17 +133,17 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
     }
 
     // insert NGUOIDUNG
-    public Boolean insert_NguoiDung(String username, String pass){
+    public Boolean insert_NguoiDung(String username, String pass, String email, String phone, String address, String sex){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("username", username);
         contentValues.put("password", pass);
         // contentValues.put("PASSWORD_CONFIRM", pass_conf);
-        contentValues.put("email", "");
-        contentValues.put("phone", "");
-        contentValues.put("address", "");
-        contentValues.put("sex", "");
+        contentValues.put("email", email);
+        contentValues.put("phone", phone);
+        contentValues.put("address", address);
+        contentValues.put("sex", sex);
 
         long result = myDB.insert("NGUOIDUNG", null, contentValues);
 
