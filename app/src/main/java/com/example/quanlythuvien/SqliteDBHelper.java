@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqliteDBHelper extends SQLiteOpenHelper {
 
@@ -200,7 +202,6 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         contentValues.put("tinhtrangthe", docgia.getTinhTrangThe());
 
         long result = myDB.insert("DOCGIA", null, contentValues);
-
         if(result==-1){
             return false;
         } else {
@@ -256,11 +257,26 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         contentValues.put("hinhanh", dausach.getHINHANH());
 
         long result = myDB.insert("DAUSACH", null, contentValues);
-
         if(result==-1){
             return false;
         } else {
-            return  true;
+            int tongso = dausach.getTONGSO();
+            long count = 0;
+            for (int i = 0; i < tongso; i++){
+                ContentValues contentValuesCS = new ContentValues();
+                contentValues.put("ma_sach","");
+                contentValues.put("ma_dausach", result);
+                contentValues.put("tinhtrang", "sẵn có");
+               long row = myDB.insert("CUONSACH", null, contentValuesCS);
+               if(row != -1){
+                   count = count + 1;
+               }
+            }
+            if(count == tongso){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
@@ -316,9 +332,15 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             int tongso = result.getInt(5);
             int sanco = result.getInt(7);
             if(tongso == sanco){
-                long row = myDB.delete("DAUSACH", "ma_dausach" + "=?", new String[]{maDauSach});
-                if(row == -1){
-                    return false;
+                long temp = myDB.delete("CUONSACH", "ma_dausach" + "=?", new String[]{maDauSach});
+                if(temp != -1){
+                    long row = myDB.delete("DAUSACH", "ma_dausach" + "=?", new String[]{maDauSach});
+                    if(row == -1){
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
                 }
                 else {
                     return true;
@@ -329,5 +351,86 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+    //lấy danh sách phiếu trả sách
+    public Cursor getAllPts(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUTRASACH", null);
+        return resultSet;
+    }
+    //Thêm phiếu trả sách
+    public Boolean insert_phieutrasach(PhieuTraModels pts){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("ma_pts", pts.getMa_PTS());
+        contentValues.put("ma_dg", pts.getMa_DG());
+        contentValues.put("ngaytra", pts.getNgayTra());
+        contentValues.put("tienphatkynay", pts.getTienPhatKyNay());
+
+
+        long result = myDB.insert("PHIEUTRASACH", null, contentValues);
+
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+
+    public List<String> getDocGia_NV(){
+        List<String> list = new ArrayList<String>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("Select * from DOCGIA",null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(0) + "-" + cursor.getString(1));//adding 2nd column data
+            } while (cursor.moveToNext());
+        }
+        // closing connection
+        cursor.close();
+        database.close();
+        // returning lables
+        return list;
+    }
+
+    public List<String> getCuonSach_TS_list(){
+        List<String> list = new ArrayList<String>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("Select MA_SACH, TENDAUSACH from CUONSACH,DAUSACH where CUONSACH.MA_DAUSACH = DAUSACH.MA_DAUSACH and tinhtrang = ?",new String[]{"đang cho mượn"});
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(0)+"-"+cursor.getString(1));//adding 2nd column data
+            } while (cursor.moveToNext());
+        }
+        // closing connection
+        cursor.close();
+        database.close();
+        // returning lables
+        return list;
+    }
+
+    //search Phiếu trả sách
+    public Cursor searchPts(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUTRASACH where MA_PTS LIKE ?",new String[] {"%"+ name+ "%" });
+        return resultSet;
+    }
+
+    public String[] getCuonSach_TS_array(){
+        List<String> list = getCuonSach_TS_list();
+        int length = list.size();
+        String[] cuonsachArray = new String[length];
+        for(int i = 0; i < length; i++){
+            cuonsachArray[i] = list.get(i);
+        }
+        return cuonsachArray;
+    }
+
 
 }

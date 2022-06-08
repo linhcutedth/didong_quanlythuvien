@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
+import com.example.quanlythuvien.fragment.Book_Insert;
 import com.example.quanlythuvien.fragment.BorrowFragment;
 import com.example.quanlythuvien.fragment.Detail_Book;
 import com.example.quanlythuvien.fragment.ReaderFragment;
@@ -349,5 +350,40 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.content_frame,detail_book);
         fragmentTransaction.addToBackStack(Detail_Book.TAG);
         fragmentTransaction.commit();
+    }
+
+    //lấy tất cả phiếu trả sách
+    public ArrayList<PhieuTraModels> getAllPts(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllPts();
+        ArrayList<PhieuTraModels> list = new ArrayList<PhieuTraModels>();
+        while(data.moveToNext()){
+            int ma_pts = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String ngayTra  = data.getString(2);
+            int tienPhat = data.getInt(3);
+            PhieuTraModels pts;
+            pts = new PhieuTraModels(ma_pts,ma_dg,ngayTra,tienPhat);
+            list.add(pts);
+        }
+        return list;
+    }
+    //SEARCH PHIẾU TRẢ SÁCH
+    public ArrayList<PhieuTraModels> searchPts(String query){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.searchPts(query);
+        ArrayList<PhieuTraModels> list = new ArrayList<PhieuTraModels>();
+        while(data.moveToNext()){
+            int ma_pts = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String ngayTra  = data.getString(2);
+            int tienPhat = data.getInt(3);
+            PhieuTraModels pts;
+            pts = new PhieuTraModels(ma_pts,ma_dg,ngayTra,tienPhat);
+            list.add(pts);
+        }
+        return list;
     }
 }

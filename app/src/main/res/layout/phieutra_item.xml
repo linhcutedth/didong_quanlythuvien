@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/dg_item"
+        android:padding="15dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_baseline_delete_24"
+            app:tint="#FD5D5D">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/txt_mapts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Mã phiếu trả sách"
+            android:textColor="@color/m4"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_DGpts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_mapts"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Mã độc giả"
+            android:textColor="@color/m4"
+            android:textSize="17dp"
+            android:textStyle="italic"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_ngaytra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_DGpts"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Ngày trả "
+            android:textColor="@color/m4"
+            android:textSize="17dp"
+            android:textStyle="italic"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_tienphat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_ngaytra"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Tiền phạt kỳ này "
+            android:textColor="@color/m4"
+            android:textSize="17dp"
+            android:textStyle="italic"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

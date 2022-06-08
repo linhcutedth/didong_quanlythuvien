@@ -27,6 +27,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -94,7 +95,6 @@ public class BookFragment extends Fragment implements OnClickListener, SearchVie
             case R.id.add_button:
                 Fragment newFragment = new Book_Insert();
                 androidx.fragment.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, newFragment).commit();
