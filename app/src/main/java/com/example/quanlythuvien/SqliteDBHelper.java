@@ -138,17 +138,17 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
     }
 
     // insert NGUOIDUNG
-    public Boolean insert_NguoiDung(String username, String pass){
+    public Boolean insert_NguoiDung(String username, String pass, String email, String phone, String address, String sex){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("username", username);
         contentValues.put("password", pass);
         // contentValues.put("PASSWORD_CONFIRM", pass_conf);
-        contentValues.put("email", "");
-        contentValues.put("phone", "");
-        contentValues.put("address", "");
-        contentValues.put("sex", "");
+        contentValues.put("email", email);
+        contentValues.put("phone", phone);
+        contentValues.put("address", address);
+        contentValues.put("sex", sex);
 
         long result = myDB.insert("NGUOIDUNG", null, contentValues);
 
@@ -294,6 +294,12 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+    //search PhieuMuonSach
+    public Cursor searchPms(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUMUONSACH where MA_PMS LIKE ?",new String[] {"%"+ name+ "%" });
+        return resultSet;
+    }
     //Cập nhật đầu sách
     public Boolean update_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -352,6 +358,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     //lấy danh sách phiếu trả sách
     public Cursor getAllPts(){
         SQLiteDatabase database = getReadableDatabase();
@@ -628,5 +635,25 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         Cursor resultSet = database.rawQuery("select DAUSACH.MA_DAUSACH,COUNT(DAUSACH.MA_DAUSACH) from CUONSACH, CTMS, DAUSACH WHERE CUONSACH.MA_DAUSACH = DAUSACH.MA_DAUSACH AND CUONSACH.MA_SACH = CTMS.MA_SACH GROUP BY DAUSACH.MA_DAUSACH",null);
 
         return resultSet;
+    }
+  
+    public Boolean update_pms(PhieuMuonModels pms){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ma_pms",pms.getMa_PMS());
+        contentValues.put("ma_dg", pms.getMa_DG());
+        contentValues.put("ngaymuon", pms.getNgayMuon());
+
+
+        long result = myDB.update("PHIEUMUONSACH", contentValues, "ma_pms=?", new String[]{String.valueOf(pms.getMa_PMS())});
+
+        if(result==-1){
+            return false;
+        } else {
+
+            return  true;
+        }
+
     }
 }
