@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/main_item"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thêm phiếu thu"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:background="@drawable/main_item_radius_top_right"
+        android:textColor="@color/white"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/tienthu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số Tiền thu"
+            android:fontFamily="serif"
+            android:textSize="20dp"
+            android:inputType="number"
+            android:background="@drawable/vien"
+            android:padding="15dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="15dp"
+            >
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:textSize="15dp"
+                android:text="Hủy"
+                android:textColor="@color/black"
+                android:alpha="0.4"
+                android:backgroundTint="@color/grey"></Button>
+            <Button
+                android:id="@+id/btn_accept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="15dp"
+                android:backgroundTint="@color/m4"
+                android:text="Đồng ý"></Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
