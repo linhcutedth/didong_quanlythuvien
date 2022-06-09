@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
@@ -76,6 +78,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View v = navigationView.getHeaderView(0);
+        TextView user = v.findViewById(R.id.user);
+        user.setText(tendangnhap);
 
         replaceFragment(new HomeFragment());
 
