@@ -421,4 +421,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
+    //lấy tất cả chi tiết phiếu trả sách
+    public ArrayList<PhieuThuModels> getAllPhieuThu(int mapts){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.layphieuthu(mapts);
+        ArrayList<PhieuThuModels> list = new ArrayList<PhieuThuModels>();
+        while(data.moveToNext()){
+            int ma_phiethu = data.getInt(0);
+            int ma_pts = data.getInt(1);
+            int tienno = data.getInt(2);
+            int tienthu = data.getInt(3);
+
+            PhieuThuModels phieuThuModels;
+            phieuThuModels = new PhieuThuModels(ma_phiethu,ma_pts,tienno,tienthu);
+            list.add(phieuThuModels);
+        }
+        return list;
+    }
+
 }

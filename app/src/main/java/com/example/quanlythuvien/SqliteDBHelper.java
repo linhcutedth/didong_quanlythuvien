@@ -574,4 +574,44 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
         return resultSet;
     }
+    //insert phiếu thu
+    public Boolean insert_phieuthu(PhieuThuModels phieuthu){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("ma_pts", phieuthu.getMa_PTS());
+        contentValues.put("tienno", phieuthu.getTienNo());
+        contentValues.put("tienthu", phieuthu.getTienThu());
+
+        long result = myDB.insert("PHIEUTHUTIENPHAT", null, contentValues);
+        if(result==-1){
+            return false;
+        } else {
+            return  true;
+        }
+    }
+    public Cursor layphieuthu(int mapts){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUTHUTIENPHAT where ma_pts = ?",new String[] {String.valueOf(mapts)});
+
+        return resultSet;
+    }
+    public int laytienno(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUTRASACH where MA_PTS = ?",new String[] {name});
+        int tienno = 0;
+        if(resultSet.getCount() > 0) {
+            resultSet.moveToFirst();
+            tienno = resultSet.getInt(3);
+        }
+        return tienno;
+    }
+    public Boolean kiemtraphieuthu(String name){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select * from PHIEUTHUTIENPHAT where MA_PTS = ?",new String[] {name});
+        if(resultSet.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
 }

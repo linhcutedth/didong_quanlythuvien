@@ -19,12 +19,12 @@
         android:padding="15dp">
 
         <ImageView
+            android:id="@+id/phieuthu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_baseline_delete_24"
+            android:background="@drawable/ic_baseline_payments_24"
             app:tint="#FD5D5D">
-
         </ImageView>
 
         <TextView

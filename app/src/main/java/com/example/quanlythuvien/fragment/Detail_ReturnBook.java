@@ -23,6 +23,8 @@ import com.example.quanlythuvien.CTPTSAdapter;
 import com.example.quanlythuvien.CTPTSModels;
 import com.example.quanlythuvien.DauSachModels;
 import com.example.quanlythuvien.HomeActivity;
+import com.example.quanlythuvien.PhieuThuAdapter;
+import com.example.quanlythuvien.PhieuThuModels;
 import com.example.quanlythuvien.PhieuTraAdapter;
 import com.example.quanlythuvien.PhieuTraModels;
 import com.example.quanlythuvien.R;
@@ -38,6 +40,7 @@ public class Detail_ReturnBook extends Fragment {
     public static final String TAG = Detail_ReturnBook.class.getName();
     SqliteDBHelper db;
     private RecyclerView recyclerView;
+    private RecyclerView recyclerView1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +53,7 @@ public class Detail_ReturnBook extends Fragment {
         NGAYTRA = view.findViewById(R.id.txt_ngaytra);
         TIENPHATKYNAY = view.findViewById(R.id.txt_tienphat);
         ArrayList<CTPTSModels> list = new ArrayList<CTPTSModels>();
+        ArrayList<PhieuThuModels> listPhieuthu = new ArrayList<PhieuThuModels>();
         homeActivity = (HomeActivity) getActivity();
 
         db = new SqliteDBHelper(Detail_ReturnBook.this.getActivity(), null, 1);
@@ -58,6 +62,7 @@ public class Detail_ReturnBook extends Fragment {
             PhieuTraModels phieuTraModels = (PhieuTraModels) bundleReceive.get("object_phieutra");
             if (phieuTraModels != null) {
                 list = homeActivity.getAllCTPTS((int)phieuTraModels.getMa_PTS());
+                listPhieuthu = homeActivity.getAllPhieuThu((int)phieuTraModels.getMa_PTS());
                 String hoten = db.layTenDocGia(phieuTraModels.getMa_DG());
                 MA_PTS.setText("Mã phiếu trả sách: " + String.valueOf(phieuTraModels.getMa_PTS()));
                 MA_DG.setText("Tên độc giả: " + hoten);
@@ -68,6 +73,13 @@ public class Detail_ReturnBook extends Fragment {
                     recyclerView = view.findViewById(R.id.idRV_PhieuTra);
                     recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
                     recyclerView.setAdapter(new CTPTSAdapter(list));
+                }
+                if(listPhieuthu.size() != 0){
+                    TextView tx_ctpthu = view.findViewById(R.id.text_ctpthu);
+                    tx_ctpthu.setText("Chi tiết phiếu thu");
+                    recyclerView1 = view.findViewById(R.id.idRV_PhieuThu);
+                    recyclerView1.setLayoutManager(new LinearLayoutManager((this.getContext())));
+                    recyclerView1.setAdapter(new PhieuThuAdapter(listPhieuthu));
                 }
             }
         }

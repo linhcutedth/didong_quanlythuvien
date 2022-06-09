@@ -19,6 +19,7 @@ public class PhieuTraAdapter extends RecyclerView.Adapter<PhieuTraAdapter.ViewHo
 
     public interface IClickItemlistener{
         void onClickItemBook(PhieuTraModels phieuTraModels);
+        void onClickPhieuThu(String mapts);
     }
 
     public PhieuTraAdapter(ArrayList<PhieuTraModels> phieuTraModelsArrayList, Context context) {
@@ -65,6 +66,13 @@ public class PhieuTraAdapter extends RecyclerView.Adapter<PhieuTraAdapter.ViewHo
             ma_dg= itemView.findViewById(R.id.txt_DGpts);
             ngaytra = itemView.findViewById(R.id.txt_ngaytra);
             tienphat = itemView.findViewById(R.id.txt_tienphat);
+            itemView.findViewById(R.id.phieuthu).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String mapts = ma_pts.getText().toString().split(":")[1].trim();
+                    iClickItemlistener.onClickPhieuThu(mapts);
+                }
+            });
         }
     }
 }

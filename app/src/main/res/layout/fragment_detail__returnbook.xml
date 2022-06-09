@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/m2"
     android:scrollbarSize="0dp">
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,6 +101,39 @@
             <!--recycler view for displaying our courses-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRV_PhieuTra"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text_ctpthu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:textStyle="italic"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@+id/txt_tienphat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <!--recycler view for displaying our courses-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/idRV_PhieuThu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
