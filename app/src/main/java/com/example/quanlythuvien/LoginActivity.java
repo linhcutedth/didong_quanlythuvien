@@ -15,7 +15,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, password;
     Button bt_login, bt_signin;
     SqliteDBHelper db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
                     if (check_userpass == true){
                         Toast.makeText(LoginActivity.this,"Login successfull", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        //send data
+                        intent.putExtra("tendangnhap",user);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginActivity.this,"Invalid Credentials", Toast.LENGTH_SHORT).show();

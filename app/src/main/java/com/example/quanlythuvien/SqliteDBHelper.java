@@ -360,30 +360,20 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
         Cursor result = database.rawQuery("select * from DAUSACH where ma_dausach = ?", new String[]{maDauSach});
 
-        if(result.getCount() > 0){
+        if(result.getCount() > 0) {
             result.moveToFirst();
             SQLiteDatabase myDB = this.getWritableDatabase();
             int tongso = result.getInt(5);
             int sanco = result.getInt(7);
-            if(tongso == sanco){
+            if (tongso == sanco) {
                 long temp = myDB.delete("CUONSACH", "ma_dausach" + "=?", new String[]{maDauSach});
-                if(temp != -1){
+                if (temp != -1) {
                     long row = myDB.delete("DAUSACH", "ma_dausach" + "=?", new String[]{maDauSach});
-                    if(row == -1){
-                        return false;
-                    }
-                    else {
-                        return true;
-                    }
-                }
-                else {
                     return true;
                 }
             }
-            return false;
-        }else {
-            return false;
         }
+        return false;
     }
 
     //xóa độc giả

@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
@@ -49,15 +51,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private BottomNavigationView mBottomNavigationView;
     SqliteDBHelper db;
+    //send data
+    String tendangnhap;
+
+    public String getTendangnhap() {
+        return tendangnhap;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        // nhận data
+        tendangnhap = getIntent().getStringExtra("tendangnhap");
        /* db = new SqliteDBHelper(this, null, 1);
         db.initialise();*/
 
@@ -71,6 +79,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View v = navigationView.getHeaderView(0);
+        TextView user = v.findViewById(R.id.user);
+        user.setText(tendangnhap);
 
         replaceFragment(new HomeFragment());
 

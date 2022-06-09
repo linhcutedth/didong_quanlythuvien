@@ -4,12 +4,23 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_margin="10dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image1"
+        android:src="@drawable/reading"
+        android:padding="10dp"
+        android:layout_margin="12dp"
+        android:layout_centerHorizontal="true">
 
+    </ImageView>
     <TextView
+        android:layout_below="@+id/image1"
         android:id="@+id/txt_DocGia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Mã độc giả"
+        android:fontFamily="serif"
         android:textSize="20dp"
         />
     <Spinner
@@ -22,6 +33,7 @@
         android:layout_alignParentLeft="true"
         android:background="@drawable/vien" />
     <TextView
+        android:fontFamily="serif"
         android:id="@+id/tv_ngaytra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +42,7 @@
         android:layout_below="@+id/spinner"
         />
     <EditText
+        android:fontFamily="serif"
         android:id="@+id/txt_ngaytra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +56,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/tv_ngaytra"></EditText>
     <TextView
+        android:fontFamily="serif"
         android:id="@+id/tv_sachtra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +65,7 @@
         android:layout_below="@+id/txt_ngaytra"
         />
     <TextView
+        android:fontFamily="serif"
         android:id="@+id/sachtra"
         android:textColor="@color/m4"
         android:textSize="20dp"
