@@ -22,6 +22,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.quanlythuvien.DauSachModels;
+import com.example.quanlythuvien.HomeActivity;
 import com.example.quanlythuvien.R;
 import com.example.quanlythuvien.SqliteDBHelper;
 
@@ -111,6 +112,7 @@ public class Detail_Book extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((HomeActivity) getActivity()).setActionBarTitle("Chi tiết đầu sách");
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }

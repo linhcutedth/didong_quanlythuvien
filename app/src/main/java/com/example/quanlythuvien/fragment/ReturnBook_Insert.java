@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ActionProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,7 +19,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,12 +55,12 @@ public class ReturnBook_Insert extends Fragment {
     boolean[] selectedLanguage;
     ArrayList<Integer> langList = new ArrayList<>();
     String ma_cuonsach = "";
-
     EditText NGAYTRA;
     Button button_add;
     HomeActivity homeActivity;
     SqliteDBHelper db;
     String ma_dg;
+    Toolbar toolbar;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -209,6 +213,7 @@ public class ReturnBook_Insert extends Fragment {
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((HomeActivity) getActivity()).setActionBarTitle("Thêm phiếu trả sách");
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }

@@ -86,11 +86,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }else if (id == R.id.bottom_setting){
                     openSettingFragment();
                 }
-                setTitleToolBar();
                 return true;
             }
         });
-        setTitleToolBar();
     }
 
     //menu_bottom
@@ -123,7 +121,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
-        setTitleToolBar();
         return true;
     }
     private void openHomeFragment(){
@@ -190,35 +187,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void setTitleToolBar(){
-        String title ="";
-        switch (mCurrentFragment){
-            case FRAGMENT_HOME:
-                title = getString(R.string.nav_home);
-                break;
-            case FRAGMENT_BOOK:
-                title = getString(R.string.nav_book);
-                break;
-            case FRAGMENT_ACCOUNT:
-                title = getString(R.string.nav_account);
-                break;
-            case FRAGMENT_READER:
-                title = getString(R.string.nav_reader);
-                break;
-            case FRAGMENT_SETTING:
-                title = getString(R.string.nav_setting);
-                break;
-            case FRAGMENT_BORROW_BOOK:
-                title = "Phiếu mượn sách";
-                break;
-            case FRAGMENT_RETURN_BOOK:
-                title = "Phiếu trả sách";
-                break;
-        }
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setTitle(title);
-        }
 
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
     //lấy tất cả độc giả

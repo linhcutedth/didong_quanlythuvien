@@ -106,6 +106,7 @@ public class BookFragment extends Fragment implements OnClickListener, SearchVie
     // search
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((HomeActivity) getActivity()).setActionBarTitle("Sách");
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }

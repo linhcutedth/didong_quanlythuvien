@@ -92,6 +92,7 @@ public class Book_Insert extends Fragment {
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((HomeActivity) getActivity()).setActionBarTitle("Thêm đầu sách");
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }

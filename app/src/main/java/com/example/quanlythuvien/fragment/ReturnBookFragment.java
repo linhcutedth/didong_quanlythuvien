@@ -124,6 +124,7 @@ public class ReturnBookFragment extends Fragment implements OnClickListener, Sea
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+        ((HomeActivity) getActivity()).setActionBarTitle("Phiếu trả sách");
     }
 
     @Override

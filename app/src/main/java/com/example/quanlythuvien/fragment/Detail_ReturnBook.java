@@ -89,6 +89,7 @@ public class Detail_ReturnBook extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((HomeActivity) getActivity()).setActionBarTitle("Chi tiết phiếu trả sách");
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }

@@ -614,4 +614,19 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+    //Thống kê đầu sách theo năm phát hành
+    public Cursor ThongKeSach(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("select NAMXB,count(MA_DAUSACH) from DAUSACH GROUP BY NAMXB",null);
+
+        return resultSet;
+    }
+
+    //Thống kê đầu sách được mượn bao nhiêu làn?
+    public Cursor ThongKeMS(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("select DAUSACH.MA_DAUSACH,COUNT(DAUSACH.MA_DAUSACH) from CUONSACH, CTMS, DAUSACH WHERE CUONSACH.MA_DAUSACH = DAUSACH.MA_DAUSACH AND CUONSACH.MA_SACH = CTMS.MA_SACH GROUP BY DAUSACH.MA_DAUSACH",null);
+
+        return resultSet;
+    }
 }
