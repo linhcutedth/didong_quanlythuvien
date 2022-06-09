@@ -2,34 +2,79 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:layout_margin="10dp">
 
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:padding="10dp"
+        android:src="@drawable/reading">
+
+    </ImageView>
+    <TextView
+        android:id="@+id/txt_DocGia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image1"
+        android:text="Mã độc giả"
+        android:textSize="20dp" />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_below="@id/txt_DocGia"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginVertical="7dp"
         android:background="@drawable/vien" />
+    <TextView
+        android:id="@+id/tv_ngaymuon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ngày mượn"
+        android:textSize="20dp"
+        android:layout_below="@+id/spinner"
+        />
 
     <EditText
         android:id="@+id/txt_ngaymuon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
+        android:layout_below="@+id/tv_ngaymuon"
         android:layout_marginTop="16dp"
+        android:background="@drawable/vien"
         android:ems="10"
-        android:hint="Ngày mượn"
+        android:hint="Ngày trả"
+        android:padding="15dp"
+        android:textSize="20dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
+        android:enabled="false"
         android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tv_sachmuon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sách mượn"
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_ngaymuon"
+        />
 
     <TextView
         android:id="@+id/sachmuon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_ngaymuon"
+        android:layout_below="@+id/tv_sachmuon"
         android:layout_centerInParent="true"
         android:layout_marginVertical="7dp"
         android:background="@drawable/vien"
@@ -45,8 +90,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/sachmuon"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/main_cl"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/m4"
         android:text="Thêm mới"
         android:textAllCaps="false"
         android:textSize="20sp" />

@@ -245,7 +245,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
                 ContentValues contentValuesCTPM = new ContentValues();
                 contentValuesCTPM.put("ma_pms", result);
                 contentValuesCTPM.put("ma_sach",masach.get(i));
-                contentValuesCTPM.put("tinhtrang", "đang cho mượn");
+                contentValuesCTPM.put("tinhtrang", "chưa trả");
 
                 long row = myDB.insert("CTMS", null, contentValuesCTPM);
                 if(row != -1){
@@ -566,10 +566,10 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
     }
     public void update_chitiet_pts(int masach, int mapts,long songay){
         SQLiteDatabase myDB = this.getWritableDatabase();
-        int songaytratre = (int)songay;
+        int songaytratre = (int)songay - 4;
         ContentValues contentValues = new ContentValues();
         contentValues.put("songaytratre",songaytratre);
-        contentValues.put("tienphat", (songaytratre-4)*1000);
+        contentValues.put("tienphat", songaytratre*1000);
 
         myDB.update("CTPTS", contentValues, "ma_sach=? and ma_pts=?", new String[]{String.valueOf(masach),String.valueOf(mapts)});
 

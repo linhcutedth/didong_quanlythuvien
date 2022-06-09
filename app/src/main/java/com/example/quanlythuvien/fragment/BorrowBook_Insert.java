@@ -56,16 +56,28 @@ public class BorrowBook_Insert extends Fragment {
         View view = inflater.inflate(R.layout.insert_borrowbook,container,false);
 
 
+        Calendar now = Calendar.getInstance();
+        String strDateFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+        String ngay = sdf.format(now.getTime());
+
+
         ma_pms = view.findViewById(R.id.txt_mapms);
 
         ngaymuon  = view.findViewById(R.id.txt_ngaymuon);
+        ngaymuon.setText(ngay);
 
-        ngaymuon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ChonNgay();
-            }
-        });
+
+
+
+
+
+//        ngaymuon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ChonNgay();
+//            }
+//        });
         db = new SqliteDBHelper(BorrowBook_Insert.this.getActivity(), null, 1);
         spinner = view.findViewById(R.id.spinner);
         add_button = view.findViewById(R.id.add_button);
@@ -205,26 +217,27 @@ public class BorrowBook_Insert extends Fragment {
 
         return view;
     }
-    private void ChonNgay(){
-        Calendar calendar =  Calendar.getInstance();
-        int ngay = calendar.get(Calendar.DATE);
-        int thang = calendar.get(Calendar.MONTH);
-        int nam = calendar.get(Calendar.YEAR);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(BorrowBook_Insert.this.getActivity(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                calendar.set(i, i1, i2);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                ngaymuon.setText(simpleDateFormat.format(calendar.getTime()));
-            }
-        }, nam,thang,ngay);
-        datePickerDialog.show();
-    }
+//    private void ChonNgay(){
+//        Calendar calendar =  Calendar.getInstance();
+//        int ngay = calendar.get(Calendar.DATE);
+//        int thang = calendar.get(Calendar.MONTH);
+//        int nam = calendar.get(Calendar.YEAR);
+//
+//        DatePickerDialog datePickerDialog = new DatePickerDialog(BorrowBook_Insert.this.getActivity(), new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+//                calendar.set(i, i1, i2);
+//                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//                ngaymuon.setText(simpleDateFormat.format(calendar.getTime()));
+//            }
+//        }, nam,thang,ngay);
+//        datePickerDialog.show();
+//    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+        ((HomeActivity) getActivity()).setActionBarTitle("Thêm phiếu mượn sách");
     }
 
     @Override
