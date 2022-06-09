@@ -13,9 +13,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -218,11 +218,18 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    public Boolean insert_phieumuonsach(PhieuMuonModels pms){
+    public Boolean insert_phieumuonsach(PhieuMuonModels pms, String macuonsach){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put("ma_pms", pms.getMa_PMS());
+
+        String[] word = macuonsach.split(",");
+        List<Integer> masach = new ArrayList<Integer>();
+        for(int i = 0; i < word.length; i++){
+            String[] word1 = word[i].split(":");
+            masach.add(Integer.valueOf(word1[0].trim()));
+        }
+//        contentValues.put("ma_pms", pms.getMa_PMS());
         contentValues.put("ma_dg", pms.getMa_DG());
         contentValues.put("ngaymuon", pms.getNgayMuon());
 
@@ -232,7 +239,27 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         if(result==-1){
             return false;
         } else {
-            return  true;
+            int count = 0;
+            for(int i = 0; i < masach.size();i++){
+                Log.v("macuonsach",String.valueOf(masach.get(i)));
+                ContentValues contentValuesCTPM = new ContentValues();
+                contentValuesCTPM.put("ma_pms", result);
+                contentValuesCTPM.put("ma_sach",masach.get(i));
+                contentValuesCTPM.put("tinhtrang", "đang cho mượn");
+
+                long row = myDB.insert("CTMS", null, contentValuesCTPM);
+                if(row != -1){
+                    count = count + 1;
+                    capnhatcuonsach2(masach.get(i));
+                    capnhatdausach2(masach.get(i));
+                }
+
+            }
+            if(count == masach.size()){
+                return true;
+            }
+            return false;
+
         }
     }
 
@@ -655,5 +682,68 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             return  true;
         }
 
+    }
+
+    public void capnhatcuonsach2(int masach){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tinhtrang", "đang cho mượn");
+
+        myDB.update("CUONSACH", contentValues, "ma_sach=?", new String[]{String.valueOf(masach)});
+    }
+    public void capnhatdausach2(int masach){
+        int madausach = laymadausach(masach);
+        Cursor cursor = laydausachtuma(madausach);
+        int sanco = 0;
+        int dangchomuon = 0;
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            sanco = cursor.getInt(7);
+            dangchomuon = cursor.getInt(8);
+        }
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("sanco", sanco - 1);
+        contentValues.put("dangchomuon", dangchomuon + 1);
+
+        myDB.update("DAUSACH", contentValues, "ma_dausach=?", new String[]{String.valueOf(madausach)});
+    }
+
+
+
+    public String[] getCuonSach_MS_array(){
+        List<String> list = getCuonSach_MS_list();
+        int length = list.size();
+        String[] cuonsachArray = new String[length];
+        for(int i = 0; i < length; i++){
+            cuonsachArray[i] = list.get(i);
+        }
+        return cuonsachArray;
+    }
+
+    public List<String> getCuonSach_MS_list(){
+        List<String> list = new ArrayList<String>();
+
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("Select MA_SACH, TENDAUSACH from CUONSACH,DAUSACH where CUONSACH.MA_DAUSACH = DAUSACH.MA_DAUSACH and tinhtrang = ?",new String[]{"sẵn có"});
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(0)+":"+cursor.getString(1));//adding 2nd column data
+            } while (cursor.moveToNext());
+        }
+        // closing connection
+        cursor.close();
+        database.close();
+        // returning lables
+        return list;
+    }
+
+    public Cursor layctms(int mapms){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select MA_PMS, CUONSACH.MA_SACH, TENDAUSACH,  CTMS.TINHTRANG from CTMS,CUONSACH,DAUSACH where CTMS.MA_SACH = CUONSACH.MA_SACH and CUONSACH.MA_DAUSACH = DAUSACH.MA_DAUSACH and ma_pms = ?",new String[] {String.valueOf(mapms)});
+
+        return resultSet;
     }
 }

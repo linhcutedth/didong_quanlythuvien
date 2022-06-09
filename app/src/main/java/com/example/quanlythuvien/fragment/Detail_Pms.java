@@ -6,6 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,21 +16,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.view.MenuItem;
+
+import com.example.quanlythuvien.ChiTietMuonSachModels;
+import com.example.quanlythuvien.ChiTietPhieuMuonAdapter;
 import com.example.quanlythuvien.DauSachModels;
+import com.example.quanlythuvien.HomeActivity;
 import com.example.quanlythuvien.PhieuMuonModels;
 import com.example.quanlythuvien.R;
 import com.example.quanlythuvien.SqliteDBHelper;
 
+import java.util.ArrayList;
+
 
 public class Detail_Pms extends Fragment {
 
-    private EditText MA_PMS, MA_DG, NGAYMUON;
+    private TextView MA_PMS, MA_DG, NGAYMUON;
     private View view;
     private Button btnUpdate;
+    private HomeActivity homeActivity;
     public static final String TAG = Detail_Pms.class.getName();
     SqliteDBHelper db;
+    private RecyclerView recyclerView;
 
 
 
@@ -37,9 +49,13 @@ public class Detail_Pms extends Fragment {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_detail_pms, container, false);
         btnUpdate = view.findViewById(R.id.update_book_btn);
-        MA_PMS = (EditText) view.findViewById(R.id.edit_mapms);
-        MA_DG = (EditText) view.findViewById(R.id.edit_madg);
-        NGAYMUON = (EditText) view.findViewById(R.id.edit_ngaymuon);
+        MA_PMS = (TextView) view.findViewById(R.id.edit_mapms);
+        MA_DG = (TextView) view.findViewById(R.id.edit_madg);
+        NGAYMUON = (TextView) view.findViewById(R.id.edit_ngaymuon);
+
+        ArrayList<ChiTietMuonSachModels> list = new ArrayList<ChiTietMuonSachModels>();
+        homeActivity = (HomeActivity) getActivity();
+
 
         db = new SqliteDBHelper(Detail_Pms.this.getActivity(), null, 1);
 
@@ -47,32 +63,22 @@ public class Detail_Pms extends Fragment {
         if(bundleReceive != null){
             PhieuMuonModels phieuMuonModels = (PhieuMuonModels) bundleReceive.get("object_pms");
             if(phieuMuonModels != null){
-                MA_PMS.setText(Integer.toString(phieuMuonModels.getMa_PMS()));
-                MA_DG.setText(Integer.toString(phieuMuonModels.getMa_DG()));
-                NGAYMUON.setText(phieuMuonModels.getNgayMuon());
+
+                list = homeActivity.getAllCTMS((int)phieuMuonModels.getMa_PMS());
+                String hoten = db.layTenDocGia(phieuMuonModels.getMa_DG());
+                MA_PMS.setText("Mã phiếu mượn sách: " + phieuMuonModels.getMa_PMS());
+                MA_DG.setText("Họ tên độc giả: "+ hoten);
+                NGAYMUON.setText("Ngày mượn: " +phieuMuonModels.getNgayMuon());
+
+                if (list != null) {
+                    recyclerView = view.findViewById(R.id.idRV_PhieuTra);
+                    recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
+                    recyclerView.setAdapter(new ChiTietPhieuMuonAdapter(list));
+                }
 
             }
         }
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int ma_pms = Integer.valueOf(MA_PMS.getText().toString());
-                int ma_dg = Integer.valueOf(MA_DG.getText().toString());
-                String ngaymuon = NGAYMUON.getText().toString();
-                PhieuMuonModels phieuMuonModels = new PhieuMuonModels(ma_pms, ma_dg, ngaymuon);
-                Boolean rs = db.update_pms(phieuMuonModels);
-                if (rs== true){
-                    Fragment newFragment = new BorrowFragment();
-                    androidx.fragment.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    Toast.makeText(Detail_Pms.this.getActivity(),"Cập nhật thành công",Toast.LENGTH_SHORT).show();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.content_frame, newFragment).commit();
-                } else{
-                    Toast.makeText(Detail_Pms.this.getActivity(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
 
         return view;
     }

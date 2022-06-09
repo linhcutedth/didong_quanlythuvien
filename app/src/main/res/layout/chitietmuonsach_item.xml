@@ -7,51 +7,49 @@
     >
 
     <RelativeLayout
-        android:id="@+id/pmlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/dg_item"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        >
+        android:layout_marginBottom="10dp"
+        android:padding="15dp">
 
         <TextView
-            android:id="@+id/txt_fname"
+            android:id="@+id/tensach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Mã phiếu mượn sách"
-            android:textSize="20dp"
-            android:visibility="visible"
+            android:text="Mã phiếu trả sách"
             android:textColor="@color/m4"
+            android:textSize="20dp"
             android:textStyle="bold"
-            />
+            android:visibility="visible" />
 
         <TextView
-            android:id="@+id/txt_typeReader"
+            android:id="@+id/masach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_fname"
+            android:layout_below="@+id/tensach"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Mã độc giả"
+            android:textColor="@color/m4"
             android:textSize="17dp"
-            android:visibility="visible"
             android:textStyle="italic"
-            android:textColor="@color/m4"/>
+            android:visibility="visible" />
 
         <TextView
-            android:id="@+id/txt_tinhtrang"
+            android:id="@+id/tinhtrang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_typeReader"
+            android:layout_below="@+id/masach"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="Ngày mượn "
-            android:textSize="17dp"
-            android:visibility="visible"
+            android:text="Ngày trả "
             android:textColor="@color/m4"
-            android:textStyle="italic"/>
+            android:textSize="17dp"
+            android:textStyle="italic"
+            android:visibility="visible" />
+
 
 
 

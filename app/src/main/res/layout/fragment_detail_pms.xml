@@ -4,103 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/m2"
     android:scrollbarSize="0dp">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:id="@+id/fragment_detail">
-
-        <LinearLayout
-            android:id="@+id/detail_mapms"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_mapms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mã phiếu mượn sách"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edit_mapms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_mapms"
-                android:layout_marginVertical="10dp"
-                android:background="@drawable/vien"
-                android:padding="15dp"
-                android:textColor="@color/m4"
-                android:textColorHint="@color/m2"
-                android:textSize="20dp"></EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/detail_docgia"
-            android:layout_below="@+id/detail_mapms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_madg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mã độc giả"
-                android:textSize="20dp"
-                />
-            <EditText
-                android:id="@+id/edit_madg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_tacgia"
-                android:background="@drawable/vien"
-                android:layout_marginVertical="10dp"
-                android:padding="15dp"
-                android:textColor="@color/m4"
-                android:textColorHint="@color/m2"
-                android:textSize="20dp"></EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/detail_ngaymuon"
-            android:layout_below="@+id/detail_docgia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_ngaymuon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ngày mượn"
-                android:textSize="20dp"
-                />
-            <EditText
-                android:id="@+id/edit_ngaymuon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_nxb"
-                android:background="@drawable/vien"
-                android:layout_marginVertical="10dp"
-                android:padding="15dp"
-                android:textColor="@color/m4"
-                android:textColorHint="@color/m2"
-                android:textSize="20dp"></EditText>
-        </LinearLayout>
-
-
-
-        <Button
-            android:id="@+id/update_book_btn"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_below="@+id/detail_ngaymuon"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Cập nhật"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            android:backgroundTint="@color/m4"/>
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/dg_item"
+            android:padding="15dp">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/edit_mapms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Mã phiếu mượn sách"
+                android:textColor="@color/m4"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/edit_madg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_mapms"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Mã độc giả"
+                android:textColor="@color/m4"
+                android:textSize="17dp"
+                android:textStyle="italic"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/edit_ngaymuon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_madg"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Ngày mượn "
+                android:textColor="@color/m4"
+                android:textSize="17dp"
+                android:textStyle="italic"
+                android:visibility="visible" />
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chi tiết phiếu mượn sách"
+                android:textSize="20dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:textStyle="italic"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <!--recycler view for displaying our courses-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/idRV_PhieuTra"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </LinearLayout>
 </ScrollView>
