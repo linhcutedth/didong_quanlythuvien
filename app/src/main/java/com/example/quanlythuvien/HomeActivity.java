@@ -382,5 +382,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.content_frame,detailpms);
         fragmentTransaction.addToBackStack(Detail_Pms.TAG);
         fragmentTransaction.commit();
+
+    }
+
+    public ArrayList<ChiTietMuonSachModels> getAllCTMS(int mapms){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.layctms(mapms);
+        ArrayList<ChiTietMuonSachModels> list = new ArrayList<ChiTietMuonSachModels>();
+        while(data.moveToNext()){
+            int ma_pms = data.getInt(0);
+            int ma_sach = data.getInt(1);
+            String  tensach  = data.getString(2);
+            String tinhtrang = data.getString(3);
+
+
+            ChiTietMuonSachModels ctpms;
+            ctpms = new ChiTietMuonSachModels(ma_pms,ma_sach,tensach, tinhtrang);
+            list.add(ctpms);
+        }
+        return list;
     }
 }
