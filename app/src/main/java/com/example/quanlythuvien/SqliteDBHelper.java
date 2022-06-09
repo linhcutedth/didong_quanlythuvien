@@ -444,14 +444,13 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
                 long row = myDB.insert("CTPTS", null, contentValuesCTPT);
                 if(row != -1){
                     count = count + 1;
-                    xuly((int)result, pts.getMa_DG(), masach.get(i),pts.getNgayTra());
+                xuly((int)result, pts.getMa_DG(), masach.get(i),pts.getNgayTra());
                 update_phieumuonsach(masach.get(i));
                 capnhatcuonsach(masach.get(i));
                 capnhatdausach(masach.get(i));
                 }
-
             }
-            if(count != masach.size()){
+            if(count == masach.size()){
                 return true;
             }
             return false;
@@ -467,8 +466,10 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             Date ngaytra = formatter1.parse(ngaytrastr);
             long getDiff = ngaytra.getTime() - ngaymuon.getTime();
             getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
-            update_chitiet_pts(masach,mapts,getDaysDiff);
-            update_phieutrasach(mapts,getDaysDiff);
+            if(getDaysDiff > 4){
+                update_chitiet_pts(masach,mapts,getDaysDiff);
+                update_phieutrasach(mapts,getDaysDiff);
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -482,7 +483,6 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
             result.moveToFirst();
             ngaymuon = result.getString(0);
         }
-        Log.v("ngaymuon", ngaymuon);
         return ngaymuon;
     }
     public void update_chitiet_pts(int masach, int mapts,long songay){
@@ -528,18 +528,15 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
     public void capnhatdausach(int masach){
         int madausach = laymadausach(masach);
         Cursor cursor = laydausachtuma(madausach);
-        int tongso = 0;
         int sanco = 0;
         int dangchomuon = 0;
         if(cursor.getCount() > 0) {
             cursor.moveToFirst();
-            tongso = cursor.getInt(5);
             sanco = cursor.getInt(7);
             dangchomuon = cursor.getInt(8);
         }
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("tongso", tongso + 1);
         contentValues.put("sanco", sanco + 1);
         contentValues.put("dangchomuon", dangchomuon - 1);
 
@@ -548,7 +545,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
     public int laymadausach(int masach){
         SQLiteDatabase database = getReadableDatabase();
         int madausach = 0;
-        Cursor resultSet = database.rawQuery("Select * from CUONSACH where ma_sach = ?",new String[] {"%"+ String.valueOf(masach)+ "%" });
+        Cursor resultSet = database.rawQuery("Select * from CUONSACH where ma_sach = ?",new String[] {String.valueOf(masach)});
         if(resultSet.getCount() > 0) {
             resultSet.moveToFirst();
             madausach = resultSet.getInt(1);
@@ -557,7 +554,23 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
     }
     public Cursor laydausachtuma(int madausach){
         SQLiteDatabase database = getReadableDatabase();
-        Cursor resultSet = database.rawQuery("Select * from DAUSACH where ma_dausach = ?",new String[] {"%"+ String.valueOf(madausach)+ "%" });
+        Cursor resultSet = database.rawQuery("Select * from DAUSACH where ma_dausach = ?",new String[] {String.valueOf(madausach)});
+
+        return resultSet;
+    }
+    public String layTenDocGia(int maDG){
+        SQLiteDatabase database = getReadableDatabase();
+        String tenDocGia = "";
+        Cursor resultSet = database.rawQuery("Select * from DOCGIA where ma_dg = ?",new String[] {String.valueOf(maDG)});
+        if(resultSet.getCount() > 0) {
+            resultSet.moveToFirst();
+            tenDocGia = resultSet.getString(1);
+        }
+        return tenDocGia;
+    }
+    public Cursor layctts(int mapts){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select MA_PTS, CUONSACH.MA_SACH, TENDAUSACH,  SONGAYTRATRE, TIENPHAT from CTPTS,CUONSACH,DAUSACH where CTPTS.MA_SACH = CUONSACH.MA_SACH and CUONSACH.MA_DAUSACH = DAUSACH.MA_DAUSACH and ma_pts = ?",new String[] {String.valueOf(mapts)});
 
         return resultSet;
     }

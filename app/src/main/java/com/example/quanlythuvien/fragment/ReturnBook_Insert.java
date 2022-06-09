@@ -37,7 +37,9 @@ import com.example.quanlythuvien.SignupActivity;
 import com.example.quanlythuvien.SqliteDBHelper;
 import com.google.common.collect.Range;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -59,7 +61,12 @@ public class ReturnBook_Insert extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_return_book__insert, container, false);
+        Calendar now = Calendar.getInstance();
+        String strDateFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+        String ngay = sdf.format(now.getTime());
         NGAYTRA = view.findViewById(R.id.txt_ngaytra);
+        NGAYTRA.setText(ngay);
         button_add = view.findViewById(R.id.add_button);
         spinner = view.findViewById(R.id.spinner);
         tv_sachtra = view.findViewById(R.id.sachtra);

@@ -21,6 +21,7 @@ import com.example.quanlythuvien.fragment.BookFragment;
 import com.example.quanlythuvien.fragment.Book_Insert;
 import com.example.quanlythuvien.fragment.BorrowFragment;
 import com.example.quanlythuvien.fragment.Detail_Book;
+import com.example.quanlythuvien.fragment.Detail_ReturnBook;
 import com.example.quanlythuvien.fragment.ReaderFragment;
 import com.example.quanlythuvien.fragment.HomeFragment;
 import com.example.quanlythuvien.fragment.ReturnBookFragment;
@@ -386,4 +387,38 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         return list;
     }
+    public void DetailReturn_Book(PhieuTraModels phieuTraModels){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        Detail_ReturnBook detail_returnBook = new Detail_ReturnBook();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_phieutra", phieuTraModels);
+
+        detail_returnBook.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.content_frame,detail_returnBook);
+        fragmentTransaction.addToBackStack(Detail_ReturnBook.TAG);
+        fragmentTransaction.commit();
+    }
+    //lấy tất cả chi tiết phiếu trả sách
+    public ArrayList<CTPTSModels> getAllCTPTS(int mapts){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.layctts(mapts);
+        ArrayList<CTPTSModels> list = new ArrayList<CTPTSModels>();
+        while(data.moveToNext()){
+            int ma_pts = data.getInt(0);
+            int ma_sach = data.getInt(1);
+            String tendausach  = data.getString(2);
+            int songaytratre = data.getInt(3);
+            int tienPhat = data.getInt(4);
+
+            CTPTSModels ctpts;
+            ctpts = new CTPTSModels(ma_pts,ma_sach,tendausach,songaytratre,tienPhat);
+            list.add(ctpts);
+        }
+        return list;
+    }
+
 }

@@ -22,6 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
+
+import com.example.quanlythuvien.DauSachAdapter;
+import com.example.quanlythuvien.DauSachModels;
 import com.example.quanlythuvien.HomeActivity;
 import com.example.quanlythuvien.PhieuMuonAdapter;
 import com.example.quanlythuvien.PhieuMuonModels;
@@ -54,7 +57,12 @@ public class ReturnBookFragment extends Fragment implements OnClickListener, Sea
         if (list != null){
             recyclerView = view.findViewById(R.id.idRV_PhieuTra);
             recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
-            recyclerView.setAdapter(new PhieuTraAdapter(list));
+            recyclerView.setAdapter(new PhieuTraAdapter(list, new PhieuTraAdapter.IClickItemlistener() {
+                @Override
+                public void onClickItemBook(PhieuTraModels phieuTraModels) {
+                    homeActivity.DetailReturn_Book(phieuTraModels);
+                }
+            }));
         }else
         {
             Toast.makeText(ReturnBookFragment.this.getActivity(),"ko duoc roi", Toast.LENGTH_SHORT).show();
@@ -105,11 +113,21 @@ public class ReturnBookFragment extends Fragment implements OnClickListener, Sea
         list = homeActivity.searchPts(query);
         if(list.size() !=0){
             recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
-            recyclerView.setAdapter(new PhieuTraAdapter(list));
+            recyclerView.setAdapter(new PhieuTraAdapter(list, new PhieuTraAdapter.IClickItemlistener() {
+                @Override
+                public void onClickItemBook(PhieuTraModels phieuTraModels) {
+                    homeActivity.DetailReturn_Book(phieuTraModels);
+                }
+            }));
         }
         else {
             recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
-            recyclerView.setAdapter(new PhieuTraAdapter(list));
+            recyclerView.setAdapter(new PhieuTraAdapter(list, new PhieuTraAdapter.IClickItemlistener() {
+                @Override
+                public void onClickItemBook(PhieuTraModels phieuTraModels) {
+
+                }
+            }));
             Toast.makeText(ReturnBookFragment.this.getActivity(),"Không tìm thấy phiếu trả",Toast.LENGTH_SHORT).show();
         }
 

@@ -1,6 +1,8 @@
 package com.example.quanlythuvien;
 
-public class PhieuTraModels {
+import java.io.Serializable;
+
+public class PhieuTraModels implements Serializable {
     private int Ma_PTS;
     private int Ma_DG;
     private String NgayTra;

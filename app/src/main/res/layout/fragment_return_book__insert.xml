@@ -33,6 +33,7 @@
         android:id="@+id/txt_ngaytra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:background="@drawable/vien"
         android:layout_marginVertical="7dp"
         android:padding="15dp"

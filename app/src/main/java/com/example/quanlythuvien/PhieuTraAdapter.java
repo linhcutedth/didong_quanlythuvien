@@ -15,13 +15,19 @@ public class PhieuTraAdapter extends RecyclerView.Adapter<PhieuTraAdapter.ViewHo
 
     private ArrayList<PhieuTraModels> phieuTraModelsArrayList;
     private Context context;
+    private PhieuTraAdapter.IClickItemlistener iClickItemlistener;
+
+    public interface IClickItemlistener{
+        void onClickItemBook(PhieuTraModels phieuTraModels);
+    }
 
     public PhieuTraAdapter(ArrayList<PhieuTraModels> phieuTraModelsArrayList, Context context) {
         this.phieuTraModelsArrayList = phieuTraModelsArrayList;
         this.context = context;
     }
-    public PhieuTraAdapter(ArrayList<PhieuTraModels> list){
+    public PhieuTraAdapter(ArrayList<PhieuTraModels> list,IClickItemlistener iClickItemlistener){
         this.phieuTraModelsArrayList = list;
+        this.iClickItemlistener = iClickItemlistener;
     }
     @NonNull
     @Override
@@ -36,8 +42,13 @@ public class PhieuTraAdapter extends RecyclerView.Adapter<PhieuTraAdapter.ViewHo
         holder.ma_pts.setText("Mã phiếu trả sách: " + modal.getMa_PTS());
         holder.ma_dg.setText("Mã độc giả: " + modal.getMa_DG());
         holder.ngaytra.setText("Ngày trả: " + modal.getNgayTra());
-        holder.tienphat.setText("Tiền phạt kỳ này: " + modal.getTienPhatKyNay()
-        );
+        holder.tienphat.setText("Tiền phạt kỳ này: " + modal.getTienPhatKyNay());
+        holder.ma_pts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iClickItemlistener.onClickItemBook(modal);
+            }
+        });
     }
 
     @Override
