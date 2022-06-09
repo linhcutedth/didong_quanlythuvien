@@ -4,123 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8FA"
-    tools:context=".PhieuMuonActivity">
+    android:orientation="horizontal"
+    android:background="@color/m2">
 
 
-
-    <RelativeLayout
-        android:id="@+id/layout1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/login_background">
+        android:orientation="vertical"
+        >
 
-        <TextView
-            android:id="@+id/txt2"
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Ngày"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@+id/txt2"
-            android:gravity="center"
-            android:text="12/03/2022"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:id="@+id/txt3"
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/txt2"
-            android:gravity="center"
-            android:text="3 phiếu"
-            android:textSize="20dp"></TextView>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout1"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/login_background">
-
-        <TextView
-            android:id="@+id/txt_p1"
+        <!--recycler view for displaying our courses-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRV_PhieuTra"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Phiếu số 1"
-            android:textSize="20dp"></TextView>
+            android:layout_height="match_parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_p1"
-            android:layout_marginLeft="20dp"
-            android:text="Số quyển sách : 3 quyển"
-            android:textSize="20dp"></TextView>
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/layout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout2"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/login_background">
-
-        <TextView
-            android:id="@+id/txt_p2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Phiếu số 2"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_p2"
-            android:layout_marginLeft="20dp"
-            android:text="Số quyển sách : 3 quyển"
-            android:textSize="20dp"></TextView>
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/layout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout3"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/login_background">
-
-        <TextView
-            android:id="@+id/txt_p3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Phiếu số 3"
-            android:textSize="20dp"></TextView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_p3"
-            android:layout_marginLeft="20dp"
-            android:text="Số quyển sách : 3 quyển"
-            android:textSize="20dp"></TextView>
-
-    </RelativeLayout>
-
+    </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
@@ -130,11 +31,9 @@
         android:layout_marginBottom="28dp"
         android:clickable="true"
         android:focusable="true"
-        android:backgroundTint="@color/main_cl"
+        android:backgroundTint="@color/m3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         app:srcCompat="@drawable/ic_baseline_add_24"
         app:tint="@color/white"/>
-
-
 </RelativeLayout>

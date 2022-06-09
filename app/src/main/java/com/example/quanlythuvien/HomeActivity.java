@@ -18,9 +18,11 @@ import android.view.MenuItem;
 
 import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
+import com.example.quanlythuvien.fragment.Book_Insert;
 import com.example.quanlythuvien.fragment.BorrowFragment;
 import com.example.quanlythuvien.fragment.Detail_Pms;
 import com.example.quanlythuvien.fragment.Detail_Book;
+import com.example.quanlythuvien.fragment.Detail_ReturnBook;
 import com.example.quanlythuvien.fragment.ReaderFragment;
 import com.example.quanlythuvien.fragment.HomeFragment;
 import com.example.quanlythuvien.fragment.ReturnBookFragment;
@@ -85,11 +87,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }else if (id == R.id.bottom_setting){
                     openSettingFragment();
                 }
-                setTitleToolBar();
                 return true;
             }
         });
-        setTitleToolBar();
     }
 
     //menu_bottom
@@ -122,7 +122,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
-        setTitleToolBar();
         return true;
     }
     private void openHomeFragment(){
@@ -189,35 +188,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void setTitleToolBar(){
-        String title ="";
-        switch (mCurrentFragment){
-            case FRAGMENT_HOME:
-                title = getString(R.string.nav_home);
-                break;
-            case FRAGMENT_BOOK:
-                title = getString(R.string.nav_book);
-                break;
-            case FRAGMENT_ACCOUNT:
-                title = getString(R.string.nav_account);
-                break;
-            case FRAGMENT_READER:
-                title = getString(R.string.nav_reader);
-                break;
-            case FRAGMENT_SETTING:
-                title = getString(R.string.nav_setting);
-                break;
-            case FRAGMENT_BORROW_BOOK:
-                title = "Phiếu mượn sách";
-                break;
-            case FRAGMENT_RETURN_BOOK:
-                title = "Phiếu trả sách";
-                break;
-        }
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setTitle(title);
-        }
 
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
     //lấy tất cả độc giả
@@ -368,6 +341,94 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
+    //lấy tất cả phiếu trả sách
+    public ArrayList<PhieuTraModels> getAllPts(){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.getAllPts();
+        ArrayList<PhieuTraModels> list = new ArrayList<PhieuTraModels>();
+        while(data.moveToNext()){
+            int ma_pts = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String ngayTra  = data.getString(2);
+            int tienPhat = data.getInt(3);
+            PhieuTraModels pts;
+            pts = new PhieuTraModels(ma_pts,ma_dg,ngayTra,tienPhat);
+            list.add(pts);
+        }
+        return list;
+    }
+    //SEARCH PHIẾU TRẢ SÁCH
+    public ArrayList<PhieuTraModels> searchPts(String query){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.searchPts(query);
+        ArrayList<PhieuTraModels> list = new ArrayList<PhieuTraModels>();
+        while(data.moveToNext()){
+            int ma_pts = data.getInt(0);
+            int ma_dg = data.getInt(1);
+            String ngayTra  = data.getString(2);
+            int tienPhat = data.getInt(3);
+            PhieuTraModels pts;
+            pts = new PhieuTraModels(ma_pts,ma_dg,ngayTra,tienPhat);
+            list.add(pts);
+        }
+        return list;
+    }
+    public void DetailReturn_Book(PhieuTraModels phieuTraModels){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        Detail_ReturnBook detail_returnBook = new Detail_ReturnBook();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_phieutra", phieuTraModels);
+
+        detail_returnBook.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.content_frame,detail_returnBook);
+        fragmentTransaction.addToBackStack(Detail_ReturnBook.TAG);
+        fragmentTransaction.commit();
+    }
+    //lấy tất cả chi tiết phiếu trả sách
+    public ArrayList<CTPTSModels> getAllCTPTS(int mapts){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.layctts(mapts);
+        ArrayList<CTPTSModels> list = new ArrayList<CTPTSModels>();
+        while(data.moveToNext()){
+            int ma_pts = data.getInt(0);
+            int ma_sach = data.getInt(1);
+            String tendausach  = data.getString(2);
+            int songaytratre = data.getInt(3);
+            int tienPhat = data.getInt(4);
+
+            CTPTSModels ctpts;
+            ctpts = new CTPTSModels(ma_pts,ma_sach,tendausach,songaytratre,tienPhat);
+            list.add(ctpts);
+        }
+        return list;
+    }
+
+    //lấy tất cả chi tiết phiếu trả sách
+    public ArrayList<PhieuThuModels> getAllPhieuThu(int mapts){
+        db = new SqliteDBHelper(this, null, 1);
+        db.initialise();
+        Cursor data = db.layphieuthu(mapts);
+        ArrayList<PhieuThuModels> list = new ArrayList<PhieuThuModels>();
+        while(data.moveToNext()){
+            int ma_phiethu = data.getInt(0);
+            int ma_pts = data.getInt(1);
+            int tienno = data.getInt(2);
+            int tienthu = data.getInt(3);
+
+            PhieuThuModels phieuThuModels;
+            phieuThuModels = new PhieuThuModels(ma_phiethu,ma_pts,tienno,tienthu);
+            list.add(phieuThuModels);
+        }
+        return list;
+    }
+
+
     //Xem chi tiết phieu muon sach
     public void DetailPms(PhieuMuonModels phieuMuonModels){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -403,4 +464,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         return list;
     }
+
 }

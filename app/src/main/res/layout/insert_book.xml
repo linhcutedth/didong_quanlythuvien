@@ -2,90 +2,111 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:layout_margin="10dp">
 
     <EditText
         android:id="@+id/txt_tensach"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Tên sách"
-        android:inputType="text"
-        />
+        android:textSize="20dp"></EditText>
 
     <EditText
         android:id="@+id/txt_tacgia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Tác giả"
-        android:inputType="text"
-        android:layout_below="@+id/txt_tensach" />
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_tensach"></EditText>
 
     <EditText
         android:id="@+id/txt_nxb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Nhà xuất bản"
-        android:inputType="text"
-        android:layout_below="@+id/txt_tacgia"
-        />
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_tacgia"></EditText>
 
     <EditText
         android:id="@+id/txt_namxb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:maxLength="4"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Năm xuất bản"
         android:inputType="number"
-        android:layout_below="@+id/txt_nxb"
-        />
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_nxb"></EditText>
 
     <EditText
         android:id="@+id/txt_tongso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Tổng số"
         android:inputType="number"
-        android:layout_below="@+id/txt_namxb"
-        />
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_namxb"></EditText>
+
     <EditText
         android:id="@+id/txt_vitri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Vị trí"
-        android:inputType="text"
-        android:layout_below="@+id/txt_tongso"
-        />
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_tongso"></EditText>
+
     <EditText
         android:id="@+id/txt_theloai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
+        android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
         android:hint="Thể loại"
-        android:inputType="text"
-        android:layout_below="@+id/txt_vitri"
-        />
+        android:textSize="20dp"
+        android:layout_below="@+id/txt_vitri"></EditText>
 
     <Button
         android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/txt_theloai"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:text="Thêm mới"
         android:textAllCaps="false"
         android:textSize="20sp"
-        android:backgroundTint="@color/main_cl"/>
+        android:backgroundTint="@color/m4"/>
+
 
 </RelativeLayout>
