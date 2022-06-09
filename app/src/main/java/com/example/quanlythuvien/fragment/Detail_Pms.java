@@ -86,6 +86,7 @@ public class Detail_Pms extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+        ((HomeActivity) getActivity()).setActionBarTitle("Chi tiết phiếu mượn sách");
     }
 
     @Override
@@ -105,9 +106,10 @@ public class Detail_Pms extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.toolbar_back){
-            if(getFragmentManager() != null){
-                getFragmentManager().popBackStack();
-            }
+            Fragment newFragment = new BorrowFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, newFragment).commit();
         }
         return super.onOptionsItemSelected(item);
     }

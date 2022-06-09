@@ -110,6 +110,7 @@ public class BorrowFragment extends Fragment implements OnClickListener,  Search
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+        ((HomeActivity) getActivity()).setActionBarTitle("Phiếu mượn sách");
     }
 
     @Override
