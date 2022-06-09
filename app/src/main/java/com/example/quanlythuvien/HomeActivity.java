@@ -20,6 +20,7 @@ import com.example.quanlythuvien.fragment.AccountFragment;
 import com.example.quanlythuvien.fragment.BookFragment;
 import com.example.quanlythuvien.fragment.Book_Insert;
 import com.example.quanlythuvien.fragment.BorrowFragment;
+import com.example.quanlythuvien.fragment.Detail_DocGia;
 import com.example.quanlythuvien.fragment.Detail_Pms;
 import com.example.quanlythuvien.fragment.Detail_Book;
 import com.example.quanlythuvien.fragment.Detail_ReturnBook;
@@ -341,6 +342,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
+    //Xem chi tiết độc giả
+    public void DetailDocGia(DocGiaModels docGiaModels){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+        Detail_DocGia detail_docGia = new Detail_DocGia();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_docgia", docGiaModels);
+
+        detail_docGia.setArguments(bundle);
+
+        fragmentTransaction.replace(R.id.content_frame,detail_docGia);
+        fragmentTransaction.addToBackStack(Detail_DocGia.TAG);
+        fragmentTransaction.commit();
+    }
     //lấy tất cả phiếu trả sách
     public ArrayList<PhieuTraModels> getAllPts(){
         db = new SqliteDBHelper(this, null, 1);

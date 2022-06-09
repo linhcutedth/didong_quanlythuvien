@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -99,4 +102,38 @@ public class AddReaderFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        ((HomeActivity) getActivity()).setActionBarTitle("Thêm độc giả");
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        MenuItem item_search = menu.findItem(R.id.toolbar_search);
+        item_search.setVisible(false);
+        MenuItem item_notice = menu.findItem(R.id.toolbar_notice);
+        item_notice.setVisible(false);
+        MenuItem item_person = menu.findItem(R.id.toolbar_person);
+        item_person.setVisible(false);
+        MenuItem item_back = menu.findItem(R.id.toolbar_back);
+        item_back.setVisible(true);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.toolbar_back){
+            Fragment newFragment = new ReaderFragment();
+            androidx.fragment.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, newFragment).commit();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

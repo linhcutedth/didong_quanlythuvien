@@ -386,6 +386,25 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //xóa độc giả
+    public Boolean delete_docgia(String madocgia) {
+        Log.v("madocgia", madocgia);
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor result = database.rawQuery("select count(ma_sach) as total from PHIEUMUONSACH P, CtMS CT where P.MA_PMS = CT.MA_PMS and ma_dg = ?  and TINHTRANG = ?; ", new String[]{madocgia,"chưa trả"});
+
+        if (result.getCount() > 0) {
+            result.moveToFirst();
+            SQLiteDatabase myDB = this.getWritableDatabase();
+            int tongso = result.getInt(0);
+            Log.v("tong ", String.valueOf(tongso));
+            if (tongso == 0) {
+                long temp = myDB.delete("DOCGIA", "ma_DG" + "=?", new String[]{madocgia});
+                return true; // khỏi luôn xóa được hết ahhaa
+            }
+        }
+        return false;
+    }
+
     //lấy danh sách phiếu trả sách
     public Cursor getAllPts(){
         SQLiteDatabase database = getReadableDatabase();
@@ -393,6 +412,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+    // lấy danh sách độc giả
     public List<String> getDocGia_NV(){
         List<String> list = new ArrayList<String>();
 
@@ -412,6 +432,31 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    //Cập nhật độc giả
+    public Boolean update_docgia(DocGiaModels dg){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("ma_dg",dg.getMaDG());
+        contentValues.put("hoten", dg.getHoTen());
+        contentValues.put("ngaysinh", dg.getNgSinh());
+        contentValues.put("email", dg.getEmail());
+        contentValues.put("diachi", dg.getDiaChi());
+        contentValues.put("nglapthe", dg.getNgLapThe());
+        contentValues.put("tinhtrangthe", dg.getTinhTrangThe());
+
+
+        long result = myDB.update("DOCGIA", contentValues, "MA_DG=?", new String[]{String.valueOf(dg.getMaDG())});
+
+        if(result==-1){
+            return false;
+        } else {
+
+            return  true;
+        }
+    }
+
+    //
     public List<String> getCuonSach_TS_list(){
         List<String> list = new ArrayList<String>();
 

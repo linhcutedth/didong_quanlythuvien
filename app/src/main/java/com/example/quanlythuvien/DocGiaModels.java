@@ -1,6 +1,8 @@
 package com.example.quanlythuvien;
 
-public class DocGiaModels {
+import java.io.Serializable;
+
+public class DocGiaModels implements Serializable {
     private int MaDG;
     private String HoTen;
     private String NgSinh;
