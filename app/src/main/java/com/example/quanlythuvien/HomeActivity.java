@@ -48,15 +48,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private BottomNavigationView mBottomNavigationView;
     SqliteDBHelper db;
+    //send data
+    String tendangnhap;
+
+    public String getTendangnhap() {
+        return tendangnhap;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        // nhận data
+        tendangnhap = getIntent().getStringExtra("tendangnhap");
        /* db = new SqliteDBHelper(this, null, 1);
         db.initialise();*/
 

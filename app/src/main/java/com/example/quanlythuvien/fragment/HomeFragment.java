@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,14 +16,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.quanlythuvien.HomeActivity;
+import com.example.quanlythuvien.LoginActivity;
 import com.example.quanlythuvien.R;
 
 public class HomeFragment extends Fragment {
+    HomeActivity homeActivity;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
         CardView phieumuon,phieutra,bc_nxb,bc_ms;
+
         view.findViewById(R.id.phieumuon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +63,10 @@ public class HomeFragment extends Fragment {
                         .replace(R.id.content_frame, newFragment).commit();
             }
         });
+        //send data
+        homeActivity = (HomeActivity) getActivity();
+        TextView welcome = view.findViewById(R.id.textView);
+        welcome.setText("Xin chào, " + homeActivity.getTendangnhap());
         return view;
 
     }
