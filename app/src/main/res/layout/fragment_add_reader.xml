@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarSize="0dp">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:layout_margin="10dp"
-    android:id="@+id/fragment_add">
+>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -18,81 +26,100 @@
     </ImageView>
     <EditText
         android:id="@+id/txt_hoten"
-        android:layout_below="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Họ tên"
-        android:inputType="textPersonName"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
-        />
+        android:textColorHint="@color/m2"
+        android:hint="Họ tên"
+        android:layout_below="@+id/image1"
+        android:textSize="20dp"></EditText>
 
     <EditText
         android:id="@+id/txt_ngsinh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Ngày sinh"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/txt_hoten" />
+        android:textColorHint="@color/m2"
+        android:hint="Ngày sinh"
+        android:layout_below="@+id/txt_hoten"
+        android:textSize="20dp"></EditText>
 
     <EditText
         android:id="@+id/txt_loaidg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Loại độc giả"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
+        android:hint="Loại độc giả"
         android:layout_below="@+id/txt_ngsinh"
-         />
+        android:textSize="20dp"></EditText>
 
     <EditText
         android:id="@+id/txt_diachi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Địa chỉ"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
+        android:hint="Địa chỉ"
         android:layout_below="@+id/txt_loaidg"
-        />
+        android:textSize="20dp"></EditText>
+
+
 
     <EditText
         android:id="@+id/txt_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Email"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
+        android:hint="email"
         android:layout_below="@+id/txt_diachi"
-        />
+        android:textSize="20dp"></EditText>
+
     <EditText
         android:id="@+id/txt_nglt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Ngày lập thẻ"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
+        android:hint="Ngày lập thẻ"
         android:layout_below="@+id/txt_email"
-        />
+        android:textSize="20dp"></EditText>
+
     <EditText
         android:id="@+id/txt_tinhtrangthe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Tình trạng thẻ"
+        android:background="@drawable/vien"
+        android:layout_marginVertical="10dp"
+        android:padding="15dp"
         android:textColor="@color/m4"
+        android:textColorHint="@color/m2"
+        android:hint="Tình trạng thẻ"
         android:layout_below="@+id/txt_nglt"
-        />
+        android:textSize="20dp"></EditText>
 
     <Button
         android:id="@+id/add_button"
+        android:layout_below="@+id/txt_tinhtrangthe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
@@ -104,3 +131,4 @@
         android:backgroundTint="@color/m4"/>
 
 </RelativeLayout>
+</ScrollView>
