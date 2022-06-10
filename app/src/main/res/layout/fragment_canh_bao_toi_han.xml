@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/m2">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <!--recycler view for displaying our courses-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRV_CuonSach"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/btn_th"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/txt_theloai"
+            android:layout_marginVertical="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:text="Gửi mail"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:backgroundTint="@color/m4"/>
+    </LinearLayout>
+
+</RelativeLayout>

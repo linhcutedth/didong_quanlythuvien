@@ -1,5 +1,6 @@
 package com.example.quanlythuvien.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.quanlythuvien.HomeActivity;
-import com.example.quanlythuvien.LoginActivity;
 import com.example.quanlythuvien.R;
 
 public class HomeFragment extends Fragment {
@@ -63,10 +63,30 @@ public class HomeFragment extends Fragment {
                         .replace(R.id.content_frame, newFragment).commit();
             }
         });
+        view.findViewById(R.id.cb_toihan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment = new CanhBaoToiHanFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, newFragment).commit();
+            }
+        });
+        view.findViewById(R.id.cb_tratre).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment = new CanhBaoTraTreFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, newFragment).commit();
+            }
+        });
+
         //send data
         homeActivity = (HomeActivity) getActivity();
         TextView welcome = view.findViewById(R.id.textView);
         welcome.setText("Xin chào, " + homeActivity.getTendangnhap());
+
         return view;
 
     }
