@@ -781,4 +781,33 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
 
         return resultSet;
     }
+    public Cursor CB_ToiHan(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("SELECT *\n" +
+                "FROM DOCGIA\n" +
+                "WHERE MA_DG IN (\n" +
+                "\tSELECT MA_DG\n" +
+                "from PHIEUMUONSACH P, CTMS\n" +
+                "where JULIANDAY(date('now'))- JULIANDAY(date(substr(NGAYMUON, 7, 4) || '-' ||substr(NGAYMUON, 4, 2) || '-' ||  substr(NGAYMUON, 1, 2))) >= 1\n" +
+                "and P.MA_PMS = CTMS.MA_PMS\n" +
+                "and TINHTRANG = \"chưa trả\"\n" +
+                ")",null);
+
+        return resultSet;
+    }
+
+    public Cursor CB_TraTre(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("SELECT *\n" +
+                "FROM DOCGIA\n" +
+                "WHERE MA_DG IN (\n" +
+                "\tSELECT MA_DG\n" +
+                "from PHIEUMUONSACH P, CTMS\n" +
+                "where JULIANDAY(date('now'))- JULIANDAY(date(substr(NGAYMUON, 7, 4) || '-' ||substr(NGAYMUON, 4, 2) || '-' ||  substr(NGAYMUON, 1, 2))) > 4\n" +
+                "and P.MA_PMS = CTMS.MA_PMS\n" +
+                "and TINHTRANG = \"chưa trả\"\n" +
+                ")",null);
+
+        return resultSet;
+    }
 }
