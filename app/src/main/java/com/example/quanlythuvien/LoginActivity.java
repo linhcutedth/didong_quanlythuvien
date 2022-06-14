@@ -8,11 +8,13 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
+    TextView forgot_password;
     Button bt_login, bt_signin;
     SqliteDBHelper db;
     @Override
@@ -22,12 +24,21 @@ public class LoginActivity extends AppCompatActivity {
 
         bt_login = findViewById(R.id.bt_login);
         bt_signin =findViewById(R.id.bt_signin);
+        forgot_password = findViewById(R.id.txt_forgot_password);
         username = findViewById(R.id.edit_username);
         password = findViewById(R.id.edit_password);
         password.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_VARIATION_PASSWORD);
         db = new SqliteDBHelper(this, null, 1);
         db.initialise();
+
+        forgot_password.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserNameActivity.class);
+                startActivity(intent);
+            }
+        });
 
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override

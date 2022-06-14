@@ -269,6 +269,12 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+    public Cursor getAllUser(){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor resultSet = database.rawQuery("Select username from NGUOIDUNG",null);
+        return resultSet;
+    }
+
     //insert đầu sách
     public Boolean insert_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -327,6 +333,25 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         Cursor resultSet = database.rawQuery("Select * from PHIEUMUONSACH where MA_PMS LIKE ?",new String[] {"%"+ name+ "%" });
         return resultSet;
     }
+
+    //Cập nhật người dùng
+    public Boolean update_nguoidung(String username, String pass){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username",username);
+        contentValues.put("password", pass);
+
+        long result = myDB.update("NGUOIDUNG", contentValues, "username=?", new String[]{String.valueOf(username)});
+
+        if(result==-1){
+            return false;
+        } else {
+
+            return  true;
+        }
+    }
+
     //Cập nhật đầu sách
     public Boolean update_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
