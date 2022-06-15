@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuanLyThuVien">
         <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserNameActivity"
+            android:exported="false" />
+        <activity
             android:name=".CapNhatDocGiaActivity"
             android:exported="false" />
         <activity
