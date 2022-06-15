@@ -84,7 +84,7 @@
                             android:layout_gravity="center"
                             android:fontFamily="serif"
                             android:text="Phiếu mượn sách"
-                            android:textSize="20dp" />
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -117,7 +117,7 @@
                             android:layout_gravity="center"
                             android:fontFamily="serif"
                             android:text="Phiếu trả sách"
-                            android:textSize="20dp" />
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -160,8 +160,8 @@
                             android:layout_below="@+id/imgdocgia"
                             android:layout_gravity="center"
                             android:fontFamily="serif"
-                            android:text="Báo cáo đầu sách - năm xuất bản"
-                            android:textSize="20dp" />
+                            android:text="Báo cáo đầu sách \n \t năm xuất bản"
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -194,8 +194,8 @@
                             android:layout_below="@+id/imgdocgia"
                             android:layout_gravity="center"
                             android:fontFamily="serif"
-                            android:text="Báo cáo đầu sách - mượn sách"
-                            android:textSize="20dp" />
+                            android:text="Báo cáo đầu sách \n \t \t mượn sách"
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -238,7 +238,7 @@
                             android:layout_gravity="center"
                             android:fontFamily="serif"
                             android:text="Cảnh báo đến hạn"
-                            android:textSize="20dp" />
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -272,7 +272,7 @@
                             android:layout_gravity="center"
                             android:fontFamily="serif"
                             android:text="Cảnh báo trả trễ"
-                            android:textSize="20dp" />
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
