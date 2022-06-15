@@ -71,7 +71,6 @@ public class BorrowBook_Insert extends Fragment {
 
 
 
-
 //        ngaymuon.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -83,6 +82,9 @@ public class BorrowBook_Insert extends Fragment {
         add_button = view.findViewById(R.id.add_button);
         homeActivity = (HomeActivity) getActivity();
         dbHelper = new SqliteDBHelper(BorrowBook_Insert.this.getActivity(), null, 1);
+        tv_sachmuon = view.findViewById(R.id.sachmuon);
+        String[] cuonsachArray = db.getCuonSach_MS_array();
+        selectedLanguage = new boolean[cuonsachArray.length];
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,20 +94,24 @@ public class BorrowBook_Insert extends Fragment {
                 int Ma_dg = Integer.valueOf(ma_dg.split("-")[0]);
                 PhieuMuonModels phieuMuonModels = new PhieuMuonModels(10, Ma_dg, Ngaymuon);
 
-                Boolean rs = dbHelper.insert_phieumuonsach(phieuMuonModels,ma_cuonsach);
-                if (rs == true){
+                if (cuonsachArray.length > 4)
+                {
+                    Toast.makeText(BorrowBook_Insert.this.getActivity(), "Không được mượn hơn 4 quyển", Toast.LENGTH_SHORT).show();
+                }else {
+                    Boolean rs = dbHelper.insert_phieumuonsach(phieuMuonModels, ma_cuonsach);
+                    if (rs == true) {
 
-                    Fragment newFragment = new BorrowFragment();
-                    androidx.fragment.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    Toast.makeText(BorrowBook_Insert.this.getActivity(),"oke do",Toast.LENGTH_SHORT).show();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.content_frame, newFragment).commit();
+                        Fragment newFragment = new BorrowFragment();
+                        androidx.fragment.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        Toast.makeText(BorrowBook_Insert.this.getActivity(), "oke do", Toast.LENGTH_SHORT).show();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content_frame, newFragment).commit();
 
-                } else{
-                    Toast.makeText(BorrowBook_Insert.this.getActivity(),"sai roi",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(BorrowBook_Insert.this.getActivity(), "sai roi", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
 
             }
         });
@@ -130,10 +136,8 @@ public class BorrowBook_Insert extends Fragment {
             }
         });
 
+
         //click chon sach
-        tv_sachmuon = view.findViewById(R.id.sachmuon);
-        String[] cuonsachArray = db.getCuonSach_MS_array();
-        selectedLanguage = new boolean[cuonsachArray.length];
 
 
         tv_sachmuon.setOnClickListener(new View.OnClickListener() {
@@ -214,6 +218,8 @@ public class BorrowBook_Insert extends Fragment {
                 builder.show();
             }
         });
+
+
 
         return view;
     }
