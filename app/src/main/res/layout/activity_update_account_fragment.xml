@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="12dp"
-   >
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,87 +13,87 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:id="@+id/fragment_detail">
-    <LinearLayout
-        android:id="@+id/detail_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tv_username"
+        <LinearLayout
+            android:id="@+id/detail_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tên đăng nhập"
-            android:textSize="20dp"
-            android:textColor="@color/m4"
-            />
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên đăng nhập"
+                android:textSize="20dp"
+                android:textColor="@color/m4"
+                />
 
-        <EditText
-            android:id="@+id/edit_username"
+            <EditText
+                android:id="@+id/edit_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_hoten"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/vien"
+                android:enabled="false"
+                android:padding="15dp"
+                android:textColor="@color/m4"
+                android:textColorHint="@color/m2"
+                android:textSize="20dp"></EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/detail_email"
+            android:layout_below="@+id/detail_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_hoten"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/vien"
-            android:enabled="false"
-            android:padding="15dp"
-            android:textColor="@color/m4"
-            android:textColorHint="@color/m2"
-            android:textSize="20dp"></EditText>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/detail_email"
-        android:layout_below="@+id/detail_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tv_email"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="20dp"
+                android:textColor="@color/m4"
+                />
+            <EditText
+                android:id="@+id/edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ngaysinh"
+                android:background="@drawable/vien"
+                android:layout_marginVertical="10dp"
+                android:padding="15dp"
+                android:textColor="@color/m4"
+                android:textColorHint="@color/m2"
+                android:enabled="false"
+                android:textSize="20dp"></EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/detail_phone"
+            android:layout_below="@+id/detail_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:textSize="20dp"
-            android:textColor="@color/m4"
-            />
-        <EditText
-            android:id="@+id/edit_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_ngaysinh"
-            android:background="@drawable/vien"
-            android:layout_marginVertical="10dp"
-            android:padding="15dp"
-            android:textColor="@color/m4"
-            android:textColorHint="@color/m2"
-            android:enabled="false"
-            android:textSize="20dp"></EditText>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/detail_phone"
-        android:layout_below="@+id/detail_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Điện thoại"
-            android:textSize="20dp"
-            android:textColor="@color/m4"
-            />
-        <EditText
-            android:id="@+id/edit_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_phone"
-            android:background="@drawable/vien"
-            android:layout_marginVertical="10dp"
-            android:padding="15dp"
-            android:textColor="@color/m4"
-            android:textColorHint="@color/m2"
-            android:textSize="20dp"></EditText>
-    </LinearLayout>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Điện thoại"
+                android:textSize="20dp"
+                android:textColor="@color/m4"
+                />
+            <EditText
+                android:id="@+id/edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_phone"
+                android:background="@drawable/vien"
+                android:layout_marginVertical="10dp"
+                android:padding="15dp"
+                android:textColor="@color/m4"
+                android:textColorHint="@color/m2"
+                android:textSize="20dp"></EditText>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/detail_address"
             android:layout_below="@+id/detail_phone"

@@ -275,6 +275,24 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+    public NguoiDungModel getUser(String username){
+        SQLiteDatabase database = getReadableDatabase();
+        NguoiDungModel ng = new NguoiDungModel();
+        Cursor cursor = database.rawQuery("Select * from NGUOIDUNG where username = ?",new String[] {username});
+        if (cursor.moveToFirst()) {
+            do {
+                ng.setUsername(cursor.getString(0));
+                ng.setPassword(cursor.getString(1));
+                ng.setEmail(cursor.getString(2));
+                ng.setPhone(cursor.getString(3));
+                ng.setAddress(cursor.getString(4));
+                ng.setSex(cursor.getString(5));
+
+            } while (cursor.moveToNext());
+        }
+        return ng;
+    }
+
     //insert đầu sách
     public Boolean insert_dausach(DauSachModels dausach){
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -334,7 +352,7 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    //Cập nhật người dùng
+    //Cập nhật người dùng -> change password
     public Boolean update_nguoidung(String username, String pass){
         SQLiteDatabase myDB = this.getWritableDatabase();
 
@@ -343,6 +361,28 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         contentValues.put("password", pass);
 
         long result = myDB.update("NGUOIDUNG", contentValues, "username=?", new String[]{String.valueOf(username)});
+
+        if(result==-1){
+            return false;
+        } else {
+
+            return  true;
+        }
+    }
+
+    //Cập nhật người dùng -> all information
+    public Boolean update_nguoidung(NguoiDungModel ng){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username",ng.getUsername());
+        contentValues.put("password", ng.getPassword());
+        contentValues.put("email",ng.getEmail());
+        contentValues.put("phone", ng.getPhone());
+        contentValues.put("address",ng.getAddress());
+        contentValues.put("sex", ng.getSex());
+
+        long result = myDB.update("NGUOIDUNG", contentValues, "username=?", new String[]{String.valueOf(ng.getUsername())});
 
         if(result==-1){
             return false;

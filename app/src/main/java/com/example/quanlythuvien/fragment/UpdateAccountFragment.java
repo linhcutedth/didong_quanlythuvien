@@ -2,6 +2,8 @@ package com.example.quanlythuvien.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +26,7 @@ import com.example.quanlythuvien.SqliteDBHelper;
 
 import java.io.Console;
 
-public class AccountFragment extends Fragment {
+public class UpdateAccountFragment extends Fragment {
 
     EditText Username,Password, Email, Phone, Address, Sex;
     Button update;
@@ -41,7 +43,7 @@ public class AccountFragment extends Fragment {
         homeActivity = (HomeActivity) getActivity();
         String user_name = homeActivity.getTendangnhap();
 
-        db = new SqliteDBHelper(AccountFragment.this.getActivity(), null, 1);
+        db = new SqliteDBHelper(UpdateAccountFragment.this.getActivity(), null, 1);
         db.initialise();
 
         System.out.println(user_name);
@@ -82,10 +84,10 @@ public class AccountFragment extends Fragment {
 
                 if (rs== true){
 
-                    Toast.makeText(AccountFragment.this.getActivity(),"Cập nhật thành công",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateAccountFragment.this.getActivity(),"Cập nhật thành công",Toast.LENGTH_SHORT).show();
 
                 } else{
-                    Toast.makeText(AccountFragment.this.getActivity(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateAccountFragment.this.getActivity(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -101,5 +103,28 @@ public class AccountFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        MenuItem item_search = menu.findItem(R.id.toolbar_search);
+        item_search.setVisible(false);
+        MenuItem item_notice = menu.findItem(R.id.toolbar_notice);
+        item_notice.setVisible(false);
+        MenuItem item_person = menu.findItem(R.id.toolbar_person);
+        item_person.setVisible(false);
+        MenuItem item_back = menu.findItem(R.id.toolbar_back);
+        item_back.setVisible(true);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.toolbar_back){
+            Fragment newFragment = new SettingFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, newFragment).commit();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

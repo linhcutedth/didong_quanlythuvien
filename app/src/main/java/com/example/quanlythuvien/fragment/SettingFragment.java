@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ import com.example.quanlythuvien.LoginActivity;
 import com.example.quanlythuvien.R;
 
 public class SettingFragment extends Fragment {
+    TextView info, changepass;
+
     Button button_logout;
     HomeActivity homeActivity;
     @Nullable
@@ -31,12 +34,29 @@ public class SettingFragment extends Fragment {
         //ánh xạ
         button_logout = view.findViewById(R.id.bt_dangxuat);
         homeActivity = (HomeActivity) getActivity();
+
+        info = view.findViewById(R.id.tv_profile);
+        changepass = view.findViewById(R.id.tv_changepassword);
+
+        //đăng xuất
         button_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(SettingFragment.this.getActivity(), "Logout successfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SettingFragment.this.getActivity(), LoginActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        // cập nhật thông tin
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new UpdateAccountFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, newFragment).commit();
             }
         });
 
