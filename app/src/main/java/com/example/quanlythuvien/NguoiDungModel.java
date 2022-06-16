@@ -8,6 +8,7 @@ public class NguoiDungModel {
     private String address;
     private String sex;
 
+    public NguoiDungModel(){}
     public NguoiDungModel(String username, String password, String email, String phone, String address, String sex) {
         this.username = username;
         this.password = password;
