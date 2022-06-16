@@ -35,6 +35,10 @@ public class SettingFragment extends Fragment {
         button_logout = view.findViewById(R.id.bt_dangxuat);
         homeActivity = (HomeActivity) getActivity();
 
+        homeActivity = (HomeActivity) getActivity();
+        TextView welcome = view.findViewById(R.id.textView);
+        welcome.setText(homeActivity.getTendangnhap());
+
         info = view.findViewById(R.id.tv_profile);
         changepass = view.findViewById(R.id.tv_changepassword);
 
