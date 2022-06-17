@@ -6,7 +6,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +30,11 @@ public class AccountFragment extends Fragment {
 
     EditText Username,Password, Email, Phone, Address, Sex;
     Button update;
+    RadioButton sex_male, sex_female;
     private HomeActivity homeActivity;
     private MenuItem menuItem;
     SqliteDBHelper db;
+
 
     @Nullable
     @Override
@@ -41,6 +45,10 @@ public class AccountFragment extends Fragment {
         homeActivity = (HomeActivity) getActivity();
         String user_name = homeActivity.getTendangnhap();
 
+        sex_male = view.findViewById(R.id.sex_male);
+        sex_female = view.findViewById(R.id.sex_female);
+        sex_male.setOnCheckedChangeListener(listenerRadio);
+        sex_female.setOnCheckedChangeListener(listenerRadio);
         db = new SqliteDBHelper(AccountFragment.this.getActivity(), null, 1);
         db.initialise();
 
@@ -63,7 +71,13 @@ public class AccountFragment extends Fragment {
         Email.setText(ng_dung.getEmail());
         Phone.setText(ng_dung.getPhone());
         Address.setText(ng_dung.getAddress());
-        Sex.setText(ng_dung.getSex());
+
+        if (ng_dung.getSex().toString().equals("Nam") || ng_dung.getSex().toString().equals("mam")){
+            sex_male.setChecked(true);
+        }else{
+            sex_female.setChecked(true);
+        }
+
 
         //Cập nhật thông tin người dùng
 
@@ -100,6 +114,19 @@ public class AccountFragment extends Fragment {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
+
+    CompoundButton.OnCheckedChangeListener listenerRadio
+            = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+            if (sex_male.isChecked())
+                Sex.setText("Nam");
+            else
+                Sex.setText("Nữ");
+
+        }
+    };
 
 
 }

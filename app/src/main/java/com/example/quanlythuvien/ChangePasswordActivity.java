@@ -10,6 +10,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -21,6 +22,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     EditText  pass, passwordConfirm;
     Button bt_update;
+    TextView bt_back;
     SqliteDBHelper db;
     //send data
     String tendangnhap;
@@ -32,6 +34,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
+        bt_back = findViewById(R.id.txt_backto);
         pass = findViewById(R.id.edit_password);
         pass.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -52,6 +55,13 @@ public class ChangePasswordActivity extends AppCompatActivity {
         //confirm password
         mAwesomeValidation.addValidation(this, R.id.edit_password_confirm, R.id.edit_password, R.string.invalid_confirm_password);
 
+        bt_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserNameActivity.class);
+                startActivity(intent);
+            }
+        });
         bt_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -85,6 +85,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         user.setText(tendangnhap);
 
         replaceFragment(new HomeFragment());
+//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                int id = item.getItemId();
+//                if (id == R.id.toolbar_person){
+//                    openAccountFragment();
+//                }
+//                return false;
+//            }
+//        });
 
         mBottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             //bottom_nav
@@ -160,6 +170,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if(mCurrentFragment != FRAGMENT_SETTING){
             replaceFragment(new SettingFragment());
             mCurrentFragment = FRAGMENT_SETTING;
+        }
+    }
+
+    private void openAccountFragment(){
+        if(mCurrentFragment != FRAGMENT_ACCOUNT){
+            replaceFragment(new AccountFragment());
+            mCurrentFragment = FRAGMENT_ACCOUNT;
         }
     }
 

@@ -120,20 +120,61 @@
                 android:textColorHint="@color/m2"
                 android:textSize="20dp"></EditText>
         </LinearLayout>
+
+
         <LinearLayout
             android:id="@+id/detail_sex"
-            android:layout_below="@+id/detail_phone"
+            android:layout_below="@+id/detail_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:visibility="visible"
+
+            >
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/address"
+                android:orientation="horizontal"
+                android:id="@+id/sex_group">
+                <RadioButton
+                    android:id="@+id/sex_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
+                    android:text="Nữ"
+                    android:textColor="@color/m3"
+                    android:textSize="20dp">
+                    <!--            android:onClick="onRadioButtonClicked"-->
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/sex_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toRightOf="@+id/sex_female"
+                    android:padding="15dp"
+                    android:text="Nam"
+                    android:textColor="@color/m3"
+                    android:textSize="20dp"></RadioButton>
+                <!--            android:onClick="onRadioButtonClicked"></RadioButton>-->
+            </RadioGroup>
             <TextView
                 android:id="@+id/tv_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MK"
+                android:text="Giới tính"
                 android:textSize="20dp"
-
+                android:visibility="invisible"
                 android:textColor="@color/m4"
                 />
             <EditText
@@ -146,7 +187,8 @@
                 android:padding="15dp"
                 android:textColor="@color/m4"
                 android:textColorHint="@color/m2"
-                android:textSize="20dp"></EditText>
+                android:textSize="20dp"
+                android:visibility="invisible"></EditText>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/detail_Password"
