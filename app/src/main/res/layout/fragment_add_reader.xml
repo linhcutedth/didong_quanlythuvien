@@ -41,27 +41,37 @@
         android:id="@+id/txt_ngsinh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/vien"
+        android:layout_below="@+id/txt_hoten"
         android:layout_marginVertical="10dp"
+        android:background="@drawable/vien"
+        android:hint="Ngày sinh"
         android:padding="15dp"
         android:textColor="@color/m4"
         android:textColorHint="@color/m2"
-        android:hint="Ngày sinh"
-        android:layout_below="@+id/txt_hoten"
         android:textSize="20dp"></EditText>
 
-    <EditText
-        android:id="@+id/txt_loaidg"
+<!--    <EditText-->
+<!--        android:id="@+id/txt_loaidg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/txt_ngsinh"-->
+<!--        android:layout_marginVertical="10dp"-->
+<!--        android:background="@drawable/vien"-->
+<!--        android:hint="Loại độc giả"-->
+<!--        android:padding="15dp"-->
+<!--        android:textColor="@color/m4"-->
+<!--        android:textColorHint="@color/m2"-->
+<!--        android:textSize="20dp"></EditText>-->
+
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/vien"
-        android:layout_marginVertical="10dp"
-        android:padding="15dp"
-        android:textColor="@color/m4"
-        android:textColorHint="@color/m2"
-        android:hint="Loại độc giả"
-        android:layout_below="@+id/txt_ngsinh"
-        android:textSize="20dp"></EditText>
+        android:layout_height="55dp"
+        android:layout_below="@id/txt_ngsinh"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginVertical="7dp"
+        android:background="@drawable/vien" />
 
     <EditText
         android:id="@+id/txt_diachi"
@@ -73,7 +83,7 @@
         android:textColor="@color/m4"
         android:textColorHint="@color/m2"
         android:hint="Địa chỉ"
-        android:layout_below="@+id/txt_loaidg"
+        android:layout_below="@+id/spinner"
         android:textSize="20dp"></EditText>
 
 
