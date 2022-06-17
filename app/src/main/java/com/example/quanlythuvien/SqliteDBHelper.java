@@ -352,6 +352,13 @@ public class SqliteDBHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
+    //get password
+    public Cursor getPassword (String username){
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor pass = database.rawQuery("Select password from NGUOIDUNG where username = ?",new String[] {username});
+        return pass;
+    }
+
     //Cập nhật người dùng -> change password
     public Boolean update_nguoidung(String username, String pass){
         SQLiteDatabase myDB = this.getWritableDatabase();

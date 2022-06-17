@@ -64,6 +64,17 @@ public class SettingFragment extends Fragment {
             }
         });
 
+        // đổi mật khẩu
+        changepass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new UpdatePasswordFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, newFragment).commit();
+            }
+        });
+
         return view;
     }
     @Override

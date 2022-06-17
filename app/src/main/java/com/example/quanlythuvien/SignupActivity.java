@@ -9,7 +9,11 @@ import android.text.InputType;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -22,6 +26,8 @@ import java.util.regex.Pattern;
 public class SignupActivity extends AppCompatActivity {
 
     EditText username, password, passwordConfirm, email, phone, address, sex;
+    RadioGroup sex_group;
+    RadioButton sex_male, sex_female;
     Button bt_signup;
     SqliteDBHelper db;
 
@@ -44,6 +50,12 @@ public class SignupActivity extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         address = findViewById(R.id.address);
         sex = findViewById(R.id.sex);
+        sex_group = findViewById(R.id.sex_group);
+
+        sex_male = findViewById(R.id.sex_male);
+        sex_female = findViewById(R.id.sex_female);
+        sex_male.setOnCheckedChangeListener(listenerRadio);
+        sex_female.setOnCheckedChangeListener(listenerRadio);
 
         db = new SqliteDBHelper(this, null, 1);
 
@@ -63,6 +75,7 @@ public class SignupActivity extends AppCompatActivity {
 
         //confirm password
         mAwesomeValidation.addValidation(this, R.id.edit_password_confirm, R.id.edit_password, R.string.invalid_confirm_password);
+
 
         bt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,5 +116,16 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+    CompoundButton.OnCheckedChangeListener listenerRadio
+            = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            if (sex_male.isChecked())
+            sex.setText("Nam");
+            else
+                sex.setText("Nữ");
+
+        }
+    };
 
 }
